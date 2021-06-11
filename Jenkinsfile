@@ -16,12 +16,10 @@ pipeline {
 
 echo "-------------------------------------------------------------------------"
 
-branches = git ls-remote
+#branches = git ls-remote
 
-for branch in $branches
-do
-echo $branch
-done
+for repo in */.git; do branch=$(cat $repo/HEAD); echo ${repo%/.git} :  ${branch##*/}; done
+
 
 echo "-------------------------------------------------------------------------"
 
