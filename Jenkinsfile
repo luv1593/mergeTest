@@ -24,6 +24,8 @@ git for-each-ref --shell \
     git log --oneline "$branch" ^origin/master
 done
 
+echo branch
+
 echo "-------------------------------------------------------------------------"
 
 
