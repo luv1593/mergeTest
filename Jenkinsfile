@@ -1,6 +1,4 @@
 pipline{
-
-  agent any
   
   stages {
      stage("build") {
@@ -19,7 +17,7 @@ pipline{
         steps {
         }
       }
-      3
+      
    stages {
      stage("deploy") {
         steps {
