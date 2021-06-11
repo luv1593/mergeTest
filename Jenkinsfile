@@ -16,7 +16,10 @@ pipeline {
 
 echo "-------------------------------------------------------------------------"
 
-git for-each-ref --format='%(refname)' refs/heads
+for branch in $(git ls-remote)
+do
+echo branch
+done
 
 echo "-------------------------------------------------------------------------"
 
