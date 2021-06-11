@@ -18,7 +18,12 @@ echo "-------------------------------------------------------------------------"
 
 #branches = git ls-remote
 
-for repo in */https://github.com/luv1593/mergeTest.git; do branch=$(cat $repo/HEAD); echo ${repo%/.git} :  ${branch##*/}; done
+branch= $(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+for i in $branch
+do
+echo $i
+done
+
 
 
 echo "-------------------------------------------------------------------------"
