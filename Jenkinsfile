@@ -21,17 +21,14 @@ echo "-------------------------------------------------------------------------"
 branArr=()
 onlyBran=()
 
-value="remotes"
-
 branch=$(git branch -a)
 
 for i in $branch
 do
   branArr+=($i)
-  echo $i
 done
 
-if [[ " ${branArr[@]} " =~ " ${value} " ]]; then
+if [[ " ${branArr[@]} " =~ "remotes" ]]; then
     onlyBran+=($i)
 fi
 
