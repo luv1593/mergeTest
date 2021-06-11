@@ -16,9 +16,9 @@ pipeline {
 
 echo "-------------------------------------------------------------------------"
 
-BRANCHES = git ls-remote
-
-echo $BRANCHES
+for branch in $(git for-each-ref --format='%(refname)' refs/heads/); do
+    git log --oneline "$branch" ^origin/master
+done
 
 echo "-------------------------------------------------------------------------"
 
