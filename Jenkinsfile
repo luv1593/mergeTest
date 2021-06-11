@@ -16,9 +16,9 @@ pipeline {
 
 echo "-------------------------------------------------------------------------"
 
-for branch in $(git for-each-ref --format='%(refname)' refs/heads/); do
-    git log --oneline "$branch" ^origin/master
-done
+git for-each-ref --shell \
+  --format='git log --oneline %(refname) ^origin/master' \
+  refs/heads/s
 
 echo "-------------------------------------------------------------------------"
 
