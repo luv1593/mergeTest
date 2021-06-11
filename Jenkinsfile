@@ -11,14 +11,14 @@ pipeline {
         stage('build') {
             steps {
                 git 'https://github.com/luv1593/mergeTest.git'
-              sh '''#!/bin/bash
+sh '''#!/bin/bash
 
 
 echo "-------------------------------------------------------------------------"
 
 #branches = git ls-remote
 
-branch= $(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 for i in $branch
 do
 echo $i
