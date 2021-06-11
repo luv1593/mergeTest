@@ -28,7 +28,7 @@ do
   branArr+=($i)
 done
 
-if [[ " ${branArr[@]} " =~ "remotes" ]]; then
+if [[ " ${branArr[@]} " =~ "remotes/" ]]; then
     onlyBran+=($i)
 fi
 
