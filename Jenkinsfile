@@ -18,7 +18,7 @@ echo "-------------------------------------------------------------------------"
 
 #branches = git ls-remote
 
-for repo in */.git; do branch=$(cat $repo/HEAD); echo ${repo%/.git} :  ${branch##*/}; done
+for repo in */https://github.com/luv1593/mergeTest.git; do branch=$(cat $repo/HEAD); echo ${repo%/.git} :  ${branch##*/}; done
 
 
 echo "-------------------------------------------------------------------------"
