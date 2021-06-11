@@ -7,7 +7,7 @@ pipeline {
                 echo 'Hello World'
             }
         }
-        
+
         stage('build') {
             steps {
                 git 'https://github.com/luv1593/mergeTest.git'
@@ -16,7 +16,8 @@ pipeline {
 
 echo "-------------------------------------------------------------------------"
 
-git ls-remote
+BRANCHES = git ls-remote
+echo $BRANCHES
 
 echo "-------------------------------------------------------------------------"
 
@@ -74,6 +75,6 @@ echo "Release $version complete"'''
 
             }
         }
-    
+
     }
 }
