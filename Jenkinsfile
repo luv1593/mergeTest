@@ -31,8 +31,6 @@ do
   echo $i
 done
 
-echo "${branArr[@]}"
-
 if [[ " ${branArr[@]} " =~ " ${value} " ]]; then
     onlyBran+=($i)
 fi
