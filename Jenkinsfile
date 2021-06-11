@@ -20,7 +20,10 @@ echo "-------------------------------------------------------------------------"
 
 branch=$(git branch -a)
 
-echo $branch
+for i in $branch
+do
+  echo $i
+done
 
 
 
