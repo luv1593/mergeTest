@@ -24,5 +24,6 @@ pipline{
      stage("deploy") {
         steps {
         }
+       }  
       }
-      
+   }
