@@ -18,7 +18,7 @@ echo "-------------------------------------------------------------------------"
 
 #branches = git ls-remote
 
-branch=$(git branch -a)
+branch=$(git branch)
 
 for i in $branch
 do
