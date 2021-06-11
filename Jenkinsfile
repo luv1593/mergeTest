@@ -28,9 +28,13 @@ do
   branArr+=($i)
 done
 
-if [[ ! " ${branArr[@]} " =~ " remotes/origin/ " ]]; then
-    onlyBran+=($i)
+
+for e in "${branArr[@]}"
+do
+if [[ ! " ${branArr[@]} " =~ *"remotes/origin/"* ]]; then
+    onlyBran+=()
 fi
+done
 
 echo "${onlyBran[@]}"
 
