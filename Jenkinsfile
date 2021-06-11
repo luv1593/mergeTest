@@ -19,7 +19,7 @@ pipline{
         steps {
         }
       }
-      
+      3
    stages {
      stage("deploy") {
         steps {
@@ -27,3 +27,5 @@ pipline{
        }  
       }
    }
+  }
+}
