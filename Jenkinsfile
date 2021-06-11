@@ -18,11 +18,9 @@ echo "-------------------------------------------------------------------------"
 
 #branches = git ls-remote
 
-branch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-for i in $branch
-do
-echo $i
-done
+branch=$(git branch)
+
+echo $branch
 
 
 
