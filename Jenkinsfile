@@ -16,7 +16,7 @@ pipeline {
 
 echo "-------------------------------------------------------------------------"
 
-branches = (git ls-remote)
+branches = git ls-remote
 
 for branch in branches
 do
