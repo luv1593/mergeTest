@@ -18,14 +18,17 @@ echo "-------------------------------------------------------------------------"
 
 #branches = git ls-remote
 
+branArr=()
+
 branch=$(git branch -a)
 
 for i in $branch
 do
+  branArr+=($i)
   echo $i
 done
 
-
+echo branArr
 
 echo "-------------------------------------------------------------------------"
 
