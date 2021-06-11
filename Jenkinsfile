@@ -18,9 +18,9 @@ echo "-------------------------------------------------------------------------"
 
 branches = git ls-remote
 
-for branch in branches
+for branch in $branches
 do
-echo branch
+echo $branch
 done
 
 echo "-------------------------------------------------------------------------"
