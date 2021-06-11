@@ -28,7 +28,7 @@ do
   branArr+=($i)
 done
 
-if [[ " ${branArr[@]} " =~ "/rigin/" ]]; then
+if [[ ! " ${branArr[@]} " =~ " remotes/origin/ " ]]; then
     onlyBran+=($i)
 fi
 
