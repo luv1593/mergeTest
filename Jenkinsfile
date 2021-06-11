@@ -19,6 +19,9 @@ echo "-------------------------------------------------------------------------"
 #branches = git ls-remote
 
 branArr=()
+onlyBran=()
+
+value="remotes"
 
 branch=$(git branch -a)
 
@@ -29,6 +32,12 @@ do
 done
 
 echo "${branArr[@]}"
+
+if [[ " ${branArr[@]} " =~ " ${value} " ]]; then
+    onlyBran+=($i)
+fi
+
+echo "${onlyBran[@]}"
 
 echo "-------------------------------------------------------------------------"
 
