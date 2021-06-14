@@ -44,7 +44,7 @@ for j in ${branArr[@]}
 do
   git $(diff $lastest..${branArr[j]})
 done
-
+#what can i do with compare info
 
 
 echo "-------------------------------------------------------------------------"
