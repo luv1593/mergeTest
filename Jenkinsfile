@@ -35,15 +35,15 @@ got compare master..Dev
 
 log=$(git log)
 
-git rev-parse HEAD
+lastest=$(it rev-parse HEAD)
 
 
-"env -i git diff master..dev";
+#"env -i git diff master..dev";
 
-#for j in ${branArr[@]}
-#do
-#  git $(diff $master..${branArr[j]})
-#done
+for j in ${branArr[@]}
+do
+  git $(diff $lastest..${branArr[j]})
+done
 
 
 
