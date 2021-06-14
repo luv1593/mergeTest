@@ -34,7 +34,10 @@ master=$(git checkout master)
 
 compare=$(git diff master..dev)
 
-echo $compare
+log=$(git log)
+hash=$(log:6:46)
+
+echo $hash
 
 "env -i git diff master..dev";
 
