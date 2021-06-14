@@ -34,7 +34,9 @@ master=$(git checkout master)
 
 compare=$(git diff master..dev)
 
-"env -i git diff master..QA";
+echo $compare
+
+"env -i git diff master..dev";
 
 #for j in ${branArr[@]}
 #do
