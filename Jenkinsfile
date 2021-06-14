@@ -32,7 +32,7 @@ echo "${branArr[@]}"
 
 master=$(git checkout master)
 
-compare=$(git diff master..QA)
+compare=$(git diff master..dev)
 
 "env -i git diff master..QA";
 
