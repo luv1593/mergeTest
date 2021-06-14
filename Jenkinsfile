@@ -34,7 +34,7 @@ master=$(git checkout master)
 
 for j in ${branArr[@]}
 do
-  echo git diff $master..${branArr[j]}
+  git diff $master..${branArr[j]}
 done
 
 
