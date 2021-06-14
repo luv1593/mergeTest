@@ -10,7 +10,7 @@ pipeline {
 
         stage('build') {
             steps {
-                git 'https://github.com/luv1593/mergeTest.git'
+                GIT='git 'https://github.com/luv1593/mergeTest.git''
 sh '''#!/bin/bash
 
 
@@ -32,7 +32,7 @@ echo "${branArr[@]}"
 
 master=$(git checkout master)
 
-git diff master..QA;
+$GIT diff master..QA;
 
 #for j in ${branArr[@]}
 #do
