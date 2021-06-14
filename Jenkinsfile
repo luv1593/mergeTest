@@ -27,16 +27,18 @@ for i in $branch
 do
   branArr+=($i)
 done
-echo "-------------------------------------------------------------------------"
 
+echo "-------------------------------------------------------------------------"
 echo "${branArr[@]}"
+echo "${branArr[3]}"
 echo "-------------------------------------------------------------------------"
 
+remoteVal="remotes"
 
 for e in "${branArr[@]}"
 do
-if [[ ! " ${branArr[@]} " == *"remotes/origin/"* ]]; then
-    onlyBran+=( ${branArr[e]} )
+if [[ ! " ${branArr[@]} " == *"$remoteVal"* ]]; then
+    onlyBran+=( $branArr[e] )
 fi
 done
 
