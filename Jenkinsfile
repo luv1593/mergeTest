@@ -31,13 +31,12 @@ done
 echo "${branArr[@]}"
 
 git checkout master
-
-compare=$(git diff master..dev)
+got compare master..Dev
 
 log=$(git log)
-hash=$(log:6:46)
 
-echo $hash
+git rev-parse HEAD
+
 
 "env -i git diff master..dev";
 
