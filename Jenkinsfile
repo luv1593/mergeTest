@@ -28,21 +28,15 @@ do
   branArr+=($i)
 done
 
-#echo "-------------------------------------------------------------------------"
 echo "${branArr[@]}"
-#echo "${branArr[3]}"
-#echo "-------------------------------------------------------------------------"
 
-remoteVal="remotes"
+newBran=$(git branch -v --sort=committerdate)
 
-for e in "${branArr[@]}"
-do
-if [[ ! " ${branArr[e]} " == *"$remoteVal"* ]]; then
-    onlyBran+=( ${branArr[e]} )
-fi
-done
+echo "test"
+echo "$newBran"
 
-echo "${onlyBran[@]}"
+
+
 
 echo "-------------------------------------------------------------------------"
 
