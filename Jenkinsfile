@@ -30,11 +30,12 @@ done
 
 echo "${branArr[@]}"
 
-newBran=$(git branch -v --sort=committerdate)
+master=$(git checkout master)
 
-echo "test"
-echo "$newBran"
-
+for j in ${branArr[@]}
+do
+  echo git diff $master..${branArr[j]}
+done
 
 
 
