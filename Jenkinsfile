@@ -32,10 +32,12 @@ echo "${branArr[@]}"
 
 master=$(git checkout master)
 
-for j in ${branArr[@]}
-do
-  git diff $master..${branArr[j]}
-done
+echo git diff master..QA
+
+#for j in ${branArr[@]}
+#do
+#  git diff $master..${branArr[j]}
+#done
 
 
 
