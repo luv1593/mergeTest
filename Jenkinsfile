@@ -30,7 +30,7 @@ done
 
 echo "${branArr[@]}"
 
-master=$(git checkout master)
+git checkout master
 
 compare=$(git diff master..dev)
 
