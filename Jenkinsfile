@@ -38,7 +38,7 @@ remoteVal="remotes"
 for e in "${branArr[@]}"
 do
 if [[ ! " ${branArr[@]} " == *"$remoteVal"* ]]; then
-    onlyBran+=( $branArr[e] )
+    onlyBran+=( ${branArr[e]} )
 fi
 done
 
