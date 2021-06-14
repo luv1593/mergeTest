@@ -31,8 +31,8 @@ done
 
 for e in "${branArr[@]}"
 do
-if [[ ! " ${branArr[@]} " =~ *"remotes/origin/"* ]]; then
-    onlyBran+=()
+if [[ ! " ${branArr[@]} " == *"remotes/origin/"* ]]; then
+    onlyBran+=( ${branArr[e]} )
 fi
 done
 
