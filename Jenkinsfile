@@ -154,4 +154,14 @@ echo "Release $version complete"'''
         }
 
     }
+
+    post {
+        always {
+            emailext body: 'A Test EMail', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Test'
+        }
+    }
+
+
+
+
 }
