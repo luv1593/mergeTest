@@ -10,7 +10,10 @@ pipeline {
 
         stage('build') {
             steps {
-                git 'https://github.com/luv1593/mergeTest.git'
+
+
+git 'https://github.com/luv1593/mergeTest.git'
+
 sh '''#!/bin/bash
 
 
@@ -21,23 +24,75 @@ echo "-------------------------------------------------------------------------"
 branArr=()
 onlyBran=()
 
-value="remotes"
-
-branch=$(git branch -a)
+branch=$(git branch -r)
 
 for i in $branch
 do
   branArr+=($i)
-  echo $i
 done
 
 echo "${branArr[@]}"
 
-if [[ " ${branArr[@]} " =~ " ${value} " ]]; then
-    onlyBran+=($i)
+
+last=$(git rev-parse HEAD)
+
+echo $last
+
+echo "-------------------------------latest vs QA ------------------------------------"
+
+mvdDiff=$(git diff $last..origin/QA)
+
+if [ "$mvdDiff" = "Already up to date." ];
+then
+  echo "latest and qa are the same"
+else
+  echo "latest and QA need to me merged"
+  echo "trying to merge now"
+  git merge $last origin/QA
 fi
 
-echo "${onlyBran[@]}"
+
+echo "-------------------------------latest vs master -------------------------------"
+
+mvmDiff=$(git diff $last..origin/master)
+
+if [ "$mvmDiff" = "Already up to date." ];
+then
+  echo "latest and master are the same"
+else
+  echo "latest and master need to me merged"
+  echo "trying to merge now"
+  git merge $last origin/master
+fi
+
+
+
+echo "--------------------------------latest vs dev -----------------------------------"
+
+mvmDiff=$(git diff $last..origin/dev)
+
+if [ "$mvmDiff" = "Already up to date." ];
+then
+  echo "latest and dev are the same"
+else
+  echo "latest and dev need to me merged"
+  echo "trying to merge now"
+  git merge $last origin/dev
+fi
+
+
+
+
+#not empty = diff
+#only master(prod)(check) dev QA
+
+#2 dots vs 3 dots diff
+
+#(later) pull request
+
+#email:
+#repo name, branch diff, all branches present, merged(yes or no)(version #'s)
+
 
 echo "-------------------------------------------------------------------------"
 
