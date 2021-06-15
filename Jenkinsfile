@@ -35,7 +35,10 @@ done
 
 last=$(git rev-parse HEAD)
 
-echo $(git describe --tags)
+disc=$(git describe --tags)
+
+echo $disc
+
 
 echo "-------------------------------latest vs QA ------------------------------------"
 
