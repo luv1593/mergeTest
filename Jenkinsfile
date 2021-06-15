@@ -45,18 +45,19 @@ echo "-------------------------------latest vs QA ------------------------------
 
 mvdDiff=$(git diff $disc..origin/QA)
 
-if [ "$mvdDiff" = " " ];
-then
-  echo "latest and qa are the same"
-else
-  echo "latest and QA need to me merged"
-  echo "trying to pull request now"
-  git request-pull https://github.com/luv1593/mergeTest.git QA
-fi
+#if [ "$mvdDiff" = " " ];
+#then
+#  echo "latest and qa are the same"
+#else
+#  echo "latest and QA need to me merged"
+#  echo "trying to pull request now"
+#  git request-pull https://github.com/luv1593/mergeTest.git QA
+#fi
 
-echo "$(last)" > Email.txt
-echo "-------------------" >> Email.txt
-
+echo $disc > Email.txt
+echo "--------difference between latest tag and QA-----------" >> Email.txt
+echo $(git diff $disc..origin/QA) >> Email.txt
+echo "-------------------------------------------------------" >> Email.txt
 
 
 echo "-------------------------------latest vs master -------------------------------"
