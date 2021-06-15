@@ -48,7 +48,7 @@ then
 else
   echo "latest and QA need to me merged"
   echo "trying to merge now"
-  git merge $last QA
+  git merge $last origin/QA
 fi
 
 
@@ -62,7 +62,7 @@ then
 else
   echo "latest and master need to me merged"
   echo "trying to merge now"
-  git merge $last master
+  git merge $last origin/master
 fi
 
 
@@ -77,7 +77,7 @@ then
 else
   echo "latest and dev need to me merged"
   echo "trying to merge now"
-  git merge $last dev
+  git merge $last origin/dev
 fi
 
 
