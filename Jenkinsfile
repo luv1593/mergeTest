@@ -35,7 +35,7 @@ disc=$(git describe --tags)
 
 last=$(git rev-parse HEAD)
 
-echo $(disc)
+echo git describe --tags
 
 echo "-------------------------------latest vs QA ------------------------------------"
 
