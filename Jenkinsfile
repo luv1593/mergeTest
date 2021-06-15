@@ -46,7 +46,9 @@ echo "-------------------------------latest vs QA ------------------------------
 
 mvdDiff=$(git diff $last..QA)
 
-if [ "$mvdDiff" = "Already up to date." ];
+if [ "$mvdDiff" = "fatal: ambiguous argument '8221d7c4d085f9f73e65ab3f3698adc53607af8f..QA': unknown revision or path not in the working tree.
+Use '--' to separate paths from revisions, like this:
+'git <command> [<revision>...] -- [<file>...]'" ];
 then
   echo "latest and qa are the same"
 else
