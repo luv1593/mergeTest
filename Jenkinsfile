@@ -36,7 +36,7 @@ echo "${branArr[@]}"
 
 last=$(git rev-parse HEAD)
 
-echo $last
+echo $(last)
 
 echo "-------------------------------latest vs QA ------------------------------------"
 
@@ -50,6 +50,8 @@ else
   echo "trying to merge now"
   git merge $last origin/QA
 fi
+
+echo "Tesing 1" > Email.txt
 
 
 echo "-------------------------------latest vs master -------------------------------"
@@ -65,6 +67,7 @@ else
   git merge $last origin/master
 fi
 
+echo "test 2" >> Email.txt
 
 
 echo "--------------------------------latest vs dev -----------------------------------"
@@ -80,7 +83,7 @@ else
   git merge $last origin/dev
 fi
 
-
+echo "test 3" >> Email.txt
 
 
 #not empty = diff
@@ -157,7 +160,7 @@ echo "Release $version complete"'''
 
     post {
         always {
-            emailext body: $latest, recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Jenkins pipeline Test'
+            emailext attachLog: true, attachmentsPattern: 'Email.txt', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Jenkins pipeline Test'
         }
     }
 
