@@ -160,7 +160,7 @@ echo "Release $version complete"'''
 
     post {
         always {
-            emailext attachLog: true, attachmentsPattern: 'Email.txt',body:"hello" recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Jenkins pipeline Test'
+            emailext attachLog: true, attachmentsPattern: 'Email.txt',body:"hello", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Jenkins pipeline Test'
         }
     }
 
