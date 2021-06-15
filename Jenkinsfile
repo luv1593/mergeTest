@@ -42,7 +42,7 @@ last=$(git rev-parse HEAD)
 
 echo $last
 
-echo "------latest vs QA --------"
+echo "-------------------------------latest vs QA ------------------------------------"
 
 mvdDiff=$(git diff $last..QA)
 
@@ -54,9 +54,9 @@ else
   echo "trying to merge now"
   git merge $last QA
 fi
-echo "-------------------------"
 
-echo "------latest vs master --------"
+
+echo "-------------------------------latest vs master -------------------------------"
 
 mvmDiff=$(git diff $last..master)
 
@@ -68,10 +68,10 @@ else
   echo "trying to merge now"
   git merge $last master
 fi
-echo "-------------------------"
 
 
-echo "------latest vs dev --------"
+
+echo "--------------------------------latest vs dev -----------------------------------"
 
 mvmDiff=$(git diff $last..dev)
 
@@ -83,7 +83,7 @@ else
   echo "trying to merge now"
   git merge $last dev
 fi
-echo "-------------------------"
+
 
 
 
