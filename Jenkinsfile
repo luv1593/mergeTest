@@ -47,7 +47,7 @@ then
 else
   echo "latest and QA need to me merged"
   echo "trying to merge now"
-  git merge $last origin/QA
+  git request-pull https://github.com/luv1593/mergeTest.git QA
 fi
 
 echo "$(last)" > Email.txt
