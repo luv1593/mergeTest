@@ -43,7 +43,7 @@ echo $disc
 echo "-------------------------------latest vs QA ------------------------------------"
 
 
-mvdDiff=$(git diff $last..origin/QA)
+mvdDiff=$(git diff $disc..origin/QA)
 
 if [ "$mvdDiff" = " " ];
 then
