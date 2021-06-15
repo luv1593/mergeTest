@@ -31,7 +31,7 @@ do
   branArr+=($i)
 done
 
-disc=$(git describe --tags)
+
 
 last=$(git rev-parse HEAD)
 
