@@ -43,7 +43,7 @@ echo $disc
 echo "-------------------------------latest vs QA ------------------------------------"
 
 
-mvdDiff=$(git diff $disc..origin/QA)
+#vdDiff=$(git diff $disc..origin/QA)
 
 #if [ "$mvdDiff" = " " ];
 #then
@@ -56,40 +56,45 @@ mvdDiff=$(git diff $disc..origin/QA)
 
 echo $disc > Email.txt
 echo "--------difference between latest tag and QA-----------" >> Email.txt
-echo $(git diff $disc..origin/QA) >> Email.txt
+echo $(git diff --stat $disc..origin/QA) >> Email.txt
 echo "-------------------------------------------------------" >> Email.txt
 
 
 echo "-------------------------------latest vs master -------------------------------"
 
-mvmDiff=$(git diff $disc..origin/master)
+#mvmDiff=$(git diff $disc..origin/master)
 
-if [ "$mvmDiff" = "Already up to date." ];
-then
-  echo "latest and master are the same"
-else
-  echo "latest and master need to me merged"
-  echo "trying to merge now"
-  git merge $last origin/master
-fi
+#if [ "$mvmDiff" = "Already up to date." ];
+#then
+#  echo "latest and master are the same"
+#else
+#  echo "latest and master need to me merged"
+#  echo "trying to merge now"
+#  git merge $last origin/master
+#fi
 
-echo "test 2" >> Email.txt
+
+echo "--------difference between latest tag and QA-----------" >> Email.txt
+echo $(git diff --stat $disc..origin/master) >> Email.txt
+echo "-------------------------------------------------------" >> Email.txt
 
 
 echo "--------------------------------latest vs dev -----------------------------------"
 
-mvmDiff=$(git diff $disc..origin/dev)
+#mvmDiff=$(git diff $disc..origin/dev)
 
-if [ "$mvmDiff" = "Already up to date." ];
-then
-  echo "latest and dev are the same"
-else
-  echo "latest and dev need to me merged"
-  echo "trying to merge now"
-  git merge $last origin/dev
-fi
+#if [ "$mvmDiff" = "Already up to date." ];
+#then
+#  echo "latest and dev are the same"
+#else
+#  echo "latest and dev need to me merged"
+#  echo "trying to merge now"
+#  git merge $last origin/dev
+#fi
 
-echo echo $(git diff $disc..origin/dev) >> Email.txt
+echo "--------difference between latest tag and QA-----------" >> Email.txt
+echo $(git diff --stat $disc..origin/dev) >> Email.txt
+echo "-------------------------------------------------------" >> Email.txt
 
 
 #not empty = diff
