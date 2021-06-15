@@ -33,10 +33,6 @@ done
 
 echo "${branArr[@]}"
 
-git checkout master
-got compare master..Dev
-
-log=$(git log)
 
 last=$(git rev-parse HEAD)
 
@@ -46,7 +42,7 @@ echo "-------------------------------latest vs QA ------------------------------
 
 mvdDiff=$(git diff $last..QA)
 
-if [ "$mvdDiff" = "fatal: ambiguous argument '8221d7c4d085f9f73e65ab3f3698adc53607af8f..QA': unknown revision or path not in the working tree.
+if [ "$mvdDiff" = "fatal: ambiguous argument '28aeb819ceeb6d4acb5a53cb70a1e17d845b11e1..QA': unknown revision or path not in the working tree.
 Use '--' to separate paths from revisions, like this:
 'git <command> [<revision>...] -- [<file>...]'" ];
 then
