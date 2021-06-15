@@ -40,7 +40,7 @@ echo $last
 
 echo "-------------------------------latest vs QA ------------------------------------"
 
-mvdDiff=$(git diff $last..QA)
+mvdDiff=$(git diff $last..origin/QA)
 
 if [ "$mvdDiff" = "Already up to date." ];
 then
@@ -54,7 +54,7 @@ fi
 
 echo "-------------------------------latest vs master -------------------------------"
 
-mvmDiff=$(git diff $last..master)
+mvmDiff=$(git diff $last..origin/master)
 
 if [ "$mvmDiff" = "Already up to date." ];
 then
@@ -69,7 +69,7 @@ fi
 
 echo "--------------------------------latest vs dev -----------------------------------"
 
-mvmDiff=$(git diff $last..dev)
+mvmDiff=$(git diff $last..origin/dev)
 
 if [ "$mvmDiff" = "Already up to date." ];
 then
