@@ -36,11 +36,11 @@ echo "${branArr[@]}"
 
 last=$(git rev-parse HEAD)
 
-echo $last
+echo $(last)
 
 echo "-------------------------------latest vs QA ------------------------------------"
 
-mvdDiff=$(git diff $last..origin/QA)
+mvdDiff=$(git diff $last...origin/QA)
 
 if [ "$mvdDiff" = "Already up to date." ];
 then
@@ -51,10 +51,12 @@ else
   git merge $last origin/QA
 fi
 
+echo "Tesing 1" > Email.txt
+
 
 echo "-------------------------------latest vs master -------------------------------"
 
-mvmDiff=$(git diff $last..origin/master)
+mvmDiff=$(git diff $last...origin/master)
 
 if [ "$mvmDiff" = "Already up to date." ];
 then
@@ -65,11 +67,12 @@ else
   git merge $last origin/master
 fi
 
+echo "test 2" >> Email.txt
 
 
 echo "--------------------------------latest vs dev -----------------------------------"
 
-mvmDiff=$(git diff $last..origin/dev)
+mvmDiff=$(git diff $last...origin/dev)
 
 if [ "$mvmDiff" = "Already up to date." ];
 then
@@ -80,7 +83,7 @@ else
   git merge $last origin/dev
 fi
 
-
+echo "test 3" >> Email.txt
 
 
 #not empty = diff
@@ -154,4 +157,14 @@ echo "Release $version complete"'''
         }
 
     }
+
+    post {
+        always {
+            emailext attachLog: true, attachmentsPattern: 'Email.txt',body:"hello", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Jenkins pipeline Test'
+        }
+    }
+
+
+
+
 }
