@@ -54,10 +54,14 @@ echo "-------------------------------latest vs QA ------------------------------
 #  git request-pull https://github.com/luv1593/mergeTest.git QA
 #fi
 
-echo $disc > Email.txt
-echo "--------difference between latest tag and QA-----------" >> Email.txt
+
+#email section
+
+echo "latest verison: "> Email.txt
+echo $disc >> Email.txt
+echo "difference between latest tag and QA:"  >> Email.txt
 echo $(git diff --stat $disc..origin/QA) >> Email.txt
-echo "-------------------------------------------------------" >> Email.txt
+echo "-                                               -" >> Email.txt
 
 
 echo "-------------------------------latest vs master -------------------------------"
