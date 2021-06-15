@@ -46,7 +46,7 @@ echo "------latest vs QA --------"
 
 mvdDiff=$(git diff $last..QA)
 
-if [ "$mvdDiff" = "already up to date" ];
+if [ "$mvdDiff" = "Already up to date." ];
 then
   echo "latest and qa are the same"
 else
@@ -60,7 +60,7 @@ echo "------latest vs master --------"
 
 mvmDiff=$(git diff $last..master)
 
-if [ "$mvmDiff" = "already up to date" ];
+if [ "$mvmDiff" = "Already up to date." ];
 then
   echo "latest and master are the same"
 else
@@ -75,7 +75,7 @@ echo "------latest vs dev --------"
 
 mvmDiff=$(git diff $last..dev)
 
-if [ "$mvmDiff" = "already up to date" ];
+if [ "$mvmDiff" = "Already up to date." ];
 then
   echo "latest and dev are the same"
 else
