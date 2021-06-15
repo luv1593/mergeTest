@@ -31,17 +31,12 @@ do
   branArr+=($i)
 done
 
-
-
-
-
 last=$(git rev-parse HEAD)
 
 echo $(last)
 
 echo "-------------------------------latest vs QA ------------------------------------"
 
-git checkout disc
 
 mvdDiff=$(git diff $last..origin/QA)
 
