@@ -31,10 +31,11 @@ do
   branArr+=($i)
 done
 
+disc=$(git describe --tags)
 
 last=$(git rev-parse HEAD)
 
-echo $(last)
+echo $(disc)
 
 echo "-------------------------------latest vs QA ------------------------------------"
 
@@ -46,7 +47,7 @@ then
   echo "latest and qa are the same"
 else
   echo "latest and QA need to me merged"
-  echo "trying to merge now"
+  echo "trying to pull request now"
   git request-pull https://github.com/luv1593/mergeTest.git QA
 fi
 
