@@ -61,7 +61,7 @@ echo "-------------------" >> Email.txt
 
 echo "-------------------------------latest vs master -------------------------------"
 
-mvmDiff=$(git diff $last..origin/master)
+mvmDiff=$(git diff $disc..origin/master)
 
 if [ "$mvmDiff" = "Already up to date." ];
 then
@@ -77,7 +77,7 @@ echo "test 2" >> Email.txt
 
 echo "--------------------------------latest vs dev -----------------------------------"
 
-mvmDiff=$(git diff $last..origin/dev)
+mvmDiff=$(git diff $disc..origin/dev)
 
 if [ "$mvmDiff" = "Already up to date." ];
 then
@@ -88,7 +88,7 @@ else
   git merge $last origin/dev
 fi
 
-echo "test 3" >> Email.txt
+echo echo $(git diff $disc..origin/dev) >> Email.txt
 
 
 #not empty = diff
