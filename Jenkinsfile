@@ -157,7 +157,7 @@ echo "Release $version complete"'''
 
     post {
         always {
-            emailext body: '$latest', recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Jenkins pipeline Test'
+            emailext body: $latest, recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Jenkins pipeline Test'
         }
     }
 
