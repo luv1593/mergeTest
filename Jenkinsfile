@@ -32,7 +32,7 @@ do
 done
 
 
-disc=$(git describe)
+
 
 
 last=$(git rev-parse HEAD)
@@ -41,9 +41,11 @@ echo $(last)
 
 echo "-------------------------------latest vs QA ------------------------------------"
 
+git checkout disc
+
 mvdDiff=$(git diff $last..origin/QA)
 
-if [ "$mvdDiff" = "Already up to date." ];
+if [ "$mvdDiff" = " " ];
 then
   echo "latest and qa are the same"
 else
@@ -54,7 +56,7 @@ fi
 
 echo "$(last)" > Email.txt
 echo "-------------------" >> Email.txt
-echo "$(disc)">> Email.txt
+
 
 
 echo "-------------------------------latest vs master -------------------------------"
