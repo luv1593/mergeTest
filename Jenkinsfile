@@ -31,7 +31,8 @@ do
   branArr+=($i)
 done
 
-echo "${branArr[@]}"
+
+disc=$(git describe)
 
 
 last=$(git rev-parse HEAD)
@@ -51,7 +52,9 @@ else
   git merge $last origin/QA
 fi
 
-echo "Tesing 1" > Email.txt
+echo "$(last)" > Email.txt
+echo "-------------------" >> Email.txt
+echo "$(disc)">> Email.txt
 
 
 echo "-------------------------------latest vs master -------------------------------"
