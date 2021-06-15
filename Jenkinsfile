@@ -31,8 +31,10 @@ do
   branArr+=($i)
 done
 
+
 last=$(git rev-parse HEAD)
 
+echo $(last)
 
 echo "-------------------------------latest vs QA ------------------------------------"
 
