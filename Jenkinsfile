@@ -78,9 +78,11 @@ echo "-------------------------------latest vs master --------------------------
 #fi
 
 
-echo "--------difference between latest tag and QA-----------" >> Email.txt
+
+
+echo "difference between latest tag and master:"  >> Email.txt
 echo $(git diff --stat $disc..origin/master) >> Email.txt
-echo "-------------------------------------------------------" >> Email.txt
+echo "-                                               -" >> Email.txt
 
 
 echo "--------------------------------latest vs dev -----------------------------------"
@@ -96,9 +98,9 @@ echo "--------------------------------latest vs dev ----------------------------
 #  git merge $last origin/dev
 #fi
 
-echo "--------difference between latest tag and QA-----------" >> Email.txt
+echo "difference between latest tag and dev:"  >> Email.txt
 echo $(git diff --stat $disc..origin/dev) >> Email.txt
-echo "-------------------------------------------------------" >> Email.txt
+echo "-                                               -" >> Email.txt
 
 
 #not empty = diff
