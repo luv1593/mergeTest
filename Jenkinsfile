@@ -16,7 +16,7 @@ pipeline {
             */1 1 * * 1 %Schedule="Once a week"
             */1 1 * * * %Schedule="Once a day"
             */1 * * * * %Schedule="Once a hour"
-            */* * * * * %Schedule="Once a minute"
+            */1 * * * * %Schedule="Once a minute"
         ''')
     }
 
