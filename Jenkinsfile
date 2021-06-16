@@ -6,14 +6,15 @@ pipeline {
             choices: ["mergeTest" ,"branchTest"],
             description: "choose repo to use.",)
       choice(name: "Schedule",
-            choices: ['week','day', 'hour', "minute"],
+            choices: ['never', 'week','day', 'hour', "minute"],
             description: "How often would you like the pipeline to run?")
     }
 
 
-
+#stop option
     triggers {
         parameterizedCron('''
+            */1 * 31 2 * %Schedule="never"
             */1 1 * * 1 %Schedule="week"
             */1 1 1 * * %Schedule="day"
             */1 1 * * * %Schedule="hour"
@@ -204,7 +205,7 @@ echo "-------------------------------------------------------------------------"
 
     post {
         always {
-            emailext attachLog: true, attachmentsPattern: 'Email.txt',body:"hello", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Jenkins pipeline Test'
+            emailext attachLog: true, attachmentsPattern: 'Email.txt',body:"hello", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Jenkins pipeline Test '${currentBuild.number}'"
         }
     }
 
