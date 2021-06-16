@@ -7,7 +7,7 @@ pipeline {
             description: "choose repo to use.")
       choice(name: "Schedule",
             choices: "Once a week\nOnce a day\nOnce a hour",
-            description: "How often would W you like the pipeline to run?")
+            description: "How often would you like the pipeline to run?")
     }
 
     stages {
@@ -19,16 +19,19 @@ pipeline {
 
         stage('build') {
             steps {
+            if [ "$(params.repo)" = "mergeTest" ];
+            then
+              git 'https://github.com/luv1593/mergeTest.git'
+            else
+              git 'https://github.com/luv1593/branchTest.git'
+            fi
 
 
-git 'https://github.com/luv1593/mergeTest.git'
 
 sh '''#!/bin/bash
 
 
 echo "-------------------------------------------------------------------------"
-
-#branches = git ls-remote
 
 branArr=()
 onlyBran=()
