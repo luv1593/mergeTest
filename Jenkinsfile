@@ -11,7 +11,7 @@ pipeline {
     }
 
 
-#stop option
+
     triggers {
         parameterizedCron('''
             */1 * 31 2 * %Schedule="never"
