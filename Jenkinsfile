@@ -20,7 +20,7 @@ pipeline {
         stage('build') {
             steps {
               script {
-                if ( $(params.repo) == "mergeTest" ) {
+                if ( ${params.repo} == "mergeTest" ) {
                   git 'https://github.com/luv1593/mergeTest.git'
                   echo "-----------mergeTest---------------!!"
                 } else {
