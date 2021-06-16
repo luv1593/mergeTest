@@ -6,8 +6,18 @@ pipeline {
             choices: ["mergeTest" ,"branchTest"],
             description: "choose repo to use.",)
       choice(name: "Schedule",
-            choices: ["Once a week","Once a day", "Once a hour"],
+            choices: ["Once a week","Once a day", "Once a hour", "Once a minute"],
             description: "How often would you like the pipeline to run?")
+    }
+
+
+    triggers {
+        parameterizedCron('''
+            */0 0 * * 0 %Schedule="Once a week"
+            */0 0 * * * %Schedule="Once a day"
+            */0 * * * * %Schedule="Once a hour"
+            */* * * * * %Schedule="Once a minute"
+        ''')
     }
 
     stages {
