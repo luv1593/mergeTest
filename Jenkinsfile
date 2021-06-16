@@ -1,14 +1,14 @@
 pipeline {
     agent any
 
-    parameters{[
+    parameters{
       choice(name: "repo",
             choices: "mergeTest\nbranchTest",
             description: "choose repo to use.")
       choice(name: "Schedule",
             choices: "Once a week\nOnce a day\nOnce a hour",
             description: "How often would you like the pipeline to run?")
-    ]}
+    }
 
     stages {
         stage('Hello') {
