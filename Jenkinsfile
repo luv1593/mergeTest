@@ -14,9 +14,9 @@ pipeline {
     triggers {
         parameterizedCron('''
             */1 1 * * 1 %Schedule="Once a week"
-            */1 1 * * * %Schedule="Once a day"
-            */1 * * * * %Schedule="Once a hour"
-            H/* * * * * %Schedule="Once a minute"
+            */1 1 1 * * %Schedule="Once a day"
+            */1 1 * * * %Schedule="Once a hour"
+            */1 * * * * %Schedule="Once a minute"
         ''')
     }
 
