@@ -13,8 +13,8 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                echo ${params.repo}
-                echo ${params.Schedule}
+                echo "${params.repo}"
+                echo "${params.Schedule}"
             }
         }
 
