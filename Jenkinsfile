@@ -11,7 +11,7 @@ pipeline {
     }
 
     stages {
-        stage('Hello') {
+        stage('chosen parameters') {
             steps {
                 echo "${params.repo}"
                 echo "${params.Schedule}"
