@@ -6,17 +6,22 @@ pipeline {
             choices: ["mergeTest" ,"branchTest"],
             description: "choose repo to use.",)
       choice(name: "Schedule",
-            choices: ["Once a week","Once a day", "Once a hour", "Once a minute"],
+            choices: ["week","day", "hour", "minute"],
             description: "How often would you like the pipeline to run?")
     }
+
+#triggers {
+
+
+#}
 
 
     triggers {
         parameterizedCron('''
-            */1 1 * * 1 %Schedule="Once a week"
-            */1 1 1 * * %Schedule="Once a day"
-            */1 1 * * * %Schedule="Once a hour"
-            */1 * * * * %Schedule="Once a minute"
+            */1 1 * * 1 %Schedule=week
+            */1 1 1 * * %Schedule=day
+            */1 1 * * * %Schedule=hour
+            */1 * * * * %Schedule=minute
         ''')
     }
 
@@ -105,7 +110,7 @@ echo "-------------------------------latest vs master --------------------------
 
 
 
-
+#echo format?
 echo "difference between latest tag and master:"  >> Email.txt
 echo $(git diff --stat $disc..origin/master) >> Email.txt
 echo "-                                               -" >> Email.txt
