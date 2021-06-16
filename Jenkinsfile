@@ -6,7 +6,7 @@ pipeline {
             choices: ["mergeTest" ,"branchTest"],
             description: "choose repo to use.",)
       choice(name: "Schedule",
-            choices: ["week","day", "hour", "minute"],
+            choices: ['week','day', 'hour', 'minute'],
             description: "How often would you like the pipeline to run?")
     }
 
