@@ -10,10 +10,6 @@ pipeline {
             description: "How often would you like the pipeline to run?")
     }
 
-#triggers {
-
-
-#}
 
 
     triggers {
