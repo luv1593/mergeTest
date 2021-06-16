@@ -1,19 +1,20 @@
 pipeline {
     agent any
-    properties{[
-    parameters{[
+
+    parameters{
       choice(name: "repo",
-            choices: "mergeTest\nbranchTest",
-            description: "choose repo to use.")
+            choices: ["mergeTest" ,"branchTest"],
+            description: "choose repo to use.",)
       choice(name: "Schedule",
-            choices: "Once a week\nOnce a day\nOnce a hour",
+            choices: ["Once a week","Once a day", "Once a hour"],
             description: "How often would you like the pipeline to run?")
-    ]}
-]}
+    }
+
     stages {
         stage('Hello') {
             steps {
-                echo 'Hello World'
+                echo ${params.repo}
+                echo ${params.Schedule}
             }
         }
 
