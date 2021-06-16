@@ -14,10 +14,10 @@ pipeline {
 
     triggers {
         parameterizedCron('''
-            */1 1 * * 1 %Schedule=week
-            */1 1 1 * * %Schedule=day
-            */1 1 * * * %Schedule=hour
-            */1 * * * * %Schedule=minute
+            */1 1 * * 1 %Schedule="week"
+            */1 1 1 * * %Schedule="day"
+            */1 1 * * * %Schedule="hour"
+            */1 * * * * %Schedule="minute"
         ''')
     }
 
