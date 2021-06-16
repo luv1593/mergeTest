@@ -19,12 +19,12 @@ pipeline {
 
         stage('build') {
             steps {
-            if [ "$(params.repo)" = "mergeTest" ];
-            then
+            if ( $(params.repo) = "mergeTest" ) {
               git 'https://github.com/luv1593/mergeTest.git'
-            else
+            } else {
               git 'https://github.com/luv1593/branchTest.git'
-            fi
+              }
+
 
 
 
