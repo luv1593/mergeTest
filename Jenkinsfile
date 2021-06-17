@@ -131,7 +131,7 @@ echo "-                                               -" >> Email.txt
 
 echo "--------------------------------latest vs dev -----------------------------------"
 
-
+/**
 diffsD=$(git diff --stat $disc..origin/dev)
 #try to merge
 
@@ -173,6 +173,8 @@ echo "-                                               -" >> Email.txt
 
 #email:
 #repo name, branch diff, all branches present, merged(yes or no)(version #'s)
+
+**/
 
 
 echo "-------------------------------------------------------------------------"
