@@ -77,12 +77,12 @@ echo "-------------------------------latest vs QA ------------------------------
 
 diffs=$(git diff --stat $disc..origin/dev)
 #try to merge
-  
+
 echo $diffs
 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ]];
 then
   echo "There is a difference between QA and the latest tag"
-  git checkout origin/dev
+  git checkout dev
   git merge $disc
   echo "merge completed"
   git push
