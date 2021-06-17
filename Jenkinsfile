@@ -6,7 +6,7 @@ pipeline {
             choices: ["mergeTest" ,"branchTest"],
             description: "choose repo to use.",)
       choice(name: "Schedule",
-            choices: ['never', 'week','day', 'hour', "minute"],
+            choices: ['never', 'week','day', 'hour', "M-F"],
             description: "How often would you like the pipeline to run?")
     }
 
@@ -18,7 +18,7 @@ pipeline {
             */1 1 * * 1 %Schedule="week"
             */1 1 1 * * %Schedule="day"
             */1 1 * * * %Schedule="hour"
-            */1 * * * * %Schedule="minute"
+            0 9 * * mon-fri %Schedule="M-F"
         ''')
     }
 
@@ -88,6 +88,7 @@ echo "-------------------------------latest vs QA ------------------------------
 echo "latest verison: "> Email.txt
 echo $disc >> Email.txt
 echo "difference between latest tag and QA:"  >> Email.txt
+echo "-                                               -" >> Email.txt
 echo $(git diff --stat $disc..origin/QA) >> Email.txt
 echo "-                                               -" >> Email.txt
 
@@ -109,6 +110,7 @@ echo "-------------------------------latest vs master --------------------------
 
 #echo format?
 echo "difference between latest tag and master:"  >> Email.txt
+echo "-                                               -" >> Email.txt
 echo $(git diff --stat $disc..origin/master) >> Email.txt
 echo "-                                               -" >> Email.txt
 
