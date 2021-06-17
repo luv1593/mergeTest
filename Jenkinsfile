@@ -136,7 +136,7 @@ if [[ "$diffsD" = *"insertions"* ||  "$diffsD" = *"deletions"* ]];
 then
   echo "There is a difference between dev and the latest tag"
   git checkout origin/dev
-  git merge $disc
+  git merge --no-ff $disc
   git add .
   git commit -m "commit on jenkins"
   #git push origin dev
