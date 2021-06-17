@@ -82,9 +82,13 @@ then
   echo "There is a difference between QA and the latest tag"
   git checkout origin/QA
   git merge $disc
+  echo "merge completed"
   git add .
+  echo "add completed"
   git commit -m "commit on jenkins"
+  echo "commiy completed"
   git push origin QA
+  echo "push completed"
 else
   echo "There is no difference between QA and the latest tag"
 fi
