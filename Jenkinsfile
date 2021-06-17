@@ -79,9 +79,8 @@ echo $diffs
 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ]];
 then
   echo "There is a difference between QA and the latest tag"
-  echo git tag $disc master
-  echo $mas
-  git merge $mas..origin/QA
+  git checkout origin/QA
+  git merge $disc
 else
   echo "There is no difference between QA and the latest tag"
 fi
