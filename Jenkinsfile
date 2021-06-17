@@ -139,7 +139,7 @@ then
   git merge --no-ff $disc
   git add .
   git commit -m "commit on jenkins"
-  #git push origin dev
+  git push -u origin dev
 else
   echo "There is no difference between dev and the latest tag"
 fi
