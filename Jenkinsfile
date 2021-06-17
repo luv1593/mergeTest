@@ -76,7 +76,7 @@ diffs=$(git diff --stat $disc..origin/QA)
 #try to merge
 
 echo $diffs
-if [ $diffs = *"insertions"*] || [$diffs = *"deletions"* ];
+if [ "$diffs" = *"insertions"*] || [ "$diffs" = *"deletions"* ];
 then
   echo "diff in qa"
 else
