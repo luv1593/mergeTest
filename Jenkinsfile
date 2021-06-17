@@ -81,7 +81,7 @@ then
   echo "diff in qa"
 else
   echo "no diff qa"
-if
+fi
 
 
 
