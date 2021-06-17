@@ -64,6 +64,8 @@ done
 
 #last=$(git rev-parse HEAD)
 
+#latest branch in all not
+
 disc=$(git describe --tags)
 
 echo $disc
