@@ -81,6 +81,7 @@ then
   echo "There is a difference between QA and the latest tag"
   git checkout origin/QA
   git merge $disc
+  git add .
   git commit -m "commit on jenkins"
   git push origin QA
 else
@@ -109,6 +110,7 @@ then
   echo "There is a difference between master and the latest tag"
   git checkout origin/master
   git merge $disc
+  git add .
   git commit -m "commit on jenkins"
   git push origin master
 else
@@ -135,6 +137,7 @@ then
   echo "There is a difference between dev and the latest tag"
   git checkout origin/dev
   git merge $disc
+  git add .
   git commit -m "commit on jenkins"
   git push origin dev
 else
