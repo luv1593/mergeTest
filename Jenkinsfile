@@ -61,7 +61,7 @@ done
 
 
 
-last=$(git rev-parse HEAD)
+#last=$(git rev-parse HEAD)
 
 disc=$(git describe --tags)
 
@@ -78,9 +78,10 @@ diffs=$(git diff --stat $disc..origin/QA)
 echo $diffs
 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ]];
 then
-  echo "diff in qa"
+  echo "There is a difference between QA and the latest tag"
+  git merge $disc..origin/QA)
 else
-  echo "no diff qa"
+  echo "There is no difference between QA and the latest tag"
 fi
 
 
@@ -97,16 +98,17 @@ echo "-                                               -" >> Email.txt
 
 echo "-------------------------------latest vs master -------------------------------"
 
-#mvmDiff=$(git diff $disc..origin/master)
+diffsM=$(git diff --stat $disc..origin/master)
+#try to merge
 
-#if [ "$mvmDiff" = "Already up to date." ];
-#then
-#  echo "latest and master are the same"
-#else
-#  echo "latest and master need to me merged"
-#  echo "trying to merge now"
-#  git merge $last origin/master
-#fi
+echo $diffsM
+if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ]];
+then
+  echo "There is a difference between master and the latest tag"
+  git merge $disc..origin/master)
+else
+  echo "There is no difference between master and the latest tag"
+fi
 
 
 
@@ -119,16 +121,17 @@ echo "-                                               -" >> Email.txt
 
 echo "--------------------------------latest vs dev -----------------------------------"
 
-#mvmDiff=$(git diff $disc..origin/dev)
+diffsD=$(git diff --stat $disc..origin/dev)
+#try to merge
 
-#if [ "$mvmDiff" = "Already up to date." ];
-#then
-#  echo "latest and dev are the same"
-#else
-#  echo "latest and dev need to me merged"
-#  echo "trying to merge now"
-#  git merge $last origin/dev
-#fi
+echo $diffsD
+if [[ "$diffsD" = *"insertions"* ||  "$diffsD" = *"deletions"* ]];
+then
+  echo "There is a difference between dev and the latest tag"
+  git merge $disc..origin/dev)
+else
+  echo "There is no difference between dev and the latest tag"
+fi
 
 echo "difference between latest tag and dev:"  >> Email.txt
 echo $(git diff --stat $disc..origin/dev) >> Email.txt
