@@ -131,7 +131,7 @@ echo "-                                               -" >> Email.txt
 
 echo "--------------------------------latest vs dev -----------------------------------"
 
-/*
+
 diffsD=$(git diff --stat $disc..origin/dev)
 #try to merge
 
@@ -147,17 +147,17 @@ then
 #  git checkout origin/master
 #  git merge hotfix
 #  git branch -d hotfix
-  git checkout origin/dev
-  git commit -a -m 'finished hotfix commit'
-  git checkout origin/master
-  git merge origin/dev
+#  git checkout origin/dev
+#  git commit -a -m 'finished hotfix commit'
+#  git checkout origin/master
+#  git merge origin/dev
 
 #  git push -u origin master
 #else
 #  echo "There is no difference between dev and the latest tag"
 #fi
 
- */
+
 
 echo "difference between latest tag and dev:"  >> Email.txt
 echo $(git diff --stat $disc..origin/dev) >> Email.txt
