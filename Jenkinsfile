@@ -87,7 +87,7 @@ then
   echo "add completed"
   git commit -m "commit on jenkins"
   echo "commiy completed"
-  git push origin QA
+  git push origin QA:QA
   echo "push completed"
 else
   echo "There is no difference between QA and the latest tag"
