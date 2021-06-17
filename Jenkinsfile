@@ -6,7 +6,7 @@ pipeline {
             choices: ["mergeTest" ,"branchTest"],
             description: "choose repo to use.",)
       choice(name: "Schedule",
-            choices: ['never', 'week','day', 'hour', "M-F"],
+            choices: ['never', 'week','day', 'hour', "M"],
             description: "How often would you like the pipeline to run?")
     }
 
@@ -18,7 +18,7 @@ pipeline {
             */1 1 * * 1 %Schedule="week"
             */1 1 1 * * %Schedule="day"
             */1 1 * * * %Schedule="hour"
-            0 9 * * mon-fri %Schedule="M-F"
+            0 9 * * 1 %Schedule="M"
         ''')
     }
 
