@@ -81,6 +81,7 @@ then
   echo "There is a difference between QA and the latest tag"
   git checkout origin/QA
   git merge $disc
+  git push
 else
   echo "There is no difference between QA and the latest tag"
 fi
@@ -102,12 +103,12 @@ echo "-------------------------------latest vs master --------------------------
 diffsM=$(git diff --stat $disc..origin/master)
 #try to merge
 
-echo $diffsM
 if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ]];
 then
   echo "There is a difference between master and the latest tag"
   git checkout origin/master
   git merge $disc
+  git push
 else
   echo "There is no difference between master and the latest tag"
 fi
@@ -132,6 +133,7 @@ then
   echo "There is a difference between dev and the latest tag"
   git checkout origin/dev
   git merge $disc
+  git push
 else
   echo "There is no difference between dev and the latest tag"
 fi
