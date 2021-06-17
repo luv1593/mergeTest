@@ -71,16 +71,16 @@ echo $disc
 echo "-------------------------------latest vs QA ------------------------------------"
 
 
-#vdDiff=$(git diff $disc..origin/QA)
 
-#if [ "$mvdDiff" = " " ];
-#then
-#  echo "latest and qa are the same"
-#else
-#  echo "latest and QA need to me merged"
-#  echo "trying to pull request now"
-#  git request-pull https://github.com/luv1593/mergeTest.git QA
-#fi
+diffs=$(git diff --stat $disc..origin/QA)
+#try to merge
+if [ "$diffs" = *"insertions"*] || ["$diffs" = *"deletions"* ];
+then
+  echo "diff in qa"
+else
+  echo "no diff qa"
+if
+
 
 
 #email section
