@@ -79,7 +79,7 @@ echo $diffs
 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ]];
 then
   echo "There is a difference between QA and the latest tag"
-  git merge $disc..origin/QA)
+  git merge $disc..origin/QA
 else
   echo "There is no difference between QA and the latest tag"
 fi
@@ -105,7 +105,7 @@ echo $diffsM
 if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ]];
 then
   echo "There is a difference between master and the latest tag"
-  git merge $disc..origin/master)
+  git merge $disc..origin/master
 else
   echo "There is no difference between master and the latest tag"
 fi
@@ -128,7 +128,7 @@ echo $diffsD
 if [[ "$diffsD" = *"insertions"* ||  "$diffsD" = *"deletions"* ]];
 then
   echo "There is a difference between dev and the latest tag"
-  git merge $disc..origin/dev)
+  git merge $disc..origin/dev
 else
   echo "There is no difference between dev and the latest tag"
 fi
