@@ -71,7 +71,7 @@ disc=$(git describe --tags)
 echo $disc
 
 
-echo "-------------------------------latest vs QA ------------------------------------"
+echo "---------------------------latest vs QA ---------------------------------"
 
 
 
@@ -87,7 +87,6 @@ then
   git merge origin $disc
   echo "merge completed"
   git push origin dev:dev
-  echo "push completed"
 else
   echo "There is no difference between QA and the latest tag"
 fi
