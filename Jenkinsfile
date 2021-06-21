@@ -24,6 +24,7 @@ pipeline {
     }
 
     stages {
+
         stage('chosen parameters') {
             steps {
                 echo "${params.repo}"
@@ -45,7 +46,7 @@ pipeline {
 
 
 
-sh '''#!/bin/bash
+sh ''#!/bin/bash
 
 
 echo "-------------------------------------------------------------------------"
@@ -155,8 +156,5 @@ echo "-------------------------------------------------------------------------"
             emailext attachLog: true, attachmentsPattern: 'Email.txt',body:"hello", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Jenkins pipeline Test. Build Number: '${currentBuild.number}'"
         }
     }
-
-
-
 
 }
