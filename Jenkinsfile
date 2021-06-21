@@ -82,8 +82,9 @@ echo $diffs
 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ]];
 then
   echo "There is a difference between QA and the latest tag"
-  git checkout origin/QA
-  git fetch
+
+  git fetch mergeTest
+  git checkout QA
   git merge origin $disc
   #echo "merge completed"
   git push origin QA:QA
