@@ -81,14 +81,28 @@ diffs=$(git diff --stat $disc..origin/QA)
 echo $diffs
 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ]];
 then
-  echo "There is a difference between QA and the latest tag"
 
-  git fetch origin mergeTest
-  git checkout QA
+  echo "There is a difference between QA and the latest tag"
+  git checkout origin/QA
+  git merge $disc
+  echo "merge completed"
+  git push origin QA:QA
+
+
+<< 'MULTILINE-COMMENT'
+
+
+
+  echo "There is a difference between QA and the latest tag"
+  git checkout origin/QA
+  git fetch
   git merge origin $disc
   #echo "merge completed"
   git push origin QA:QA
   git push --all
+
+  MULTILINE-COMMENT
+
 else
   echo "There is no difference between QA and the latest tag"
 fi
@@ -157,7 +171,7 @@ then
   git push -u origin master
 else
   echo "There is no difference between dev and the latest tag"
-fi
+#fi
 
 
 
