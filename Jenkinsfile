@@ -86,7 +86,7 @@ then
   git fetch
   git merge origin $disc
   echo "merge completed"
-  git push origin dev:dev
+  #git push origin dev:dev
   git push --all
 else
   echo "There is no difference between QA and the latest tag"
