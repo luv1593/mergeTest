@@ -73,8 +73,6 @@ echo $disc
 
 echo "---------------------------latest vs QA ---------------------------------"
 
-
-
 diffs=$(git diff --stat $disc..origin/QA)
 #try to merge
 
@@ -103,7 +101,35 @@ echo "-                                               -" >> Email.txt
 echo $(git diff --stat $disc..origin/QA) >> Email.txt
 echo "-                                               -" >> Email.txt
 
-echo "-------------------------------------------------------------------------"
+echo "-------------------------latest vs dev------------------------------------"
+
+diffsD=$(git diff --stat $disc..origin/dev)
+#try to merge
+
+echo $diffs
+if [[ "$diffsD" = *"insertions"* ||  "$diffsD" = *"deletions"* ]];
+then
+
+  echo "There is a difference between dev and the latest tag"
+  git checkout origin/dev
+  git fetch
+  git merge $disc
+  git push -f origin HEAD:dev
+
+else
+  echo "There is no difference between QA and the latest tag"
+fi
+
+
+
+#email section
+echo "difference between latest tag and dev:"  >> Email.txt
+echo "-                                               -" >> Email.txt
+echo $(git diff --stat $disc..origin/dev) >> Email.txt
+echo "-                                               -" >> Email.txt
+
+echo "-------------------------------------------------------------------"
+
 
 '''
 
