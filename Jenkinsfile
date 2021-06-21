@@ -89,19 +89,10 @@ then
   git push origin QA:QA
 
 
-<< 'MULTILINE-COMMENT'
 
 
 
-  echo "There is a difference between QA and the latest tag"
-  git checkout origin/QA
-  git fetch
-  git merge origin $disc
-  #echo "merge completed"
-  git push origin QA:QA
-  git push --all
 
-  MULTILINE-COMMENT
 
 else
   echo "There is no difference between QA and the latest tag"
