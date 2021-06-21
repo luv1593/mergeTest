@@ -139,24 +139,24 @@ diffsD=$(git diff --stat $disc..origin/dev)
 echo $diffsD
 if [[ "$diffsD" = *"insertions"* ||  "$diffsD" = *"deletions"* ]];
 then
-#  echo "There is a difference between dev and the latest tag"
-#  git checkout origin/dev
-#  git commit -a -m  "commit on jenkins"
-#  git checkout origin/master
-#  git checkout -b hotfix
-#  git commit -a -m 'hotfix commit'
-#  git checkout origin/master
-#  git merge hotfix
-#  git branch -d hotfix
-#  git checkout origin/dev
-#  git commit -a -m 'finished hotfix commit'
-#  git checkout origin/master
-#  git merge origin/dev
+  echo "There is a difference between dev and the latest tag"
+  git checkout origin/dev
+  git commit -a -m  "commit on jenkins"
+  git checkout origin/master
+  git checkout -b hotfix
+  git commit -a -m 'hotfix commit'
+  git checkout origin/master
+  git merge hotfix
+  git branch -d hotfix
+  git checkout origin/dev
+  git commit -a -m 'finished hotfix commit'
+  git checkout origin/master
+  git merge origin/dev
 
-#  git push -u origin master
-#else
-#  echo "There is no difference between dev and the latest tag"
-#fi
+  git push -u origin master
+else
+  echo "There is no difference between dev and the latest tag"
+fi
 
 
 
