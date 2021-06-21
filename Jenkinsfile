@@ -110,37 +110,6 @@ echo "-                                               -" >> Email.txt
 echo $(git diff --stat $disc..origin/QA) >> Email.txt
 echo "-                                               -" >> Email.txt
 
-
-echo "-------------------------------latest vs master -------------------------------"
-
-diffsM=$(git diff --stat $disc..origin/master)
-#try to merge
-
-if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ]];
-then
-  echo "There is a difference between master and the latest tag"
-  git checkout origin/master
-  git merge $disc
-  git add .
-  git commit -m "commit on jenkins"
-  git push origin master
-else
-  echo "There is no difference between master and the latest tag"
-fi
-
-
-
-#echo format?
-echo "difference between latest tag and master:"  >> Email.txt
-echo "-                                               -" >> Email.txt
-echo $(git diff --stat $disc..origin/master) >> Email.txt
-echo "-                                               -" >> Email.txt
-
-
-echo "--------------------------------latest vs dev -----------------------------------"
-
-
-
 echo "-------------------------------------------------------------------------"
 
 '''
