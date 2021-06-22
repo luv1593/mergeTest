@@ -1,25 +1,54 @@
 pipeline {
     agent any
 
+    parameters{
+      choice(name: "repo",
+            choices: ["mergeTest" ,"branchTest"],
+            description: "choose repo to use.",)
+      choice(name: "Schedule",
+            choices: ['never', 'week','day', 'hour', "Monday(9am)", "Friday(9am)"],
+            description: "How often would you like the pipeline to run?")
+    }
+
+
+
+    triggers {
+        parameterizedCron('''
+            */1 * 31 2 * %Schedule="never"
+            */1 1 * * 1 %Schedule="week"
+            */1 1 1 * * %Schedule="day"
+            */1 1 * * * %Schedule="hour"
+            0 9 * * 1 %Schedule="Monday(9am)"
+            0 9 * * 5 %Schedule="Friday(9am)"
+        ''')
+    }
+
     stages {
-        stage('Hello') {
+        stage('chosen parameters') {
             steps {
-                echo 'Hello World'
+                echo "${params.repo}"
+                echo "${params.Schedule}"
             }
         }
 
         stage('build') {
             steps {
+              script {
+                if ( "${params.repo}" == "mergeTest" ) {
+                  git 'https://github.com/luv1593/mergeTest.git'
+
+                } else {
+                  git 'https://github.com/luv1593/branchTest.git'
+
+                  }
+            }
 
 
-git 'https://github.com/luv1593/mergeTest.git'
 
 sh '''#!/bin/bash
 
 
 echo "-------------------------------------------------------------------------"
-
-#branches = git ls-remote
 
 branArr=()
 onlyBran=()
@@ -31,127 +60,82 @@ do
   branArr+=($i)
 done
 
-echo "${branArr[@]}"
 
 
-last=$(git rev-parse HEAD)
+#last=$(git rev-parse HEAD)
 
-echo $(last)
+#latest branch in all not
 
-echo "-------------------------------latest vs QA ------------------------------------"
+disc=$(git describe --tags)
 
-mvdDiff=$(git diff $last...origin/QA)
+echo $disc
 
-if [ "$mvdDiff" = "Already up to date." ];
+
+echo "---------------------------latest vs QA ---------------------------------"
+
+diffs=$(git diff --stat $disc..origin/QA)
+#try to merge
+
+echo $diffs
+if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* || "$diffs" = *"insertion"* || "$diffs" = *"deletion"* ]];
 then
-  echo "latest and qa are the same"
+
+  echo "There is a difference between QA and the latest tag"
+  git checkout origin/QA
+  git fetch
+  git merge $disc
+  git push -f origin HEAD:QA
+
 else
-  echo "latest and QA need to me merged"
-  echo "trying to merge now"
-  git merge $last origin/QA
+  echo "There is no difference between QA and the latest tag"
 fi
 
-echo "Tesing 1" > Email.txt
 
 
-echo "-------------------------------latest vs master -------------------------------"
+#email section
 
-mvmDiff=$(git diff $last...origin/master)
+echo "latest verison: "> Email.txt
+echo $disc >> Email.txt
+echo "difference between latest tag and QA:"  >> Email.txt
+echo "-                                               -" >> Email.txt
+echo $(git diff --stat $disc..origin/QA) >> Email.txt
+echo "-                                               -" >> Email.txt
 
-if [ "$mvmDiff" = "Already up to date." ];
+echo "-------------------------latest vs dev------------------------------------"
+
+diffsD=$(git diff --stat $disc..origin/dev)
+#try to merge
+
+echo $diffs
+if [[ "$diffsD" = *"insertions"* ||  "$diffsD" = *"deletions"* ||  "$diffsD" = *"insertion"* ||  "$diffsD" = *"deletion"* ]];
 then
-  echo "latest and master are the same"
+
+  echo "There is a difference between dev and the latest tag"
+  git checkout origin/dev
+  git fetch
+  git merge $disc
+  test=$(git push -f origin HEAD:dev)
+
+
 else
-  echo "latest and master need to me merged"
-  echo "trying to merge now"
-  git merge $last origin/master
+  echo "There is no difference between QA and the latest tag"
 fi
 
-echo "test 2" >> Email.txt
-
-
-echo "--------------------------------latest vs dev -----------------------------------"
-
-mvmDiff=$(git diff $last...origin/dev)
-
-if [ "$mvmDiff" = "Already up to date." ];
+if [ "$test" = *"conflicts"* ];
 then
-  echo "latest and dev are the same"
-else
-  echo "latest and dev need to me merged"
-  echo "trying to merge now"
-  git merge $last origin/dev
+echo "conflict here"
 fi
 
-echo "test 3" >> Email.txt
+#email section
+echo "difference between latest tag and dev:"  >> Email.txt
+echo "-                                               -" >> Email.txt
+echo $(git diff --stat $disc..origin/dev) >> Email.txt
+echo "-                                               -" >> Email.txt
+
+echo "-------------------------------------------------------------------"
 
 
-#not empty = diff
-#only master(prod)(check) dev QA
-
-#2 dots vs 3 dots diff
-
-#(later) pull request
-
-#email:
-#repo name, branch diff, all branches present, merged(yes or no)(version #'s)
-
-
-echo "-------------------------------------------------------------------------"
-
-
-
-
-
-# Assuming you have a master and dev branch, and that you make new
-# release branches named as the version they correspond to, e.g. 1.0.3
-# Usage: ./release.sh 1.0.3
-
-# Get version argument and verify
-#version=$1
-#if [ -z "$version" ]; then
-#  echo "Please specify a version"
-#  exit
-#fi
-
-# Output
-#echo "Releasing version $version"
-#echo "-------------------------------------------------------------------------"
-
-# Get current branch and checkout if needed
-branch=$(git symbolic-ref --short -q HEAD)
-if [ "$branch" != "$version" ]; then
-  git checkout $version
-fi
-
-# Ensure working directory in version branch clean
-git update-index -q --refresh
-if ! git diff-index --quiet HEAD --; then
-  echo "Working directory not clean, please commit your changes first"
-  exit
-fi
-
-# Checkout master branch and merge version branch into master
-git checkout master
-git merge $version --no-ff --no-edit
-
-# Run version script, creating a version tag, and push commit and tags to remote
-npm version $version
-git push
-git push --tags
-
-# Checkout dev branch and merge master into dev (to ensure we have the version)
-git checkout Dev
-git merge master --no-ff --no-edit
-git push
-
-# Delete version branch locally and on remote
-git branch -D $version
-git push origin --delete $version
-
-# Success
-echo "-------------------------------------------------------------------------"
-echo "Release $version complete"'''
+'''
 
             }
         }
@@ -160,7 +144,7 @@ echo "Release $version complete"'''
 
     post {
         always {
-            emailext attachLog: true, attachmentsPattern: 'Email.txt',body:"hello", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: 'Jenkins pipeline Test'
+            emailext attachLog: true, attachmentsPattern: 'Email.txt',body:"hello", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Jenkins pipeline Test. Build Number: '${currentBuild.number}'"
         }
     }
 
