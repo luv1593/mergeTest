@@ -60,15 +60,7 @@ git checkout $disc
 
 branch=$(git branch -r)
 
-for i in $branch
-do
-  branArr+=($i)
-done
 
-for i in ${my_array[@]};
-do
-  echo $i
-done
 
 echo $disc
 
@@ -86,6 +78,18 @@ then
 
   echo "There is a difference between QA and the latest tag"
   git checkout origin/QA
+
+  for i in $branch
+  do
+    branArr+=($i)
+  done
+
+  for i in ${my_array[@]};
+  do
+    echo $i
+  done
+
+
   git fetch
   git merge $disc
   git push -f origin HEAD:QA
