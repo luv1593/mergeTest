@@ -56,9 +56,7 @@ onlyBran=()
 
 disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
-git checkout $disc
-
-
+#git checkout $disc
 
 echo $disc
 
@@ -69,10 +67,17 @@ echo "---------------------------latest vs QA ---------------------------------"
 
 #email section
 
+branch=$(git branch -r)
+
+for i in $branch
+do
+  branArr+=($i)
+done
+
 echo "latest verison: "> Email.txt
 echo $disc >> Email.txt
 echo "Branches: " >> Email.txt
-echo ${my_array[@]} >> Email.txt
+echo ${branArr[@]} >> Email.txt
 echo "difference between latest tag and QA:"  >> Email.txt
 echo "-                                               -" >> Email.txt
 echo $(git diff --stat $disc..origin/QA) >> Email.txt
@@ -124,10 +129,6 @@ else
   echo "There is no difference between QA and the latest tag"
 fi
 
-if [ "$test" = *"conflicts"* ];
-then
-echo "conflict here"
-fi
 
 echo "-------------------------latest vs master------------------------------------"
 
@@ -155,10 +156,7 @@ else
   echo "There is no difference between master and the latest tag"
 fi
 
-if [ "$test" = *"conflicts"* ];
-then
-echo "conflict here"
-fi
+
 
 
 
