@@ -54,6 +54,11 @@ echo "-------------------------------------------------------------------------"
 branArr=()
 onlyBran=()
 
+
+disc=$( git describe --tags `git rev-list --tags --max-count=1`)
+
+git checkout $disc
+
 branch=$(git branch -r)
 
 for i in $branch
@@ -61,13 +66,11 @@ do
   branArr+=($i)
 done
 
+for i in ${my_array[@]};
+do
+  echo $i;
+done
 
-
-#last=$(git rev-parse HEAD)
-
-
-#get from tag not master!
-disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
 echo $disc
 
@@ -136,7 +139,7 @@ echo $(git diff --stat $disc..origin/dev) >> Email.txt
 echo "-                                               -" >> Email.txt
 
 echo "-------------------------------------------------------------------"
-#add repo name and date+time
+#add and date+time
 #branch name, latest tag(general) get latest from all 3 branches then if master is not latest report where latest is , created a branch not from master
 
 
