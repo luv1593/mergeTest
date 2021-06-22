@@ -140,6 +140,37 @@ echo "-                                               -" >> Email.txt
 echo $(git diff --stat $disc..origin/dev) >> Email.txt
 echo "-                                               -" >> Email.txt
 
+echo "-------------------------latest vs master------------------------------------"
+
+diffsM=$(git diff --stat $disc..origin/master)
+#try to merge
+
+echo $diffs
+if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ||  "$diffsM" = *"insertion"* ||  "$diffsM" = *"deletion"* ]];
+then
+
+  echo "There is a difference between dev and the latest tag"
+  git checkout origin/master
+  git fetch
+  git merge $disc
+  test=$(git push -f origin HEAD:master)
+
+
+else
+  echo "There is no difference between QA and the latest tag"
+fi
+
+if [ "$test" = *"conflicts"* ];
+then
+echo "conflict here"
+fi
+
+#email section
+echo "difference between latest tag and master:"  >> Email.txt
+echo "-                                               -" >> Email.txt
+echo $(git diff --stat $disc..origin/master) >> Email.txt
+echo "-                                               -" >> Email.txt
+
 echo "-------------------------------------------------------------------"
 #add and date+time
 #branch name, latest tag(general) get latest from all 3 branches then if master is not latest report where latest is , created a branch not from master
