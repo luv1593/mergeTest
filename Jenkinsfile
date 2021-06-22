@@ -67,6 +67,17 @@ echo "---------------------------latest vs QA ---------------------------------"
 
 #check update delete and create automerge
 
+#email section
+
+echo "latest verison: "> Email.txt
+echo $disc >> Email.txt
+echo "Branches: " >> Email.txt
+echo ${my_array[@]} >> Email.txt
+echo "difference between latest tag and QA:"  >> Email.txt
+echo "-                                               -" >> Email.txt
+echo $(git diff --stat $disc..origin/QA) >> Email.txt
+echo "-                                               -" >> Email.txt
+
 diffs=$(git diff --stat $disc..origin/QA)
 #try to merge
 
@@ -86,31 +97,14 @@ else
   echo "There is no difference between QA and the latest tag"
 fi
 
-
-
-branch=$(git branch -r)
-
-for i in $branch
-do
-  branArr+=($i)
-done
-
-
-
+echo "-------------------------latest vs dev------------------------------------"
 
 
 #email section
-
-echo "latest verison: "> Email.txt
-echo $disc >> Email.txt
-echo "Branches: " >> Email.txt
-echo ${my_array[@]} >> Email.txt
-echo "difference between latest tag and QA:"  >> Email.txt
+echo "difference between latest tag and dev:"  >> Email.txt
 echo "-                                               -" >> Email.txt
-echo $(git diff --stat $disc..origin/QA) >> Email.txt
+echo $(git diff --stat $disc..origin/dev) >> Email.txt
 echo "-                                               -" >> Email.txt
-
-echo "-------------------------latest vs dev------------------------------------"
 
 diffsD=$(git diff --stat $disc..origin/dev)
 #try to merge
@@ -135,13 +129,13 @@ then
 echo "conflict here"
 fi
 
-#email section
-echo "difference between latest tag and dev:"  >> Email.txt
-echo "-                                               -" >> Email.txt
-echo $(git diff --stat $disc..origin/dev) >> Email.txt
-echo "-                                               -" >> Email.txt
-
 echo "-------------------------latest vs master------------------------------------"
+
+#email section
+echo "difference between latest tag and master:"  >> Email.txt
+echo "-                                               -" >> Email.txt
+echo $(git diff --stat $disc..origin/master) >> Email.txt
+echo "-                                               -" >> Email.txt
 
 diffsM=$(git diff --stat $disc..origin/master)
 #try to merge
@@ -166,11 +160,7 @@ then
 echo "conflict here"
 fi
 
-#email section
-echo "difference between latest tag and master:"  >> Email.txt
-echo "-                                               -" >> Email.txt
-echo $(git diff --stat $disc..origin/master) >> Email.txt
-echo "-                                               -" >> Email.txt
+
 
 echo "-------------------------------------------------------------------"
 #add and date+time
