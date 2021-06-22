@@ -158,7 +158,7 @@ then
 
 
 else
-  echo "There is no difference between QA and the latest tag"
+  echo "There is no difference between master and the latest tag"
 fi
 
 if [ "$test" = *"conflicts"* ];
