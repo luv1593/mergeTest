@@ -147,7 +147,7 @@ echo "-------------------------------------------------------------------"
     }
     post {
         always {
-            emailext attachLog: true, attachmentsPattern: 'Email.txt',body:"hello", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Jenkins pipeline Test Build Number: '${currentBuild.number}' repo:${params.repo} "
+            emailext attachLog: true, attachmentsPattern: 'Email.txt',body: now.format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC')), recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Jenkins pipeline Test Build Number: '${currentBuild.number}' repo: ${params.repo} "
         }
     }
 
