@@ -28,8 +28,7 @@ pipeline {
             steps {
                 echo "${params.repo}"
                 echo "${params.Schedule}"
-                echo "TimeStamp: ${currentBuild.startTimeInMillis}"
-                echo "TimeStamp: ${Util.getTimeSpanString(System.currentTimeMillis())}"
+                
             }
         }
 
