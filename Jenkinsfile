@@ -135,6 +135,8 @@ echo $(git diff --stat $disc..origin/dev) >> Email.txt
 echo "-                                               -" >> Email.txt
 
 echo "-------------------------------------------------------------------"
+#add repo name and date+time
+#branch name, latest tag(general) get latest from all 3 branches then if master is not latest report where latest is , created a branch not from master
 
 
 '''
@@ -143,8 +145,6 @@ echo "-------------------------------------------------------------------"
         }
 
     }
-#add repo name and date+time
-#branch name, latest tag(general) get latest from all 3 branches then if master is not latest report where latest is , created a branch not from master
     post {
         always {
             emailext attachLog: true, attachmentsPattern: 'Email.txt',body:"hello", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Jenkins pipeline Test. Build Number: '${currentBuild.number}'"
