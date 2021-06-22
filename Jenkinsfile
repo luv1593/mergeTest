@@ -28,7 +28,6 @@ pipeline {
             steps {
                 echo "${params.repo}"
                 echo "${params.Schedule}"
-                echo "${currentBuild.date}"
             }
         }
 
@@ -70,7 +69,6 @@ for i in ${my_array[@]};
 do
   echo $i;
 done
-
 
 echo $disc
 
