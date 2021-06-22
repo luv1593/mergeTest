@@ -67,7 +67,7 @@ done
 
 for i in ${my_array[@]};
 do
-  echo $i;
+  echo $i
 done
 
 echo $disc
