@@ -64,14 +64,16 @@ done
 
 #last=$(git rev-parse HEAD)
 
-#latest branch in all not
 
-disc=$(git describe --tags)
+#get from tag not master!
+disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
 echo $disc
 
 
 echo "---------------------------latest vs QA ---------------------------------"
+
+#check update delete and create automerge
 
 diffs=$(git diff --stat $disc..origin/QA)
 #try to merge
@@ -141,7 +143,8 @@ echo "-------------------------------------------------------------------"
         }
 
     }
-
+#add repo name and date+time
+#branch name, latest tag(general) get latest from all 3 branches then if master is not latest report where latest is , created a branch not from master
     post {
         always {
             emailext attachLog: true, attachmentsPattern: 'Email.txt',body:"hello", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Jenkins pipeline Test. Build Number: '${currentBuild.number}'"
