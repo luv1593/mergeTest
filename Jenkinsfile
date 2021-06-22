@@ -103,10 +103,8 @@ done
 
 echo "latest verison: "> Email.txt
 echo $disc >> Email.txt
-for i in ${my_array[@]};
-do
-  echo $i >> Email.txt
-done
+echo "Branches: " >> Email.txt
+echo ${my_array[@]} >> Email.txt
 echo "difference between latest tag and QA:"  >> Email.txt
 echo "-                                               -" >> Email.txt
 echo $(git diff --stat $disc..origin/QA) >> Email.txt
