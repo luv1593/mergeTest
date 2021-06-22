@@ -114,13 +114,17 @@ then
   git checkout origin/dev
   git fetch
   git merge $disc
-  git push -f origin HEAD:dev
+  test=$(git push -f origin HEAD:dev)
+
 
 else
   echo "There is no difference between QA and the latest tag"
 fi
 
-
+if [ "$test" = *"conflict"* ];
+then
+echo "conflict here"
+fi
 
 #email section
 echo "difference between latest tag and dev:"  >> Email.txt
