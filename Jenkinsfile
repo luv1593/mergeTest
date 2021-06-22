@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo "${params.repo}"
                 echo "${params.Schedule}"
-                
+                echo "${currentBuild.date}"
             }
         }
 
