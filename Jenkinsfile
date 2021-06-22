@@ -150,7 +150,7 @@ echo $diffs
 if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ||  "$diffsM" = *"insertion"* ||  "$diffsM" = *"deletion"* ]];
 then
 
-  echo "There is a difference between dev and the latest tag"
+  echo "There is a difference between master and the latest tag"
   git checkout origin/master
   git fetch
   git merge $disc
