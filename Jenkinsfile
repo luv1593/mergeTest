@@ -77,7 +77,10 @@ done
 echo "latest verison: "> Email.txt
 echo $disc >> Email.txt
 echo "Branches: " >> Email.txt
-echo ${branArr[@]} >> Email.txt
+for j in ${branArr[@]}
+do
+ echo $j >> Email.txt
+done
 echo "difference between latest tag and QA:"  >> Email.txt
 echo "-                                               -" >> Email.txt
 echo $(git diff --stat $disc..origin/QA) >> Email.txt
