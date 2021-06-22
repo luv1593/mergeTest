@@ -121,7 +121,7 @@ else
   echo "There is no difference between QA and the latest tag"
 fi
 
-if [ "$test" = *"conflict"* ];
+if [ "$test" = *"conflicts"* ];
 then
 echo "conflict here"
 fi
