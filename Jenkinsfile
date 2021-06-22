@@ -58,8 +58,6 @@ disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
 git checkout $disc
 
-branch=$(git branch -r)
-
 
 
 echo $disc
@@ -79,16 +77,6 @@ then
   echo "There is a difference between QA and the latest tag"
   git checkout origin/QA
 
-  for i in $branch
-  do
-    branArr+=($i)
-  done
-
-  for i in ${my_array[@]};
-  do
-    echo $i
-  done
-
 
   git fetch
   git merge $disc
@@ -100,10 +88,25 @@ fi
 
 
 
+branch=$(git branch -r)
+
+for i in $branch
+do
+  branArr+=($i)
+done
+
+
+
+
+
 #email section
 
 echo "latest verison: "> Email.txt
 echo $disc >> Email.txt
+for i in ${my_array[@]};
+do
+  echo $i >> Email.txt
+done
 echo "difference between latest tag and QA:"  >> Email.txt
 echo "-                                               -" >> Email.txt
 echo $(git diff --stat $disc..origin/QA) >> Email.txt
