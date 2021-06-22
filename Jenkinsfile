@@ -77,7 +77,7 @@ diffs=$(git diff --stat $disc..origin/QA)
 #try to merge
 
 echo $diffs
-if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ]];
+if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* || "$diffs" = *"insertion"* ||  "$diffs" = *"deletion"*]];
 then
 
   echo "There is a difference between QA and the latest tag"
@@ -107,7 +107,7 @@ diffsD=$(git diff --stat $disc..origin/dev)
 #try to merge
 
 echo $diffs
-if [[ "$diffsD" = *"insertions"* ||  "$diffsD" = *"deletions"* ]];
+if [[ "$diffsD" = *"insertions"* ||  "$diffsD" = *"deletions"* ||  "$diffsD" = *"insertion"* ||  "$diffsD" = *"deletion"* ]];
 then
 
   echo "There is a difference between dev and the latest tag"
