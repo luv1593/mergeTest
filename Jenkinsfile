@@ -150,7 +150,7 @@ echo $(git diff --stat $disc..origin/master) >> Email.txt
 echo "-                                               -" >> Email.txt
 echo " " >> Email.txt
 
-if [`git checkout origin/master` == *'error:'*];
+if [ $(git checkout origin/master) == *'error:'*];
 then
   MorPbranch="origin/production"
   pushName="production"
