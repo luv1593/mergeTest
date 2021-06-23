@@ -54,6 +54,8 @@ branArr=()
 onlyBran=()
 dateAndTime=`date`
 
+commitInfo = $(for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r)
+
 disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
 #git checkout $disc
@@ -76,6 +78,7 @@ done
 
 echo "latest verison: "> Email.txt
 echo $disc >> Email.txt
+echo " " >> Email.txt
 echo "Date and Time: " >> Email.txt
 echo $dateAndTime >> Email.txt
 echo " " >> Email.txt
@@ -144,6 +147,9 @@ echo "difference between latest tag and master:"  >> Email.txt
 echo "-                                               -" >> Email.txt
 echo $(git diff --stat $disc..origin/master) >> Email.txt
 echo "-                                               -" >> Email.txt
+echo " " >> Email.txt
+echo "latest branch commits" >> Email.txt
+echo $commitInfo >> Email.txt
 
 diffsM=$(git diff --stat $disc..origin/master)
 #try to merge
@@ -168,7 +174,7 @@ fi
 
 
 echo "-------------------------------------------------------------------"
-#add and date+time
+
 # get latest from all 3 branches then if master is not latest report where latest is , created a branch not from master
 
 
@@ -180,7 +186,7 @@ echo "-------------------------------------------------------------------"
     }
     post {
         always {
-            emailext attachLog: true, attachmentsPattern: 'Email.txt',body:"test", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Jenkins pipeline Test Build Number: '${currentBuild.number}' repo: ${params.repo} "
+            emailext attachLog: true, attachmentsPattern: 'Email.txt',body:" ", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Jenkins pipeline Test Build Number: '${currentBuild.number}' repo: ${params.repo} "
         }
     }
 
