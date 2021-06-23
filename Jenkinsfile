@@ -150,6 +150,12 @@ echo $(git diff --stat $disc..origin/master) >> Email.txt
 echo "-                                               -" >> Email.txt
 echo " " >> Email.txt
 
+#Can be a pick list:
+# master prod production main
+# QA test qa
+# dev develop
+#report if none are found
+
 if [ $(git checkout origin/master) == *'error:'*];
 then
   MorPbranch="origin/production"
@@ -178,13 +184,11 @@ else
 fi
 
 
-
-
-
 echo "-------------------------------------------------------------------"
 
 # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
 
+#if master is not most up to date then tag was created from not master
 
 '''
 
