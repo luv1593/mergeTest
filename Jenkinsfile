@@ -54,8 +54,6 @@ branArr=()
 onlyBran=()
 dateAndTime=`date`
 
-commitInfo = $(for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r)
-
 disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
 #git checkout $disc
@@ -149,7 +147,7 @@ echo $(git diff --stat $disc..origin/master) >> Email.txt
 echo "-                                               -" >> Email.txt
 echo " " >> Email.txt
 echo "latest branch commits" >> Email.txt
-echo $commitInfo >> Email.txt
+echo $(for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ci %cr" $branch | head -n 1` \\t$branch; done | sort -r) >> Email.txt
 
 diffsM=$(git diff --stat $disc..origin/master)
 #try to merge
