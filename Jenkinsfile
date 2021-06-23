@@ -52,7 +52,7 @@ echo "-------------------------------------------------------------------------"
 
 branArr=()
 onlyBran=()
-
+dateAndTime=`date`
 
 disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
@@ -76,11 +76,15 @@ done
 
 echo "latest verison: "> Email.txt
 echo $disc >> Email.txt
+echo "Date and Time: " >> Email.txt
+echo $dateAndTime >> Email.txt
+echo " " >> Email.txt
 echo "Branches: " >> Email.txt
 for j in ${branArr[@]}
 do
  echo $j >> Email.txt
 done
+echo " " >> Email.txt
 echo "difference between latest tag and QA:"  >> Email.txt
 echo "-                                               -" >> Email.txt
 echo $(git diff --stat $disc..origin/QA) >> Email.txt
@@ -165,7 +169,7 @@ fi
 
 echo "-------------------------------------------------------------------"
 #add and date+time
-#branch name, latest tag(general) get latest from all 3 branches then if master is not latest report where latest is , created a branch not from master
+# get latest from all 3 branches then if master is not latest report where latest is , created a branch not from master
 
 
 '''
