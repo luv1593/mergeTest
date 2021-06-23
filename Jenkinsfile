@@ -134,7 +134,7 @@ then
   git checkout origin/dev
   git fetch
   git merge $disc
-  test=$(git push -f origin HEAD:dev)
+  git push -f origin HEAD:dev
 
 
 else
@@ -175,9 +175,13 @@ then
 
   echo "There is a difference between master/prod and the latest tag"
   git checkout $MorPbranch
+  echo $MorPbranch
   git fetch
+  echo "fetch complete"
   git merge $disc
-  test=$(git push -f origin HEAD:$pushName)
+  echo "merge complete"
+  git push -f origin HEAD:$pushName
+  echo "push complete"
 
 
 else
