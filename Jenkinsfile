@@ -60,7 +60,7 @@ disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
 echo $disc
 
-for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ai %ar by %an" onlyBran+=($branch) | head -n 1` \\t$branch; done | sort -r
+for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ai %ar by %an" $branch | head -n 1` \\onlyBran+=($branch); done | sort -r
 
 echo "---"
 for k in ${onlyBran[@]}
