@@ -183,7 +183,7 @@ fi
 
 echo "-------------------------------------------------------------------"
 
-# get latest from all 3 branches then if master is not latest report where latest is , created a branch not from master
+# get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
 
 
 '''
