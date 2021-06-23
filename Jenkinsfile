@@ -150,18 +150,27 @@ echo $(git diff --stat $disc..origin/master) >> Email.txt
 echo "-                                               -" >> Email.txt
 echo " " >> Email.txt
 
-diffsM=$(git diff --stat $disc..origin/master)
+if [`git checkout origin/master` == *'error:'*];
+then
+  MorPbranch="origin/production"
+  pushName="production"
+else
+  MorPbranch="origin/master"
+  pushName="master"
+fi
+
+diffsM=$(git diff --stat $disc..$MorPbranch)
 #try to merge
 
 echo $diffs
 if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ||  "$diffsM" = *"insertion"* ||  "$diffsM" = *"deletion"* ]];
 then
 
-  echo "There is a difference between master and the latest tag"
-  git checkout origin/master
+  echo "There is a difference between master/prod and the latest tag"
+  git checkout $MorPbranch
   git fetch
   git merge $disc
-  test=$(git push -f origin HEAD:master)
+  test=$(git push -f origin HEAD:$pushName)
 
 
 else
