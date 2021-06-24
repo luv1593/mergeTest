@@ -7,7 +7,7 @@ test2
 
 new info
 
-not helping
+helping
 
 no conflict
 will this appear in QA?
