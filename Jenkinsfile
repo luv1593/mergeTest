@@ -112,9 +112,9 @@ then
 
   echo "There is a difference between QA and the latest tag"
   echo "checking latest --> QA"
-  git diff --compact-summary $disc..origin/QA
+  git diff --summary $disc..origin/QA
   echo "checking QA --> latest"
-  git diff --compact-summary origin/QA..$disc
+  git diff --summary origin/QA..$disc
 
 
 
