@@ -82,6 +82,7 @@ branch=$(git branch -r)
 
 for i in $branch
 do
+  echo $i
   branArr+=($i)
 done
 
@@ -90,10 +91,10 @@ for j in ${branArr[@]}
 do
   for k in ${devLst[@]}
   do
-    if [["$k" == "$j"]];then
-      ((ITER++))
-      echo $j $k $ITER
-    fi
+    #if [["$k" == "$j"]];then
+    #  ((ITER++))
+    #  echo $j $k $ITER
+    #fi
   done
 done
 
