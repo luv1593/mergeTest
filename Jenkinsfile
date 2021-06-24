@@ -88,19 +88,6 @@ do
   branArr+=($i)
 done
 
-ITER=0
-for j in ${branArr[@]}
-do
-  for k in ${devLst[@]}
-  do
-
-      echo $j
-      echo $k
-      if [echo $j = echo "$k"]; then
-        echo "they are the same"
-      fi
-  done
-done
 
 echo "---------------------------latest vs QA ---------------------------------"
 
