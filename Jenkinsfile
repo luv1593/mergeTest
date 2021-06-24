@@ -68,8 +68,10 @@ disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
 echo $disc
 
-#for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ai %ar by %an" $branch | head -n 1` \\t$branch; done | sort -r
-
+#latest --> QA
+#do other way
+#git pull so no local conflict
+#fix looping
 
 
 echo "-------------------------------------------------------------------------"
@@ -122,22 +124,22 @@ if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* || "$diffs" = *"ins
 then
 
   echo "There is a difference between QA and the latest tag"
+
+  echo "checking latest --> QA"
   git checkout origin/QA
-
-
   git fetch
   git merge $disc
-  git push origin HEAD:QA
+
+  echo "checking QA --> latest"
+  git checkout $disc
+  git fetch
+  git merge origin/QA
+
 
 else
   echo "There is no difference between QA and the latest tag"
 fi
 
-
-#latest --> QA
-#do other way
-#git pull so no local conflict
-#fix looping
 
 echo "-------------------------latest vs dev------------------------------------"
 
@@ -155,11 +157,18 @@ echo $diffs
 if [[ "$diffsD" = *"insertions"* ||  "$diffsD" = *"deletions"* ||  "$diffsD" = *"insertion"* ||  "$diffsD" = *"deletion"* ]];
 then
 
-  echo "There is a difference between dev and the latest tag"
+  echo "checking latest --> dev"
   git checkout origin/dev
   git fetch
   git merge $disc
-  git push origin HEAD:dev
+
+  echo "checking dev --> latest"
+  git checkout $disc
+  git fetch
+  git merge origin/dev
+
+
+  #git push origin HEAD:dev
 
 
 else
@@ -199,14 +208,15 @@ if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ||  "$diffsM" = *
 then
 
   echo "There is a difference between master/prod and the latest tag"
-  git checkout $MorPbranch
-  echo $MorPbranch
+  echo "checking latest --> dev"
+  git checkout origin/master
   git fetch
-  echo "fetch complete"
   git merge $disc
-  echo "merge complete"
-  git push origin HEAD:$pushName
-  echo "push complete"
+
+  echo "checking master --> latest"
+  git checkout $disc
+  git fetch
+  git merge origin/master
 
 
 else
