@@ -82,6 +82,7 @@ branch=$(git branch -r)
 
 for i in $branch
 do
+  echo $i
   branArr+=($i)
 done
 
@@ -90,13 +91,14 @@ for j in ${branArr[@]}
 do
   for k in ${devLst[@]}
   do
-    if [["$k" == "$j"]];then
-      ((ITER++))
-      echo $j $k $ITER
+    #if [["$k" == "$j"]];then
+      #((ITER++))
+      #echo $j $k $ITER
     fi
   done
 done
 
+#latest tag --> QA
 echo "---------------------------latest vs QA ---------------------------------"
 
 echo "latest verison: "> Email.txt
@@ -113,6 +115,8 @@ echo "-                                               -" >> Email.txt
 diffs=$(git diff --stat $disc..origin/QA)
 
 #take out merge sections
+
+#2 direction check
 
 echo $diffs
 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* || "$diffs" = *"insertion"* || "$diffs" = *"deletion"* ]];
