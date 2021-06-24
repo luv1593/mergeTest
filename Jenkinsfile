@@ -87,11 +87,10 @@ for j in ${branArr[@]}
 do
   for k in ${devLst[@]}
   do
-    if [[$j == $k]]
-    then
+
       ((ITER++))
-      echo "dev is in branArr at: " $ITER
-    fi
+      echo $j $k $ITER
+
   done
 done
 
