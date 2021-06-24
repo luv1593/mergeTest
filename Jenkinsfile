@@ -94,7 +94,7 @@ do
 
       echo $j
       echo $k
-      if [echo "$j" = echo "$k"]; then
+      if [echo $j = echo "$k"]; then
         echo "they are the same"
       fi
   done
@@ -133,6 +133,12 @@ else
   echo "There is no difference between QA and the latest tag"
 fi
 
+
+#latest --> QA
+#do other way
+#git pull so no local conflict
+#fix looping
+
 echo "-------------------------latest vs dev------------------------------------"
 
 
@@ -157,7 +163,7 @@ then
 
 
 else
-  echo "There is no difference between QA and the latest tag sljhdag"
+  echo "There is no difference between QA and the latest tag"
 fi
 
 
