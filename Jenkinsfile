@@ -94,7 +94,8 @@ do
 
       echo $j
       echo $k
-      echo $j == $k
+      test= [$j == $k]
+      echo $test
 
   done
 done
