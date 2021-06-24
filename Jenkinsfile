@@ -111,7 +111,8 @@ echo $(git diff --stat $disc..origin/QA) >> Email.txt
 echo "-                                               -" >> Email.txt
 
 diffs=$(git diff --stat $disc..origin/QA)
-#try to merge
+
+#take out merge sections
 
 echo $diffs
 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* || "$diffs" = *"insertion"* || "$diffs" = *"deletion"* ]];
