@@ -123,7 +123,7 @@ then
 
   git fetch
   git merge $disc
-  git push -f origin HEAD:QA
+  git push origin HEAD:QA
 
 else
   echo "There is no difference between QA and the latest tag"
@@ -149,7 +149,7 @@ then
   git checkout origin/dev
   git fetch
   git merge $disc
-  git push -f origin HEAD:dev
+  git push origin HEAD:dev
 
 
 else
@@ -195,7 +195,7 @@ then
   echo "fetch complete"
   git merge $disc
   echo "merge complete"
-  git push -f origin HEAD:$pushName
+  git push origin HEAD:$pushName
   echo "push complete"
 
 
