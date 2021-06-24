@@ -53,9 +53,9 @@ echo "-------------------------------------------------------------------------"
 branArr=()
 onlyBran=()
 
-devLst=("dev" "develop" "development" "DEV" "DEVELOP" "DEVELOPMENT")
-mastLst=("master" "prod" "production" "main" "MASTER" "PROD" "PRODUCTION" "MAIN")
-QALst=("QA" "qa" "test" "TEST")
+devLst=("origin/dev" "origin/develop" "origin/development" "origin/DEV" "origin/DEVELOP" "origin/DEVELOPMENT")
+mastLst=("origin/master" "origin/prod" "origin/production" "origin/main" "origin/MASTER" "origin/PROD" "origin/PRODUCTION" "origin/MAIN")
+QALst=("origin/QA" "origin/qa" "origin/test" "origin/TEST")
 
 dateAndTime=`date`
 
@@ -87,10 +87,10 @@ for j in ${branArr[@]}
 do
   for k in ${devLst[@]}
   do
-
+    if ["$k"="$j"]:then
       ((ITER++))
       echo $j $k $ITER
-
+    fi
   done
 done
 
