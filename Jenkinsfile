@@ -52,6 +52,11 @@ echo "-------------------------------------------------------------------------"
 
 branArr=()
 onlyBran=()
+
+devLst=("dev" "develop" "development" "DEV" "DEVELOP" "DEVELOPMENT")
+mastLst=("master" "prod" "production" "main" "MASTER" "PROD" "PRODUCTION" "MAIN")
+QALst=("QA" "qa" "test" "TEST")
+
 dateAndTime=`date`
 
 disc=$( git describe --tags `git rev-list --tags --max-count=1`)
@@ -60,11 +65,11 @@ disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
 echo $disc
 
-for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ai %ar by %an" $branch | head -n 1` \\t$branch; done | sort -r
+#for branch in `git branch -r | grep -v HEAD`;do echo -e `git show --format="%ai %ar by %an" $branch | head -n 1` \\t$branch; done | sort -r
 
 
 
-echo "---------------------------latest vs QA ---------------------------------"
+echo "-------------------------------------------------------------------------"
 
 #check update delete and create automerge
 
@@ -77,17 +82,26 @@ do
   branArr+=($i)
 done
 
+ITER=0
+for j in ${branArr[@]}
+do
+  for k in ${devLst[@]}
+  do
+    if [$j == $k];
+    then
+      ((ITER++))
+      echo "dev is in branArr at: " $ITER
+    fi
+  done
+done
+
+echo "---------------------------latest vs QA ---------------------------------"
+
 echo "latest verison: "> Email.txt
 echo $disc >> Email.txt
 echo " " >> Email.txt
 echo "Date and Time: " >> Email.txt
 echo $dateAndTime >> Email.txt
-echo " " >> Email.txt
-echo "Branches: " >> Email.txt
-for j in ${branArr[@]}
-do
- echo $j >> Email.txt
-done
 echo " " >> Email.txt
 echo "difference between latest tag and QA:"  >> Email.txt
 echo "-                                               -" >> Email.txt
