@@ -95,7 +95,7 @@ do
       echo $j
       echo $k
       if ["$j" = "$k"]; then
-        echo they are the same
+        echo "they are the same"
       fi
   done
 done
