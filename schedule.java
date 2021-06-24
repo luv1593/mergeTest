@@ -3,7 +3,7 @@ import java.util.Date;
 public class schedule {
 public static void main(String[] args) {
     SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-    Date date = new Date();
+    String force = "error"
     System.out.println(formatter.format(date));
 }
 }
