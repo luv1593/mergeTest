@@ -87,9 +87,9 @@ for j in ${branArr[@]}
 do
   for k in ${devLst[@]}
   do
-    #if [["$k" = "$j"]];then
-      #((ITER++))
-    #  echo $j $k $ITER
+    if [["$k" == "$j"]];then
+      ((ITER++))
+      echo $j $k $ITER
     fi
   done
 done
