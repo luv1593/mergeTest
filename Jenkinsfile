@@ -111,16 +111,11 @@ if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* || "$diffs" = *"ins
 then
 
   echo "There is a difference between QA and the latest tag"
-
   echo "checking latest --> QA"
-  git checkout origin/QA
-  git fetch
-  git merge $disc
-
+  git diff --stat $disc..origin/QA
   echo "checking QA --> latest"
-  git checkout $disc
-  git fetch
-  git merge origin/QA
+  git diff --stat origin/QA..$disc
+
 
 
 else
