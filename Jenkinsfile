@@ -82,6 +82,7 @@ branch=$(git branch -r)
 
 for i in $branch
 do
+  echo $i
   branArr+=($i)
 done
 
@@ -90,10 +91,10 @@ for j in ${branArr[@]}
 do
   for k in ${devLst[@]}
   do
-    if [["$k" == "$j"]];then
-      ((ITER++))
-      echo $j $k $ITER
-    fi
+
+      echo $j
+      echo $k
+
   done
 done
 
@@ -111,7 +112,8 @@ echo $(git diff --stat $disc..origin/QA) >> Email.txt
 echo "-                                               -" >> Email.txt
 
 diffs=$(git diff --stat $disc..origin/QA)
-#try to merge
+
+#take out merge sections
 
 echo $diffs
 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* || "$diffs" = *"insertion"* || "$diffs" = *"deletion"* ]];
