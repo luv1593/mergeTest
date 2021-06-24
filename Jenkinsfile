@@ -82,7 +82,7 @@ branch=$(git branch -r)
 
 for i in $branch
 do
-  echo $i
+  #echo $i
   branArr+=($i)
 done
 
@@ -94,6 +94,7 @@ do
 
       echo $j
       echo $k
+      echo $j == $k
 
   done
 done
