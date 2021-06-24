@@ -87,9 +87,9 @@ for j in ${branArr[@]}
 do
   for k in ${devLst[@]}
   do
-    if [["$k" = "$j"]];then
-      ((ITER++))
-      echo $j $k $ITER
+    #if [["$k" = "$j"]];then
+      #((ITER++))
+    #  echo $j $k $ITER
     fi
   done
 done
@@ -108,10 +108,7 @@ echo $(git diff --stat $disc..origin/QA) >> Email.txt
 echo "-                                               -" >> Email.txt
 
 diffs=$(git diff --stat $disc..origin/QA)
-
-
-#show conflicts
-
+#try to merge
 
 echo $diffs
 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* || "$diffs" = *"insertion"* || "$diffs" = *"deletion"* ]];
@@ -119,6 +116,8 @@ then
 
   echo "There is a difference between QA and the latest tag"
   git checkout origin/QA
+
+
   git fetch
   git merge $disc
   git push -f origin HEAD:QA
@@ -151,7 +150,7 @@ then
 
 
 else
-  echo "There is no difference between QA and the latest tag"
+  echo "There is no difference between QA and the latest tag sljhdag"
 fi
 
 
