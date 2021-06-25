@@ -53,7 +53,7 @@ echo "-------------------------------------------------------------------------"
 branArr=()
 onlyBran=()
 
-devLst=("origin/dev" "origin/develop" "origin/development" "origin/DEV" "origin/DEVELOP" "origin/DEVELOPMENT")
+devLst=${"origin/dev" "origin/develop" "origin/development" "origin/DEV" "origin/DEVELOP" "origin/DEVELOPMENT"}
 mastLst=("origin/master" "origin/prod" "origin/production" "origin/main" "origin/MASTER" "origin/PROD" "origin/PRODUCTION" "origin/MAIN")
 QALst=("origin/QA"
        "origin/qa"
@@ -95,7 +95,7 @@ echo $dateAndTime >> Email.txt
 echo " " >> Email.txt
 echo "difference between latest tag and QA:"  >> Email.txt
 echo "-                                               -" >> Email.txt
-echo $(git diff --stat $disc..origin/QA) >> Email.txt
+echo $(git diff --stat-graph-width=1 $disc..origin/QA) >> Email.txt
 echo "-                                               -" >> Email.txt
 
 diffs=$(git diff --stat $disc..origin/QA)
@@ -103,21 +103,7 @@ diffs=$(git diff --stat $disc..origin/QA)
 #take out merge sections
 
 echo $diffs
-if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* || "$diffs" = *"insertion"* || "$diffs" = *"deletion"* ]];
-then
 
-  echo "There is a difference between QA and the latest tag"
-  echo "checking latest --> QA"
-  git diff --summary $disc..origin/QA
-  echo " "
-  echo "checking QA --> latest"
-  git diff --summary origin/QA..$disc
-  echo " "
-
-
-else
-  echo "There is no difference between QA and the latest tag"
-fi
 
 
 echo "-------------------------latest vs dev------------------------------------"
