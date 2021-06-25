@@ -36,7 +36,8 @@ pipeline {
               script {
 
                   git 'https://github.com/luv1593/mergeTest.git'
-                  sh " git diff --stat (git describe --tags `git rev-list --tags --max-count=1`)..origin/QA "
+                  sh "git describe --tags `git rev-list --tags --max-count=1`"
+                  sh " git diff --stat v1.11.2..origin/QA "
 
                       }
 
