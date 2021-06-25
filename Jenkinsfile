@@ -76,10 +76,6 @@ echo $disc
 
 echo "-------------------------------------------------------------------------"
 
-#check update delete and create automerge
-
-#email section
-
 branch=$(git branch -r)
 
 for i in $branch
@@ -113,9 +109,10 @@ then
   echo "There is a difference between QA and the latest tag"
   echo "checking latest --> QA"
   git diff --summary $disc..origin/QA
+  echo " "
   echo "checking QA --> latest"
   git diff --summary origin/QA..$disc
-
+  echo " "
 
 
 else
