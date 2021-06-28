@@ -36,7 +36,7 @@ pipeline {
 
 
                 GIT_COMMIT_EMAIL = sh (
-                  script: 'git describe --tags `git rev-list --tags --max-count=1`'',
+                  script: 'git describe --tags `git rev-list --tags --max-count=1`',
                     returnStdout: true
                       ).trim()
                     echo "${GIT_COMMIT_EMAIL}"
