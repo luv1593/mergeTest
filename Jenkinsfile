@@ -33,8 +33,8 @@ pipeline {
               script {
 
                   git 'https://github.com/luv1593/mergeTest.git'
-                  sh "git describe --tags `git rev-list --tags --max-count=1`"
-                   sh "git diff --stat-graph-width=1 v1.11.2..origin/QA "
+                  VERSION_TAG=sh "git describe --tags `git rev-list --tags --max-count=1`"
+                   sh "git diff --stat-graph-width=1 ${VERSION_TAG}..origin/QA "
 
                       }
 
