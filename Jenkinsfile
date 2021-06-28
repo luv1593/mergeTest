@@ -86,9 +86,9 @@ pipeline {
                         echo "-------------------------latest vs dev------------------------------------"
                         #email section
                         echo "difference between latest tag and dev:"  >> Email.txt
-                        echo "-                                               -" >> Email.txt
+                        echo " " >> Email.txt
                         echo $(git diff  --stat-graph-width=1 $disc..origin/dev) >> Email.txt
-                        echo "-                                               -" >> Email.txt
+                        echo " " >> Email.txt
                         diffsD=$(git diff  --stat-graph-width=1 $disc..origin/dev)
                         #try to merge
                         echo $diffs
