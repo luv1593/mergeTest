@@ -35,7 +35,7 @@ pipeline {
 
               //checkout tag??
 
-                REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
+                REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git", "https://github.com/luv1593/repoTest.git"]
 
                 for(int i=0; i < REPO_LIST.size(); i++) {
                 cleanWs()
@@ -52,12 +52,12 @@ pipeline {
 
 
 //def ret = sh(script: 'uname', returnStdout: true)
-                                def mast =  sh (script: "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master " , returnStdout: true)
-                                  def QAs =  sh (script: "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/QA " , returnStdout: true)
+                                  sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master "
+                                  sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/QA "
                                   sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/dev "
 
 
-                                  writeFile(file: 'Email.txt', text: QAs)
+                                  writeFile(file: 'Email.txt', text: sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master ")
 
                               }
                             }
