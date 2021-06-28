@@ -39,7 +39,7 @@ pipeline {
               '''
 
               for(int i=0; i < REPO_LIST.size(); i++) {
-              
+
 
                     stage(REPO_LIST[i]){
                         git REPO_LIST[i]
@@ -90,22 +90,7 @@ pipeline {
                         echo $(git diff  --stat-graph-width=1 $disc..origin/dev) >> Email.txt
                         echo " " >> Email.txt
                         diffsD=$(git diff  --stat-graph-width=1 $disc..origin/dev)
-                        #try to merge
-                        echo $diffs
-                        if [[ "$diffsD" = *"insertions"* ||  "$diffsD" = *"deletions"* ||  "$diffsD" = *"insertion"* ||  "$diffsD" = *"deletion"* ]];
-                        then
-                          echo "checking latest --> dev"
-                          git checkout origin/dev
-                          git fetch
-                          git merge $disc
-                          echo "checking dev --> latest"
-                          git checkout $disc
-                          git fetch
-                          git merge origin/dev
-                          #git push origin HEAD:dev
-                        else
-                          echo "There is no difference between QA and the latest tag"
-                        fi
+
                         echo "-------------------------latest vs master------------------------------------"
                         #email section
                         echo "difference between latest tag and master:"  >> Email.txt
@@ -113,36 +98,7 @@ pipeline {
                         echo $(git diff --stat $disc..origin/master) >> Email.txt
                         echo "-                                               -" >> Email.txt
                         echo " " >> Email.txt
-                        #Can be a pick list:
-                        # master prod production main
-                        # QA test qa
-                        # dev develop
-                        #report if none are found
-                        if [ $(git checkout origin/master) == *'error:'*];
-                        then
-                          MorPbranch="origin/production"
-                          pushName="production"
-                        else
-                          MorPbranch="origin/master"
-                          pushName="master"
-                        fi
-                        diffsM=$(git diff --stat $disc..$MorPbranch)
-                        #try to merge
-                        echo $diffs
-                        if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ||  "$diffsM" = *"insertion"* ||  "$diffsM" = *"deletion"* ]];
-                        then
-                          echo "There is a difference between master/prod and the latest tag"
-                          echo "checking latest --> dev"
-                          git checkout origin/master
-                          git fetch
-                          git merge $disc
-                          echo "checking master --> latest"
-                          git checkout $disc
-                          git fetch
-                          git merge origin/master
-                        else
-                          echo "There is no difference between master and the latest tag"
-                        fi
+                        
                         echo "-------------------------------------------------------------------"
                         # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
                         #if master is not most up to date then tag was created from not master
