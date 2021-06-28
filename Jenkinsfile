@@ -53,11 +53,11 @@ pipeline {
 
 //def ret = sh(script: 'uname', returnStdout: true)
                                 def mast =  sh (script: "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master " , returnStdout: true)
-                                  sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/QA "
+                                  def QAs =  sh (script: "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/QA " , returnStdout: true)
                                   sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/dev "
 
 
-                                  writeFile(file: 'Email.txt', text: mast)
+                                  writeFile(file: 'Email.txt', text: QAs)
 
                               }
                             }
