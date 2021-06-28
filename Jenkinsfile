@@ -35,6 +35,7 @@ pipeline {
               data = "hello test"
               for(int i=0; i < REPO_LIST.size(); i++) {
                 cleanWs()
+              sh '''#!/bin/bash  echo " " > Email.txt'''
                     stage(REPO_LIST[i]){
                         git REPO_LIST[i]
 
@@ -64,7 +65,7 @@ pipeline {
                           branArr+=($i)
                         done
                         echo "---------------------------latest vs QA ---------------------------------"
-                        echo "latest verison: "> Email.txt
+                        echo "latest verison: " >> Email.txt
                         echo $disc >> Email.txt
                         echo " " >> Email.txt
                         echo "Date and Time: " >> Email.txt
