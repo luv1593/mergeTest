@@ -34,8 +34,10 @@ pipeline {
               REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
               data = "hello test"
 
-              sh '''#!/bin/bash  echo " " > Email.txt'''
-              
+              sh '''#!/bin/bash
+              echo "new line " > Email.txt
+              '''
+
               for(int i=0; i < REPO_LIST.size(); i++) {
                 cleanWs()
 
