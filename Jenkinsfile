@@ -47,17 +47,17 @@ pipeline {
                                   returnStdout: true
                                     ).trim()
                                   echo "${GIT_VERSION_TAG}"
-                                
+
                                   //something a bit strange with tags (runs from master not latest tag)
 
 
-
-                                  sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master "
+//def ret = sh(script: 'uname', returnStdout: true)
+                                def mast =  sh (script: "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master " , returnStdout: true)
                                   sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/QA "
                                   sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/dev "
 
 
-                                  writeFile(file: 'Email.txt', text: data)
+                                  writeFile(file: 'Email.txt', text: mast)
 
                               }
                             }
