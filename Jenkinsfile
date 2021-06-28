@@ -36,7 +36,7 @@ pipeline {
 
                 for(int i=0; i < REPO_LIST.size(); i++) {
                           stage(REPO_LIST[i]){
-                              echo "Element: REPO_LIST[i]"
+                              echo "Element: $REPO_LIST[$i]"
                               }
                             }
 
