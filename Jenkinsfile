@@ -2,9 +2,6 @@ pipeline {
     agent any
 
     parameters{
-      choice(name: "repo",
-            choices: ["mergeTest" ,"branchTest"],
-            description: "choose repo to use.",)
       choice(name: "Schedule",
             choices: ['never', 'week','day', 'hour', "Monday(9am)", "Friday(9am)"],
             description: "How often would you like the pipeline to run?")
@@ -37,7 +34,7 @@ pipeline {
 
                   git 'https://github.com/luv1593/mergeTest.git'
                   sh "git describe --tags `git rev-list --tags --max-count=1`"
-                   git diff --stat-graph-width=1 v1.11.2..origin/QA "
+                   sh "git diff --stat-graph-width=1 v1.11.2..origin/QA "
 
                       }
 
