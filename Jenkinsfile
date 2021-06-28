@@ -34,6 +34,7 @@ pipeline {
 
                   git 'https://github.com/luv1593/mergeTest.git'
                   VERSION_TAG=sh "git describe --tags `git rev-list --tags --max-count=1`"
+                  echo ${VERSION_TAG}
                    sh "git diff --stat-graph-width=1 ${VERSION_TAG}..origin/QA "
 
                       }
