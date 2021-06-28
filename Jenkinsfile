@@ -36,10 +36,17 @@ pipeline {
 
                 for(int i=0; i < REPO_LIST.size(); i++) {
                           stage(REPO_LIST[i]){
-                              echo REPO_LIST[i]
+                              git 'REPO_LIST[i]
+
+                              GIT_VERSION_TAG = sh (
+                                script: 'git describe --tags `git rev-list --tags --max-count=1`',
+                                  returnStdout: true
+                                    ).trim()
+                                  echo "${GIT_VERSION_TAG}"
+                                sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/QA "
                               }
                             }
-
+/*
                 git 'https://github.com/luv1593/mergeTest.git'
 
 
@@ -49,7 +56,7 @@ pipeline {
                       ).trim()
                     echo "${GIT_VERSION_TAG}"
                   sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/QA "
-
+*/
 
                       }
 
