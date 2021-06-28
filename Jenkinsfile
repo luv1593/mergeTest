@@ -33,10 +33,10 @@ pipeline {
             steps {
               script {
                 REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
-                
+
                 for(int i=0; i < REPO_LIST.size(); i++) {
                           stage(REPO_LIST[i]){
-                              echo "Element: $i"
+                              echo "Element: $REPO_LIST[i]"
                               }
                               }
 
