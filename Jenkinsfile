@@ -50,7 +50,7 @@ pipeline {
                                   //something a bit strange with tags (runs from master not latest tag)
 
                                 GIT_DIFF_DATA_M = sh (
-                                  script: 'git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master',
+                                  script: 'git diff --stat-graph-width=1 "${GIT_VERSION_TAG}"..origin/master',
                                     returnStdout: true
                                       ).trim()
                                     echo "${GIT_DIFF_DATA_M}"
