@@ -32,10 +32,18 @@ pipeline {
             steps {
               script {
 
-                  git 'https://github.com/luv1593/mergeTest.git'
-                  VERSION_TAG= "describe --tags `git rev-list --tags --max-count=1`"
+                git 'https://github.com/luv1593/mergeTest.git'
 
-                  sh "git diff --stat-graph-width=1 ${VERSION_TAG}..origin/QA "
+
+                GIT_COMMIT_EMAIL = sh (
+                  script: 'git describe --tags `git rev-list --tags --max-count=1`'',
+                    returnStdout: true
+                      ).trim()
+                    echo "${GIT_COMMIT_EMAIL}"
+
+
+
+                  sh "git diff --stat-graph-width=1 ${GIT_COMMIT_EMAIL}..origin/QA "
 
                       }
 
