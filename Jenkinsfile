@@ -81,16 +81,16 @@ echo "difference between latest tag and QA:"  >> Email.txt
 echo "-                                               -" >> Email.txt
 echo $(git diff --stat-graph-width=1 $disc..origin/QA) >> Email.txt
 echo "-                                               -" >> Email.txt
-diffs=$(git diff --stat $disc..origin/QA)
+diffs=$(git diff  --stat-graph-width=1 $disc..origin/QA)
 #take out merge sections
 echo $diffs
 echo "-------------------------latest vs dev------------------------------------"
 #email section
 echo "difference between latest tag and dev:"  >> Email.txt
 echo "-                                               -" >> Email.txt
-echo $(git diff --stat $disc..origin/dev) >> Email.txt
+echo $(git diff  --stat-graph-width=1 $disc..origin/dev) >> Email.txt
 echo "-                                               -" >> Email.txt
-diffsD=$(git diff --stat $disc..origin/dev)
+diffsD=$(git diff  --stat-graph-width=1 $disc..origin/dev)
 #try to merge
 echo $diffs
 if [[ "$diffsD" = *"insertions"* ||  "$diffsD" = *"deletions"* ||  "$diffsD" = *"insertion"* ||  "$diffsD" = *"deletion"* ]];
