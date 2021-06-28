@@ -25,6 +25,7 @@ pipeline {
             steps {
                 echo "${params.repo}"
                 echo "${params.Schedule}"
+                REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
             }
         }
 
@@ -32,18 +33,21 @@ pipeline {
             steps {
               script {
 
+                for(int i=0; i < list.size(); i++) {
+                          stage(REPO_LIST[i]){
+                              echo "Element: $i"
+                              }
+
                 git 'https://github.com/luv1593/mergeTest.git'
 
 
-                GIT_COMMIT_EMAIL = sh (
+                GIT_VERSION_TAG = sh (
                   script: 'git describe --tags `git rev-list --tags --max-count=1`',
                     returnStdout: true
                       ).trim()
-                    echo "${GIT_COMMIT_EMAIL}"
+                    echo "${GIT_VERSION_TAG}"
+                  sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/QA "
 
-
-
-                  sh "git diff --stat-graph-width=1 ${GIT_COMMIT_EMAIL}..origin/QA "
 
                       }
 
