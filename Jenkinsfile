@@ -47,14 +47,10 @@ pipeline {
                                   returnStdout: true
                                     ).trim()
                                   echo "${GIT_VERSION_TAG}"
-                                  verion = ${GIT_VERSION_TAG}
+                                
                                   //something a bit strange with tags (runs from master not latest tag)
 
-                                GIT_DIFF_DATA_M = sh (
-                                  script: 'git diff --stat-graph-width=1 version..origin/master',
-                                    returnStdout: true
-                                      ).trim()
-                                    echo "${GIT_DIFF_DATA_M}"
+
 
                                   sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master "
                                   sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/QA "
