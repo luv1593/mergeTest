@@ -36,7 +36,7 @@ pipeline {
 
                 for(int i=0; i < REPO_LIST.size(); i++) {
                           stage(REPO_LIST[i]){
-                              git 'REPO_LIST[i]
+                              git REPO_LIST[i]
 
                               GIT_VERSION_TAG = sh (
                                 script: 'git describe --tags `git rev-list --tags --max-count=1`',
