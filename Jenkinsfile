@@ -56,7 +56,9 @@ pipeline {
                     returnStdout: true
                       ).trim()
                     echo "${GIT_VERSION_TAG}"
+                  sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master "
                   sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/QA "
+                  sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/dev "
 */
 
                       }
