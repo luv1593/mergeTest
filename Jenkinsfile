@@ -36,7 +36,7 @@ pipeline {
               //checkout tag??
 
                 REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git", "https://github.com/luv1593/repoTest.git"]
-
+                data = "hello test"
                 for(int i=0; i < REPO_LIST.size(); i++) {
                 cleanWs()
                           stage(REPO_LIST[i]){
@@ -57,7 +57,7 @@ pipeline {
                                   sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/dev "
 
 
-                                  writeFile(file: 'Email.txt', text: sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master ")
+                                  writeFile(file: 'Email.txt', text: data)
 
                               }
                             }
