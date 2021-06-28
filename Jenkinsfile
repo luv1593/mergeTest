@@ -25,15 +25,16 @@ pipeline {
             steps {
                 echo "${params.repo}"
                 echo "${params.Schedule}"
-                REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
+
             }
         }
 
         stage('build') {
             steps {
               script {
-
-                for(int i=0; i < list.size(); i++) {
+                REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
+                
+                for(int i=0; i < REPO_LIST.size(); i++) {
                           stage(REPO_LIST[i]){
                               echo "Element: $i"
                               }
