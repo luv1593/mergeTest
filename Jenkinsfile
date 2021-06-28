@@ -32,6 +32,9 @@ pipeline {
         stage('build') {
             steps {
               script {
+
+              //checkout tag??
+
                 REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
 
                 for(int i=0; i < REPO_LIST.size(); i++) {
@@ -44,27 +47,24 @@ pipeline {
                                   returnStdout: true
                                     ).trim()
                                   echo "${GIT_VERSION_TAG}"
+                                  //something a bit strange with tags (runs from master not latest tag)
+
+                                GIT_DIFF_DATA_M = sh (
+                                  script: 'git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master',
+                                    returnStdout: true
+                                      ).trim()
+                                    echo "${GIT_DIFF_DATA_M}"
+
                                   sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master "
                                   sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/QA "
-                                  sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/dev " 
+                                  sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/dev "
+
+
+                                  writeFile(file: 'Email.txt', text: data)
+
                               }
                             }
-/*
-                git 'https://github.com/luv1593/mergeTest.git'
-
-
-                GIT_VERSION_TAG = sh (
-                  script: 'git describe --tags `git rev-list --tags --max-count=1`',
-                    returnStdout: true
-                      ).trim()
-                    echo "${GIT_VERSION_TAG}"
-                  sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/master "
-                  sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/QA "
-                  sh "git diff --stat-graph-width=1 ${GIT_VERSION_TAG}..origin/dev "
-*/
-
                       }
-
                     }
         }
 
