@@ -37,6 +37,7 @@ pipeline {
                           stage(REPO_LIST[i]){
                               echo "Element: $i"
                               }
+                              }
 
                 git 'https://github.com/luv1593/mergeTest.git'
 
