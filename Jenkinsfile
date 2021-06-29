@@ -95,9 +95,9 @@ pipeline {
                         echo "-------------------------latest vs master------------------------------------"
                         #email section
                         echo "difference between latest tag and master:"  >> Email.txt
-                        echo "-                                               -" >> Email.txt
+                        echo "                                               " >> Email.txt
                         echo $(git diff --stat $disc..origin/master) >> Email.txt
-                        echo "---------------------------------------------------------------------" >> Email.txt
+                        echo "                                               " >> Email.txt
                         echo " " >> Email.txt
 
                         echo "-------------------------------------------------------------------"
