@@ -38,17 +38,12 @@ pipeline {
         stage('build') {
             steps {
               script {
-              REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
 
 
               //put all info into 1 vari and at end append and clean
 
 
 
-                        git REPO_LIST[i]
-                        echo REPO_LIST[i]
-                        repoName = REPO_LIST[i]
-                        echo "${repoName}"
 
 
                         sh '''#!/bin/bash
