@@ -35,9 +35,13 @@ pipeline {
 
 
               sh '''#!/bin/bash
+              dateAndTime=`date`
               echo "new line " > Email.txt
+              echo "Date and Time: " >> Email.txt
+              echo $dateAndTime >> Email.txt
+              echo " " >> Email.txt
               '''
-              cleanWs()
+
               for(int i=0; i < REPO_LIST.size(); i++) {
 
 
@@ -54,28 +58,17 @@ pipeline {
                                "origin/qa"
                               "origin/test"
                               "origin/TEST")
-                        dateAndTime=`date`
+                        
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
                         #git checkout $disc
                         echo $disc
-                        #latest --> QA
-                        #do other way
-                        #git pull so no local conflict
-                        #fix looping
-                        echo "-------------------------------------------------------------------------"
-                        branch=$(git branch -r)
-                        for i in $branch
-                        do
-                          #echo $i
-                          branArr+=($i)
-                        done
+
+
                         echo "---------------------------latest vs QA ---------------------------------"
                         echo "latest verison: " >> Email.txt
                         echo $disc >> Email.txt
                         echo " " >> Email.txt
-                        echo "Date and Time: " >> Email.txt
-                        echo $dateAndTime >> Email.txt
-                        echo " " >> Email.txt
+
 
                         echo "difference between latest tag and QA:"  >> Email.txt
                         echo "-                                               -" >> Email.txt
