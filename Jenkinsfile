@@ -48,7 +48,7 @@ pipeline {
 
 
                     stage(REPO_LIST[i]){
-                        git 'REPO_LIST[i]'
+                        git REPO_LIST[i]
                         echo REPO_LIST[i]
 
 
