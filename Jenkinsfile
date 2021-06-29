@@ -76,6 +76,7 @@ pipeline {
                         echo "Date and Time: " >> Email.txt
                         echo $dateAndTime >> Email.txt
                         echo " " >> Email.txt
+
                         echo "difference between latest tag and QA:"  >> Email.txt
                         echo "-                                               -" >> Email.txt
                         echo $(git diff --stat-graph-width=1 $disc..origin/QA) >> Email.txt
@@ -96,9 +97,9 @@ pipeline {
                         echo "difference between latest tag and master:"  >> Email.txt
                         echo "-                                               -" >> Email.txt
                         echo $(git diff --stat $disc..origin/master) >> Email.txt
-                        echo "-                                               -" >> Email.txt
+                        echo "---------------------------------------------------------------------" >> Email.txt
                         echo " " >> Email.txt
-                        
+
                         echo "-------------------------------------------------------------------"
                         # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
                         #if master is not most up to date then tag was created from not master
