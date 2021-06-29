@@ -3,7 +3,7 @@ pipeline {
 
     parameters{
       choice(name: "Schedule",
-            choices: ['never', 'week','day', 'hour', "Monday(9am)", "Friday(9am)"],
+            choices: ['never', 'week','day', 'hour', "9am Everyday"],
             description: "How often would you like the pipeline to run?")
     }
 
@@ -15,8 +15,8 @@ pipeline {
             */1 1 * * 1 %Schedule="week"
             */1 1 1 * * %Schedule="day"
             */1 1 * * * %Schedule="hour"
-            0 9 * * 1 %Schedule="Monday(9am)"
-            0 9 * * 5 %Schedule="Friday(9am)"
+            0 9 * * * %Schedule="9am Everyday"
+
         ''')
     }
 
@@ -28,7 +28,7 @@ pipeline {
 
                 sh '''#!/bin/bash
                 dateAndTime=`date`
-                echo "new line " > Email.txt
+                echo " " > Email.txt
                 echo "Date and Time: " >> Email.txt
                 echo $dateAndTime >> Email.txt
                 echo " " >> Email.txt
@@ -70,22 +70,21 @@ pipeline {
                         echo "latest verison: " >> Email.txt
                         echo $disc >> Email.txt
                         echo " " >> Email.txt
-
+                        echo "repo:" >> Email.txt
+                        echo REPO_LIST[i] >> Email.txt
 
                         echo "difference between latest tag and QA:"  >> Email.txt
                         echo "-                                               -" >> Email.txt
                         echo $(git diff --stat-graph-width=1 $disc..origin/QA) >> Email.txt
                         echo "-                                               -" >> Email.txt
-                        diffs=$(git diff  --stat-graph-width=1 $disc..origin/QA)
-                        #take out merge sections
-                        echo $diffs
+
+
                         echo "-------------------------latest vs dev------------------------------------"
                         #email section
                         echo "difference between latest tag and dev:"  >> Email.txt
                         echo " " >> Email.txt
                         echo $(git diff  --stat-graph-width=1 $disc..origin/dev) >> Email.txt
                         echo " " >> Email.txt
-                        diffsD=$(git diff  --stat-graph-width=1 $disc..origin/dev)
 
                         echo "-------------------------latest vs master------------------------------------"
                         #email section
@@ -99,7 +98,7 @@ pipeline {
                         # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
                         #if master is not most up to date then tag was created from not master
                         '''
-                        
+
                         }
                       }
             }
