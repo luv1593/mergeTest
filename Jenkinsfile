@@ -50,14 +50,15 @@ pipeline {
                     stage(REPO_LIST[i]){
                         git REPO_LIST[i]
                         echo REPO_LIST[i]
-
+                        def repoName = REPO_LIST[i]
+                        echo "${repoName}"
 
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
                         echo
 
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
-                        
+
 
                         echo $disc
                         echo "---------------------------latest vs QA ---------------------------------"
