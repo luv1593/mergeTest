@@ -55,7 +55,7 @@ pipeline {
 
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
-
+                        git REPO_LIST[i]
                         echo "Repo: ${repoName}" >> Email.txt
                         echo " " >> Email.txt
 
@@ -67,7 +67,7 @@ pipeline {
                         echo "latest verison: " >> Email.txt
                         echo $disc >> Email.txt
                         unset disc
-                        
+
                         echo " " >> Email.txt
 
                         echo "difference between latest tag and QA:"  >> Email.txt
