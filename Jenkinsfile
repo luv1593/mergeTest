@@ -44,10 +44,11 @@ pipeline {
 
 
               for(int i=0; i < REPO_LIST.size(); i++) {
-
+              cleanWs()
 
 
                     stage(REPO_LIST[i]){
+
                         git REPO_LIST[i]
                         echo REPO_LIST[i]
                         def repoName = REPO_LIST[i]
