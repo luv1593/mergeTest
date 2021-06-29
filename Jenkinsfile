@@ -54,8 +54,7 @@ pipeline {
 
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
-                        echo "repo:" >> Email.txt
-                        echo git REPO_LIST[i] >> Email.txt
+
 
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
                         #git checkout $disc
@@ -72,9 +71,9 @@ pipeline {
 
 
                         echo "difference between latest tag and QA:"  >> Email.txt
-                        echo "-                                               -" >> Email.txt
+                        echo "                                              " >> Email.txt
                         echo $(git diff --stat-graph-width=1 $disc..origin/QA) >> Email.txt
-                        echo "-                                               -" >> Email.txt
+                        echo "                                              " >> Email.txt
 
 
                         echo "-------------------------latest vs dev------------------------------------"
