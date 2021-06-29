@@ -41,26 +41,27 @@ pipeline {
               REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
 
 
-              def repoName = " "
-
-              for(int i=0; i < REPO_LIST.size(); i++) {
-
-
               //put all info into 1 vari and at end append and clean
 
-                    stage(REPO_LIST[i]){
+
 
                         git REPO_LIST[i]
                         echo REPO_LIST[i]
                         repoName = REPO_LIST[i]
                         echo "${repoName}"
-                      
+
 
                         sh '''#!/bin/bash
 
                         echo "-------------------------------------------------------------------------"
+                        REPO_LIST={"https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
 
-                        echo ${repoName} >> Email.txt
+                      for i in $REPO_LIST
+                      do
+                        REPONAME = " "
+
+
+                        echo ${REPONAME} >> Email.txt
                         echo " " >> Email.txt
 
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
@@ -130,12 +131,13 @@ pipeline {
                         # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
                         #if master is not most up to date then tag was created from not master
 
+                        done
 
                         '''
 
                         }
-                      }
-            }
+
+
 
 
 
