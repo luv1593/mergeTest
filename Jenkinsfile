@@ -46,20 +46,20 @@ pipeline {
               for(int i=0; i < REPO_LIST.size(); i++) {
 
 
+
                     stage(REPO_LIST[i]){
                         git REPO_LIST[i]
                         echo REPO_LIST[i]
-                        
+
 
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
                         echo
 
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
-                        #git checkout $disc
+                        
+
                         echo $disc
-
-
                         echo "---------------------------latest vs QA ---------------------------------"
                         echo "latest verison: " >> Email.txt
                         echo $disc >> Email.txt
