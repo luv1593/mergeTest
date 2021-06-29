@@ -40,12 +40,12 @@ pipeline {
             steps {
               script {
               REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
-              cleanWs()
+
 
 
 
               for(int i=0; i < REPO_LIST.size(); i++) {
-              cleanWs()
+
 
                     stage(REPO_LIST[i]){
                         git REPO_LIST[i]
@@ -99,7 +99,7 @@ pipeline {
                         # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
                         #if master is not most up to date then tag was created from not master
                         '''
-
+                        cleanWs()
                         }
                       }
             }
