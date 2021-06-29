@@ -70,11 +70,13 @@ pipeline {
                         echo $disc
                         echo " " >> Email.txt
 
+                        echo "difference between latest tag and QA:"  >> Email.txt
+
                         diffsQ = $(git diff --stat $disc..origin/QA)
                         if [[ "$diffsQ" = *"insertions"* ||  "$diffsQ" = *"deletions"* ||  "$diffsQ" = *"insertion"* ||  "$diffsQ" = *"deletion"* ]];
                         then
 
-                        echo "difference between latest tag and QA:"  >> Email.txt
+
                         echo "                                              " >> Email.txt
                         echo $(git diff --stat-graph-width=1 $disc..origin/QA) >> Email.txt
                         echo "                                              " >> Email.txt
@@ -100,6 +102,8 @@ pipeline {
                         echo "difference between latest tag and master:"  >> Email.txt
 
                         diffsM = $(git diff --stat $disc..origin/master)
+                        echo $diffsM
+                      
                         if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ||  "$diffsM" = *"insertion"* ||  "$diffsM" = *"deletion"* ]];
                         then
 
