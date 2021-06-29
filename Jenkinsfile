@@ -70,12 +70,18 @@ pipeline {
                         echo $disc
                         echo " " >> Email.txt
 
-
+                        diffsQ = $(git diff --stat $disc..origin/QA)
+                        if [[ "$diffsQ" = *"insertions"* ||  "$diffsQ" = *"deletions"* ||  "$diffsQ" = *"insertion"* ||  "$diffsQ" = *"deletion"* ]];
+                        then
 
                         echo "difference between latest tag and QA:"  >> Email.txt
                         echo "                                              " >> Email.txt
                         echo $(git diff --stat-graph-width=1 $disc..origin/QA) >> Email.txt
                         echo "                                              " >> Email.txt
+                        else
+                           echo "There are no differences between latest tag and QA " >> Email.txt
+
+                        fi
 
 
                         echo "-------------------------latest vs dev------------------------------------"
@@ -88,10 +94,21 @@ pipeline {
                         echo "-------------------------latest vs master------------------------------------"
                         #email section
                         echo "difference between latest tag and master:"  >> Email.txt
+
+                        diffsM = $(git diff --stat $disc..origin/master)
+                        if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ||  "$diffsM" = *"insertion"* ||  "$diffsM" = *"deletion"* ]];
+                        then
+
+
                         echo "                                               " >> Email.txt
                         echo $(git diff --stat-graph-width=1 $disc..origin/master) >> Email.txt
                         echo "                                               " >> Email.txt
                         echo " " >> Email.txt
+
+                        else
+                          echo "There are no differences between latest tag and master " >> Email.txt
+
+                        fi
 
                         echo "-------------------------------------------------------------------"
                         # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
