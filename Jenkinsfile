@@ -50,12 +50,12 @@ pipeline {
                     stage(REPO_LIST[i]){
                         git REPO_LIST[i]
 
-                        echo "repo:" >> Email.txt
-                        echo git REPO_LIST[i] >> Email.txt
+
 
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
-
+                        echo "repo:" >> Email.txt
+                        echo git REPO_LIST[i] >> Email.txt
 
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
                         #git checkout $disc
