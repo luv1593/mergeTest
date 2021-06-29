@@ -49,7 +49,7 @@ pipeline {
                     stage(REPO_LIST[i]){
                         git REPO_LIST[i]
                         echo REPO_LIST[i]
-                        sh "echo REPO_LIST[i] >> build.sbt"
+                        
 
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
