@@ -51,7 +51,7 @@ pipeline {
                         git REPO_LIST[i]
 
                         echo "repo:" >> Email.txt
-                        echo $(git REPO_LIST[i]) >> Email.txt
+                        echo git REPO_LIST[i] >> Email.txt
 
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
