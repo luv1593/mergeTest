@@ -78,8 +78,12 @@ pipeline {
                         echo "                                              " >> Email.txt
                         echo $(git diff --stat-graph-width=1 $disc..origin/QA) >> Email.txt
                         echo "                                              " >> Email.txt
+
                         else
+
+                          echo "                                              " >> Email.txt
                            echo "There are no differences between latest tag and QA " >> Email.txt
+                           echo "                                              " >> Email.txt
 
                         fi
 
@@ -106,7 +110,9 @@ pipeline {
                         echo " " >> Email.txt
 
                         else
-                          echo "There are no differences between latest tag and master " >> Email.txt
+                        echo "                                              " >> Email.txt
+                         echo "There are no differences between latest tag and master " >> Email.txt
+                         echo "                                              " >> Email.txt
 
                         fi
 
