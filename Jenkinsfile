@@ -55,7 +55,7 @@ pipeline {
 
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
-                        git REPO_LIST[i]
+
                         echo "Repo: ${repoName}" >> Email.txt
                         echo " " >> Email.txt
 
@@ -66,7 +66,7 @@ pipeline {
                         echo "---------------------------latest vs QA ---------------------------------"
                         echo "latest verison: " >> Email.txt
                         echo $disc >> Email.txt
-                        unset disc
+
 
                         echo " " >> Email.txt
 
@@ -120,7 +120,7 @@ pipeline {
                          echo " ~~~~~~~~~~~~~~~~~~end of repo~~~~~~~~~~~~~~~~~~~~~~ " >> Email.txt
 
                         fi
-
+                        unset disc
                         echo "-------------------------------------------------------------------"
                         # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
                         #if master is not most up to date then tag was created from not master
