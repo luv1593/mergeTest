@@ -44,8 +44,9 @@ pipeline {
 
 
               for(int i=0; i < REPO_LIST.size(); i++) {
-              cleanWs()
 
+
+              //put all info into 1 vari and at end append and clean
 
                     stage(REPO_LIST[i]){
 
@@ -61,6 +62,7 @@ pipeline {
                         echo " " >> Email.txt
 
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
+
 
 
                         echo $disc
@@ -114,6 +116,7 @@ pipeline {
                         echo "                                               " >> Email.txt
                         echo " " >> Email.txt
 
+
                         else
                         echo "                                              " >> Email.txt
                          echo "There are no differences between latest tag and master " >> Email.txt
@@ -125,6 +128,9 @@ pipeline {
                         echo "-------------------------------------------------------------------"
                         # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
                         #if master is not most up to date then tag was created from not master
+                        unset disc
+                        echo $disc
+
                         '''
 
                         }
