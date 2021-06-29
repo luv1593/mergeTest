@@ -5,6 +5,7 @@ pipeline {
       choice(name: "Schedule",
             choices: ['never', 'week','day', 'hour', "9am Everyday"],
             description: "How often would you like the pipeline to run?")
+
     }
 
 
@@ -23,8 +24,6 @@ pipeline {
     stages {
         stage('chosen parameters') {
             steps {
-                echo "${params.repo}"
-                echo "${params.Schedule}"
 
                 sh '''#!/bin/bash
                 dateAndTime=`date`
@@ -50,11 +49,11 @@ pipeline {
                     stage(REPO_LIST[i]){
                         git REPO_LIST[i]
                         echo REPO_LIST[i]
-
+                        sh "echo REPO_LIST[i] >> build.sbt"
 
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
-                        echo $"REPO_LIST[i]"
+                        echo
 
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
                         #git checkout $disc
