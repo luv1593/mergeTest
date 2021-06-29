@@ -25,7 +25,7 @@ pipeline {
             steps {
                 echo "${params.repo}"
                 echo "${params.Schedule}"
-                
+
                 sh '''#!/bin/bash
                 dateAndTime=`date`
                 echo "new line " > Email.txt
@@ -40,7 +40,7 @@ pipeline {
             steps {
               script {
               REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
-
+              cleanWs()
 
 
 
