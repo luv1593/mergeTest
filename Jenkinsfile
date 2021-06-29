@@ -72,7 +72,7 @@ pipeline {
                         unset disc
                         echo " " >> Email.txt
                         echo "repo:" >> Email.txt
-                        echo $REPO_LIST[i] >> Email.txt
+                        echo ${REPO_LIST[i]} >> Email.txt
                         echo " " >> Email.txt
 
                         echo "difference between latest tag and QA:"  >> Email.txt
