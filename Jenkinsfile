@@ -72,7 +72,7 @@ pipeline {
 
                         echo "difference between latest tag and QA:"  >> Email.txt
 
-                        diffsQ = $(git diff --stat $disc..origin/QA)
+                        diffsQ=$(git diff --stat $disc..origin/QA)
                         if [[ "$diffsQ" = *"insertions"* ||  "$diffsQ" = *"deletions"* ||  "$diffsQ" = *"insertion"* ||  "$diffsQ" = *"deletion"* ]];
                         then
 
@@ -101,9 +101,9 @@ pipeline {
                         #email section
                         echo "difference between latest tag and master:"  >> Email.txt
 
-                        diffsM = $(git diff --stat $disc..origin/master)
+                        diffsM=$(git diff --stat $disc..origin/master)
                         echo $diffsM
-                      
+
                         if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ||  "$diffsM" = *"insertion"* ||  "$diffsM" = *"deletion"* ]];
                         then
 
