@@ -56,7 +56,7 @@ pipeline {
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
 
-                        echo "${repoName}" >> Email.txt
+                        echo ${repoName} >> Email.txt
                         echo " " >> Email.txt
 
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
