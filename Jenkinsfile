@@ -52,14 +52,7 @@ pipeline {
 
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
-                        branArr=()
-                        onlyBran=()
-                        devLst=${"origin/dev" "origin/develop" "origin/development" "origin/DEV" "origin/DEVELOP" "origin/DEVELOPMENT"}
-                        mastLst=("origin/master" "origin/prod" "origin/production" "origin/main" "origin/MASTER" "origin/PROD" "origin/PRODUCTION" "origin/MAIN")
-                        QALst=("origin/QA"
-                               "origin/qa"
-                              "origin/test"
-                              "origin/TEST")
+                        
 
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
                         #git checkout $disc
