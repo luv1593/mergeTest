@@ -83,7 +83,7 @@ pipeline {
 
                         else
 
-                          echo "                                              " >> Email.txt
+                           echo "                                              " >> Email.txt
                            echo "There are no differences between latest tag and QA " >> Email.txt
                            echo "                                              " >> Email.txt
 
@@ -120,7 +120,7 @@ pipeline {
                          echo " ~~~~~~~~~~~~~~~~~~end of repo~~~~~~~~~~~~~~~~~~~~~~ " >> Email.txt
 
                         fi
-                        unset disc
+
                         echo "-------------------------------------------------------------------"
                         # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
                         #if master is not most up to date then tag was created from not master
