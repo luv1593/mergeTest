@@ -45,7 +45,7 @@ pipeline {
 
 
               for(int i=0; i < REPO_LIST.size(); i++) {
-
+              cleanWs()
 
                     stage(REPO_LIST[i]){
                         git REPO_LIST[i]
