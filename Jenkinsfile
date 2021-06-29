@@ -55,7 +55,7 @@ pipeline {
 
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
-                        git "${repoName}"
+                      
                         echo "Repo: ${repoName}" >> Email.txt
                         echo " " >> Email.txt
 
