@@ -25,6 +25,14 @@ pipeline {
             steps {
                 echo "${params.repo}"
                 echo "${params.Schedule}"
+                
+                sh '''#!/bin/bash
+                dateAndTime=`date`
+                echo "new line " > Email.txt
+                echo "Date and Time: " >> Email.txt
+                echo $dateAndTime >> Email.txt
+                echo " " >> Email.txt
+                '''
             }
         }
 
@@ -34,13 +42,7 @@ pipeline {
               REPO_LIST = ["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
 
 
-              sh '''#!/bin/bash
-              dateAndTime=`date`
-              echo "new line " > Email.txt
-              echo "Date and Time: " >> Email.txt
-              echo $dateAndTime >> Email.txt
-              echo " " >> Email.txt
-              '''
+
 
               for(int i=0; i < REPO_LIST.size(); i++) {
 
@@ -58,7 +60,7 @@ pipeline {
                                "origin/qa"
                               "origin/test"
                               "origin/TEST")
-                        
+
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
                         #git checkout $disc
                         echo $disc
@@ -89,7 +91,7 @@ pipeline {
                         #email section
                         echo "difference between latest tag and master:"  >> Email.txt
                         echo "                                               " >> Email.txt
-                        echo $(git diff --stat $disc..origin/master) >> Email.txt
+                        echo $(git diff --stat-graph-width=1 $disc..origin/master) >> Email.txt
                         echo "                                               " >> Email.txt
                         echo " " >> Email.txt
 
