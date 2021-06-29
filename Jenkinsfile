@@ -55,7 +55,7 @@ pipeline {
 
                         sh '''#!/bin/bash
                         echo "-------------------------------------------------------------------------"
-                      
+
                         echo "Repo: ${repoName}" >> Email.txt
                         echo " " >> Email.txt
 
@@ -117,6 +117,7 @@ pipeline {
                         echo "                                              " >> Email.txt
                          echo "There are no differences between latest tag and master " >> Email.txt
                          echo "                                              " >> Email.txt
+                         echo " ~~~~~~~~~~~~~~~~~~end of repo~~~~~~~~~~~~~~~~~~~~~~ " >> Email.txt
 
                         fi
 
