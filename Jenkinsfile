@@ -53,7 +53,7 @@ pipeline {
 
                       for i in ${REPO_LIST[@]}
                       do
-
+                        git $i
 
 
                         echo $REPONAME >> Email.txt
