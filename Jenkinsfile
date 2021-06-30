@@ -57,7 +57,8 @@ pipeline {
                       for i in "${REPO_LIST[@]}"
                       do
 
-                        git clone $i
+                        git clone "$i"
+                        cd "$i"
                         git status
 
 
