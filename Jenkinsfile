@@ -59,11 +59,11 @@ pipeline {
                         (INDEX++)
                         echo "$i"
                         git clone "$i"
-                        if [i == 0]; then
+                        if [$INDEX == 0]; then
                           '''
                           git 'https://github.com/luv1593/branchTest.git'
                           sh '''#!/bin/bash
-                          
+
                         else
                           '''
                           git 'https://github.com/luv1593/mergeTest.git'
