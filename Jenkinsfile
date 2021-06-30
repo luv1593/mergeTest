@@ -54,7 +54,7 @@ pipeline {
                       for i in "${REPO_LIST[@]}"
                       do
                         echo "$i"
-
+                        echo git clone "$i"
 
                         echo $REPONAME >> Email.txt
                         echo " " >> Email.txt
