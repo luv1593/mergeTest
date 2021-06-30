@@ -47,7 +47,7 @@ pipeline {
 
                 //jenkins needs to open repo
 
-                  //git 'https://github.com/luv1593/mergeTest.git'
+                  git 'https://github.com/luv1593/branchTest.git'
 
 
                         sh '''#!/bin/bash
@@ -60,14 +60,15 @@ pipeline {
                       for i in "${REPO_LIST[@]}"
                       do
 
-                        git config remote.origin.url $i
+                        git  $i
 
                         echo "repo: $i"
                         git clone $i
 
                         git pull
+                        git checkout $i
 
-#open git repo here->
+#open git repo here-> git ls-remote --tags --sort=v:refname https://github.com/luv1593/mergeTest.git (get last)
 #local dir
 #cant stop script in loop
 
