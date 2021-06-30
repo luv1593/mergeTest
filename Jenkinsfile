@@ -44,6 +44,7 @@ pipeline {
 
 
               cleanWs()
+
                 //jenkins needs to open repo
 
                   git 'https://github.com/luv1593/mergeTest.git'
@@ -55,13 +56,17 @@ pipeline {
                         declare -a REPO_LIST=( 'https://github.com/luv1593/mergeTest.git'
                                                 'https://github.com/luv1593/branchTest.git'
                                                 )
-                      INDEX=0
+
                       for i in "${REPO_LIST[@]}"
                       do
 
                         git config remote.origin.url $i
+                        echo $i
+                        git $i
+#open git repo here->
+#local dir
+#cant stop script in loop
 
-                        
 
 
                         echo " " >> Email.txt
@@ -138,6 +143,7 @@ pipeline {
                         done
 
                         '''
+
 
                         }
 
