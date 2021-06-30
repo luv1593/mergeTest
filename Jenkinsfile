@@ -54,6 +54,7 @@ pipeline {
                       for i in $REPO_LIST
                       do
                         echo $i
+                        git $i
 
 
                         echo $REPONAME >> Email.txt
