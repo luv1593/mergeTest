@@ -58,7 +58,7 @@ pipeline {
                       do
 
                         git clone "$i"
-                        cd "$i"
+                        cd /Users/lucasverrilli/Documents/GitHub/mergeTest
                         git status
 
 
