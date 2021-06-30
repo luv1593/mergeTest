@@ -42,18 +42,18 @@ pipeline {
 
               //put all info into 1 vari and at end append and clean
 
-              cleanWs()
+
 
 
 
                         sh '''#!/bin/bash
 
                         echo "-------------------------------------------------------------------------"
-                        REPO_LIST=( 'https://github.com/luv1593/branchTest.git',  'https://github.com/luv1593/mergeTest.git' )
+                        REPO_LIST=( 'https://github.com/luv1593/branchTest.git' ,  'https://github.com/luv1593/mergeTest.git' )
 
                       for i in ${REPO_LIST[@]}
                       do
-                        git clone $i
+
 
 
                         echo $REPONAME >> Email.txt
