@@ -47,7 +47,7 @@ pipeline {
 
                 //jenkins needs to open repo
 
-                  
+                  //git 'https://github.com/luv1593/mergeTest.git'
 
 
                         sh '''#!/bin/bash
@@ -61,8 +61,12 @@ pipeline {
                       do
 
                         git config remote.origin.url $i
+
                         echo $i
                         git $i
+                        
+                        git pull
+
 #open git repo here->
 #local dir
 #cant stop script in loop
