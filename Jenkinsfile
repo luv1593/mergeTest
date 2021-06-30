@@ -79,7 +79,7 @@ pipeline {
 
                       #  disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
-                        disc=$(git describe --tags)
+                        disc=$( git describe --tags )
 
 
                         echo "tag: $disc"
