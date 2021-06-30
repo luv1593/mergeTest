@@ -46,6 +46,8 @@ pipeline {
               cleanWs()
                 //jenkins needs to open repo
 
+                  git 'https://github.com/luv1593/mergeTest.git'
+
 
                         sh '''#!/bin/bash
 
@@ -58,7 +60,7 @@ pipeline {
                       do
 
                         git config remote.origin.url $i
-                        
+
                         git status
 
 
