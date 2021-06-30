@@ -42,7 +42,7 @@ pipeline {
 
               //put all info into 1 vari and at end append and clean
 
-
+              cleanWs()
 
 
 
