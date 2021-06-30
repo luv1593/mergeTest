@@ -61,7 +61,7 @@ pipeline {
 
                         git config remote.origin.url $i
 
-                        git status
+                        
 
 
                         echo " " >> Email.txt
