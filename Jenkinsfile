@@ -50,15 +50,15 @@ pipeline {
                         sh '''#!/bin/bash
 
                         echo "-------------------------------------------------------------------------"
-                        declare -a REPO_LIST=( 'https://github.com/luv1593/branchTest.git'
-                                                'https://github.com/luv1593/mergeTest.git'
+                        declare -a REPO_LIST=( 'https://github.com/luv1593/mergeTest.git'
+                                                'https://github.com/luv1593/branchTest.git'
                                                 )
                       INDEX=0
                       for i in "${REPO_LIST[@]}"
                       do
 
-                        git clone "$i"
-                        cd /Users/lucasverrilli/Documents/GitHub/mergeTest
+                        git config remote.origin.url $i
+                        
                         git status
 
 
