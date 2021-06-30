@@ -58,7 +58,7 @@ pipeline {
                       do
 
                         git clone $i
-                        echo git status
+                        git status
 
 
                         echo " " >> Email.txt
