@@ -62,9 +62,9 @@ pipeline {
 
                         git config remote.origin.url $i
 
-                        echo $i
-                        git $i
-                        
+                        echo "repo: $i"
+                        git clone $i
+
                         git pull
 
 #open git repo here->
