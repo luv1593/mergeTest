@@ -56,20 +56,8 @@ pipeline {
                       INDEX=0
                       for i in "${REPO_LIST[@]}"
                       do
-                        (INDEX++)
-                        echo "$i"
-                        git clone "$i"
-                        if [$INDEX == 0]; then
-                          '''
-                          git 'https://github.com/luv1593/branchTest.git'
-                          sh '''#!/bin/bash
 
-                        else
-                          '''
-                          git 'https://github.com/luv1593/mergeTest.git'
-                          sh '''#!/bin/bash
-
-                        fi
+                      git url: "$i"
 
 
 
