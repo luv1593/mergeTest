@@ -44,7 +44,7 @@ pipeline {
 
 
               cleanWs()
-
+                      git 'https://github.com/luv1593/branchTest.git'
 
                         sh '''#!/bin/bash
 
