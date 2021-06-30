@@ -53,7 +53,7 @@ pipeline {
 
                       for i in $REPO_LIST
                       do
-                        REPONAME = " "
+                        REPONAME = $REPO_LIST[i]
 
 
                         echo ${REPONAME} >> Email.txt
