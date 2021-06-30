@@ -51,10 +51,10 @@ pipeline {
                         echo "-------------------------------------------------------------------------"
                         REPO_LIST=[https://github.com/luv1593/branchTest.git, https://github.com/luv1593/mergeTest.git]
 
-                      for i in $REPO_LIST
+                      for i in ${REPO_LIST[@]}
                       do
                         echo $i
-                        echo ${REPO_LIST[@]}
+                         
                         git $i
 
 
