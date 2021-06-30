@@ -57,11 +57,11 @@ pipeline {
                       for i in "${REPO_LIST[@]}"
                       do
 
-                      ./urlopener "$i"
 
 
 
-                        echo $REPONAME >> Email.txt
+
+                        echo $i >> Email.txt
                         echo " " >> Email.txt
 
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
