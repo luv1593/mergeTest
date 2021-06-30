@@ -44,7 +44,7 @@ pipeline {
 
 
               cleanWs()
-                      
+
 
                         sh '''#!/bin/bash
 
@@ -53,7 +53,7 @@ pipeline {
 
                       for i in "${REPO_LIST[@]}"
                       do
-                        read url branch <<< "$i"
+                        echo "$i"
 
 
                         echo $REPONAME >> Email.txt
