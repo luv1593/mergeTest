@@ -74,14 +74,14 @@ pipeline {
 
 
                         echo " " >> Email.txt
-                        echo $i >> Email.txt
+                        echo "Email repo: $i" >> Email.txt
                         echo " " >> Email.txt
 
                         disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
 
 
-                        echo $disc
+                        echo "tag: $disc"
                         echo "---------------------------latest vs QA ---------------------------------"
                         echo "latest verison: " >> Email.txt
                         echo $disc >> Email.txt
