@@ -52,8 +52,7 @@ pipeline {
 
                         git REPO_LIST[i]
                         echo REPO_LIST[i]
-                        repoName = REPO_LIST[i]
-                        echo "${repoName}"
+                        
 
                         sh '''#!/bin/bash
 
