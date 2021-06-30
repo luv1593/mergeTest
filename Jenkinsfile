@@ -54,6 +54,7 @@ pipeline {
                       for i in $REPO_LIST
                       do
                         echo $i
+                        echo ${REPO_LIST[@]}
                         git $i
 
 
