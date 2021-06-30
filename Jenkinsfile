@@ -49,7 +49,7 @@ pipeline {
                         sh '''#!/bin/bash
 
                         echo "-------------------------------------------------------------------------"
-                        REPO_LIST=["https://github.com/luv1593/mergeTest.git", "https://github.com/luv1593/branchTest.git"]
+                        REPO_LIST=["https://github.com/luv1593/mergeTest.git"]
 
                       for i in $REPO_LIST
                       do
