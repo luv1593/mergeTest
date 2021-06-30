@@ -57,10 +57,10 @@ pipeline {
                       for i in "${REPO_LIST[@]}"
                       do
 
+                        git clone $i
 
 
-
-
+                        echo " " >> Email.txt
                         echo $i >> Email.txt
                         echo " " >> Email.txt
 
