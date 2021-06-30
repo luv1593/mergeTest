@@ -47,7 +47,7 @@ pipeline {
 
                 //jenkins needs to open repo
 
-                  git 'https://github.com/luv1593/mergeTest.git'
+                  
 
 
                         sh '''#!/bin/bash
