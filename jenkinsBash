@@ -52,6 +52,7 @@ pipeline {
 
                         git REPO_LIST[i]
                         echo REPO_LIST[i]
+
                         
 
                         sh '''#!/bin/bash
