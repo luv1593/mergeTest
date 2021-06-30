@@ -44,7 +44,7 @@ pipeline {
 
 
               cleanWs()
-
+                //jenkins needs to open repo
 
 
                         sh '''#!/bin/bash
@@ -58,6 +58,7 @@ pipeline {
                       do
 
                         git clone $i
+                        echo git status
 
 
                         echo " " >> Email.txt
