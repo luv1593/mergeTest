@@ -45,8 +45,7 @@ pipeline {
 
               cleanWs()
 
-                        git 'https://github.com/luv1593/branchTest.git'
-                        git 'https://github.com/luv1593/mergeTest.git' 
+
 
                         sh '''#!/bin/bash
 
@@ -54,11 +53,25 @@ pipeline {
                         declare -a REPO_LIST=( 'https://github.com/luv1593/branchTest.git'
                                                 'https://github.com/luv1593/mergeTest.git'
                                                 )
-
+                      INDEX=0
                       for i in "${REPO_LIST[@]}"
                       do
+                        (INDEX++)
                         echo "$i"
                         git clone "$i"
+                        if [i == 0]; then
+                          '''
+                          git 'https://github.com/luv1593/branchTest.git'
+                          sh '''#!/bin/bash
+                          
+                        else
+                          '''
+                          git 'https://github.com/luv1593/mergeTest.git'
+                          sh '''#!/bin/bash
+
+                        fi
+
+
 
                         echo $REPONAME >> Email.txt
                         echo " " >> Email.txt
