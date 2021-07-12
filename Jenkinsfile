@@ -97,7 +97,7 @@ pipeline {
 
                         echo "difference between latest tag and QA:"  >> Email.txt
 
-                        diffsQ=$(git diff --stat origin/$disc..origin/QA)
+                        diffsQ=$(git diff --stat origin/$disc origin/QA)
                         if [[ "$diffsQ" = *"insertions"* ||  "$diffsQ" = *"deletions"* ||  "$diffsQ" = *"insertion"* ||  "$diffsQ" = *"deletion"* ]];
                         then
 
