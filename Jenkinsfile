@@ -53,20 +53,22 @@ pipeline {
                         sh '''#!/bin/bash
 
                         echo "-------------------------------------------------------------------------"
-                        declare -a REPO_LIST=( 'https://github.com/luv1593/mergeTest.git'
-                                                'https://github.com/luv1593/branchTest.git'
+                        declare -a REPO_LIST=( 'mergeTest'
+                                                'branchTest'
                                                 )
 
                       for i in "${REPO_LIST[@]}"
                       do
+                        cd .jenkins/workspace/$i
 
-                        git  $i
 
                         echo "repo: $i"
-                        git clone $i
+
 
                         git pull
-                        git checkout $i
+                        
+
+
 
 #open git repo here-> git ls-remote --tags --sort=v:refname https://github.com/luv1593/mergeTest.git (get last)
 #local dir
