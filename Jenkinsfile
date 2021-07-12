@@ -170,7 +170,12 @@ pipeline {
     //CHOSE email
     post {
         always {
-            emailext attachLog: true, attachmentsPattern: 'Email.txt',body:" attached is the email.txt ", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Jenkins pipeline Test Build Number: '${currentBuild.number}' "
+            emailext attachLog: true,
+            attachmentsPattern: 'Email.txt',
+            body:" attached is the email.txt ",
+            recipientProviders: [[$class: 'DevelopersRecipientProvider'],
+            [$class: 'RequesterRecipientProvider']],
+            subject: "Jenkins pipeline Test Build Number: '${currentBuild.number}' "
         }
     }
 
