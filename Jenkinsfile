@@ -59,7 +59,7 @@ pipeline {
 
                       for i in "${REPO_LIST[@]}"
                       do
-                        cd .jenkins/workspace/pipelineTest/$i
+                        cd Documents/GitHub/$i
 
 
                         echo "repo: $i"
