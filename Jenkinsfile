@@ -47,7 +47,7 @@ pipeline {
 
                 //jenkins needs to open repo
 
-                  git 'https://github.com/luv1593/branchTest.git'
+                  //git 'https://github.com/luv1593/branchTest.git'
 
 
                         sh '''#!/bin/bash
@@ -72,6 +72,10 @@ pipeline {
 #local dir
 #cant stop script in loop
 
+#latest commit hash: git for-each-ref
+#latest commit hash + changes: git show --pretty=format:"%H"
+
+# git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v.*' | head -1
 
 
                         echo " " >> Email.txt
@@ -163,6 +167,7 @@ pipeline {
         }
 
     }
+    //CHOSE email
     post {
         always {
             emailext attachLog: true, attachmentsPattern: 'Email.txt',body:" attached is the email.txt ", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Jenkins pipeline Test Build Number: '${currentBuild.number}' "
