@@ -75,7 +75,8 @@ pipeline {
 #latest commit hash: git for-each-ref
 #latest commit hash + changes: git show --pretty=format:"%H"
 
-# git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v.*' | head -1
+# git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v.1.*' | head -1
+# git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v1.*' | tail -1
 
 
                         echo " " >> Email.txt
@@ -84,7 +85,7 @@ pipeline {
 
                       #  disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
-                        disc=$( git describe --tags )
+                        disc=$( git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v1.*' | tail -1)
 
 
                         echo "tag: $disc"
