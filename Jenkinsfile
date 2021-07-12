@@ -103,7 +103,7 @@ pipeline {
 
 
                         echo "                                              " >> Email.txt
-                        echo $(git diff --stat-graph-width=1 $disc..origin/QA) >> Email.txt
+                        echo $(git diff --stat-graph-width=1 origin/$disc..origin/QA) >> Email.txt
                         echo "                                              " >> Email.txt
 
                         else
