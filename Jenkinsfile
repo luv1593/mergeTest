@@ -56,9 +56,9 @@ pipeline {
 
 
                         dateAndTime=`date`
-                        EMAIL=$'\n'
+                        EMAIL=$'\\n'
                         EMAIL+=$'Date and Time: '
-                        EMAIL=$'\n'
+                        EMAIL=$'\\n'
                         EMAIL+=$dateAndTime
 
 
@@ -86,7 +86,7 @@ pipeline {
 # git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v1.*' | tail -1
 
 
-                          EMAIL+='\n '
+                          EMAIL+='\\n'
                         EMAIL+='Email repo: $i'
                           EMAIL+='\n '
 
