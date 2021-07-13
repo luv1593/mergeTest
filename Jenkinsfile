@@ -54,6 +54,10 @@ pipeline {
                                                 'branchTest'
                                                 )
 
+                        NL=$'\n'
+                        str="Hello World${NL} and here is a variable $PATH ===========${NL}"
+
+                        echo $str
 
                         dateAndTime=`date`
                         EMAIL=$' \n'
@@ -203,6 +207,7 @@ pipeline {
     }
     //move to bash
     post {
+    //what are other options?
         always {
             emailext attachLog: true,
             attachmentsPattern: 'Email.html',
