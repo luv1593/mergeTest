@@ -27,10 +27,10 @@ pipeline {
 
                 sh '''#!/bin/bash
                 dateAndTime=`date`
-                echo " " > Email2.txt
-                echo "Date and Time: " >> Email2.txt
-                echo $dateAndTime >> Email2.txt
-                echo " " >> Email2.txt
+                echo " " > Email.txt
+                echo "Date and Time: " >> Email.txt
+                echo $dateAndTime >> Email.txt
+                echo " " >> Email.txt
                 '''
             }
         }
@@ -60,6 +60,13 @@ pipeline {
                                                 'branchTest'
                                                 )
 
+
+                        dateAndTime=`date`
+                        EMAIL= "\n "
+                        EMAIL+= "Date and Time: \n"
+                        EMAIL+= "\n $dateAndTime"
+                        EMAIL+= "\n "
+
                       for i in "${REPO_LIST[@]}"
                       do
                         git clone https://github.com/luv1593/$i.git
@@ -84,9 +91,9 @@ pipeline {
 # git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v1.*' | tail -1
 
 
-                        echo " " >> Email.txt
-                        echo "Email repo: $i" >> Email.txt
-                        echo " " >> Email.txt
+                          EMAIL+= "\n "
+                        EMAIL+= "Email repo: $i"
+                          EMAIL+= "\n "
 
                       #  disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
@@ -95,10 +102,10 @@ pipeline {
 
                         echo "tag: $disc"
                         echo "---------------------------latest vs QA ---------------------------------"
-                        echo "latest verison: " >> Email.txt
-                        echo $disc >> Email.txt
+                        EMAIL+=  "latest verison: \n"
+                        EMAIL+= " $disc"
 
-                        echo " " >> Email.txt
+                        EMAIL+= "\n "
 
                         echo "difference between latest tag and QA:"  >> Email.txt
 
@@ -108,23 +115,23 @@ pipeline {
                         then
 
 
-                        echo "                                              " >> Email.txt
-                        echo $(git diff --stat-graph-width=1 $disc..origin/QA) >> Email.txt
-                        echo "                                              " >> Email.txt
+                        EMAIL+= "\n "
+                          EMAIL+=   $(git diff --stat-graph-width=1 $disc..origin/QA)
+                        EMAIL+= "\n "
 
                         else
 
-                           echo "                                              " >> Email.txt
-                           echo "There are no differences between latest tag and QA " >> Email.txt
-                           echo "                                              " >> Email.txt
+                           EMAIL+= "\n "
+                           EMAIL+= "There are no differences between latest tag and QA "
+                          EMAIL+= "\n "
 
                         fi
 
 
                         echo "-------------------------latest vs dev------------------------------------"
-                        echo " " >> Email.txt
+                          EMAIL+= "\n "
 
-                        echo "difference between latest tag and dev:"  >> Email.txt
+                        EMAIL+= "difference between latest tag and dev: \n"
 
                         diffsdev=$(git diff --stat $disc origin/dev)
                         echo $diffsdev
@@ -132,21 +139,21 @@ pipeline {
                         then
 
 
-                        echo "                                              " >> Email.txt
-                        echo $(git diff --stat-graph-width=1 $disc..origin/dev) >> Email.txt
-                        echo "                                              " >> Email.txt
+                        EMAIL+= "\n "
+                        EMAIL+= $(git diff --stat-graph-width=1 $disc..origin/dev)
+                        EMAIL+= "\n "
 
                         else
 
-                           echo "                                              " >> Email.txt
-                           echo "There are no differences between latest tag and dev " >> Email.txt
-                           echo "                                              " >> Email.txt
+                             EMAIL+= "\n "
+                           EMAIL+= "There are no differences between latest tag and dev "
+                            EMAIL+= "\n "
 
                         fi
 
                         echo "-------------------------latest vs master------------------------------------"
                         #email section
-                        echo "difference between latest tag and master:"  >> Email.txt
+                        EMAIL+= "difference between latest tag and master:"
 
                         diffsM=$(git diff --stat $disc..origin/master)
                         echo $diffsM
@@ -155,19 +162,20 @@ pipeline {
                         then
 
 
-                        echo "                                               " >> Email.txt
-                        echo $(git diff --stat-graph-width=1 $disc..origin/master) >> Email.txt
-                        echo "                                               " >> Email.txt
-                        echo " " >> Email.txt
+                        EMAIL+= "\n "
+                        EMAIL+= $(git diff --stat-graph-width=1 $disc..origin/master)
+                        EMAIL+= "\n "
+
 
 
                         else
-                        echo "                                              " >> Email.txt
-                         echo "There are no differences between latest tag and master " >> Email.txt
-                         echo "                                              " >> Email.txt
-                         echo " ~~~~~~~~~~~~~~~~~~end of repo~~~~~~~~~~~~~~~~~~~~~~ " >> Email.txt
+                         EMAIL+= "\n "
+                         EMAIL+= "There are no differences between latest tag and master "
+                        EMAIL+= "\n "
+
 
                         fi
+                        EMAIL+= " ~~~~~~~~~~~~~~~~~~end of repo~~~~~~~~~~~~~~~~~~~~~~ "
 
                         echo "-------------------------------------------------------------------"
                         # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
@@ -177,14 +185,7 @@ pipeline {
 
                         done
 
-                        for i in "${REPO_LIST[@]}"
-                        do
-                          cd "/Users/lucasverrilli/.jenkins/workspace/piplineTest/$i"
-                          echo $Email.txt >> Email2.txt
-
-                        done
-
-
+                        echo $EMAIL > Email.txt
 
                         '''
 
@@ -205,7 +206,7 @@ pipeline {
     post {
         always {
             emailext attachLog: true,
-            attachmentsPattern: 'Email2.txt',
+            attachmentsPattern: 'Email.txt',
             body:" attached is the email.txt ",
             recipientProviders: [[$class: 'DevelopersRecipientProvider'],
             [$class: 'RequesterRecipientProvider']],
