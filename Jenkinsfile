@@ -58,8 +58,10 @@ pipeline {
                         dateAndTime=`date`
                         EMAIL=$' \n'
                         EMAIL+=$'Date and Time: '
-                        EMAIL=$' \n'
+                        EMAIL+=$' \n'
                         EMAIL+=$dateAndTime
+
+                        echo $'test statment \n to seperate sentences'
 
 
                       for i in "${REPO_LIST[@]}"
@@ -182,7 +184,7 @@ pipeline {
 
                         echo $EMAIL
 
-                        echo $EMAIL > Email.txt
+                        echo $EMAIL > Email.html
 
                         '''
 
