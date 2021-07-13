@@ -206,7 +206,7 @@ pipeline {
         always {
             emailext attachLog: true,
             attachmentsPattern: 'Email.html',
-            body:" attached is the email.txt ",
+            body:" attached is the email.html ",
             recipientProviders: [[$class: 'DevelopersRecipientProvider'],
             [$class: 'RequesterRecipientProvider']],
             subject: "Jenkins pipeline Test Build Number: '${currentBuild.number}' "
