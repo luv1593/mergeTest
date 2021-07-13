@@ -54,8 +54,8 @@ pipeline {
                                                 'branchTest'
                                                 )
 
-                        NL=$'\n'
-                        str='Hello World${NL} and here is a variable $PATH ===========${NL}'
+                        NL=$"\n"
+                        str="Hello World${NL} and here is a variable $PATH ===========${NL}"
 
                         echo $str
 
