@@ -109,8 +109,8 @@ pipeline {
                         then
 
 
-                        EMAIL+='\n '
-                          EMAIL+=$(git diff --stat-graph-width=1 $disc..origin/QA)
+                        EMAIL+=\n
+                        EMAIL+=$(git diff --stat-graph-width=1 $disc..origin/QA)
                         EMAIL+='\n '
 
                         else
