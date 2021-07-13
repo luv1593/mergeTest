@@ -51,13 +51,34 @@ pipeline {
 
                         echo "-------------------------------------------------------------------------"
                         declare -a REPO_LIST=( 'mergeTest'
-                                                'branchTest'
-                                                )
+                                               'branchTest'
+                                              )
 
-                        NL=$"\n"
-                        str="Hello World${NL} and here is a variable $PATH ===========${NL}"
+                        declare -a devLst=( 'dev'
+                                           ' develop'
+                                           ' development'
+                                           ' DEV'
+                                           ' DEVELOP'
+                                           ' DEVELOPMENT'
+                                           )
 
-                        echo $str
+                      declare -a mastLst=(' master'
+                                            ' prod'
+                                            ' production'
+                                            ' main'
+                                            ' MASTER'
+                                            ' PROD'
+                                            ' PRODUCTION'
+                                            ' MAIN'
+                                            )
+
+                      declare -a QALst=(' QA'
+                                  ' qa'
+                                  ' test'
+                                  ' TEST'
+                                  )
+
+
 
                         dateAndTime=`date`
                         EMAIL=$' \n'
@@ -65,13 +86,19 @@ pipeline {
                         EMAIL+=$' \n'
                         EMAIL+=$dateAndTime
 
-                        echo $'test statment \n to seperate sentences'
+
 
 
                       for i in "${REPO_LIST[@]}"
                       do
                         git clone https://github.com/luv1593/$i.git
                         cd "$i"
+
+                          for j in "${devLst}"
+
+                          do
+                          print $j
+                          done
 
                         echo "repo: $i"
 
@@ -99,8 +126,11 @@ pipeline {
 
                       #  disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
-                        disc=$( git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/$i.git | grep -o 'v1.*' | tail -1)
+                        disc=$( git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/$i.git | grep -o '*' | tail -1)
+                        #fix so its chopped up right.
 
+
+                        #if no release compare to master to other branches
 
                         echo 'tag: $disc'
                         echo '---------------------------latest vs QA ---------------------------------'
@@ -111,6 +141,7 @@ pipeline {
 
                         EMAIL+='difference between latest tag and QA:'
 
+                        #more branch names
                         diffsQ=$(git diff --stat $disc origin/QA)
                         echo $diffsQ
                         if [[ "$diffsQ" = *"insertions"* ||  "$diffsQ" = *"deletions"* ||  "$diffsQ" = *"insertion"* ||  "$diffsQ" = *"deletion"* ]];
