@@ -59,7 +59,7 @@ pipeline {
 
                       for i in "${REPO_LIST[@]}"
                       do
-                        cd Documents/GitHub/$i
+                        cd "$(Documents/GitHub/$i "$0")"
 
 
                         echo "repo: $i"
