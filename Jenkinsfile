@@ -27,10 +27,10 @@ pipeline {
 
                 sh '''#!/bin/bash
                 dateAndTime=`date`
-                echo " " > Email.txt
-                echo "Date and Time: " >> Email.txt
-                echo $dateAndTime >> Email.txt
-                echo " " >> Email.txt
+                echo " " > Email2.txt
+                echo "Date and Time: " >> Email2.txt
+                echo $dateAndTime >> Email2.txt
+                echo " " >> Email2.txt
                 '''
             }
         }
@@ -177,6 +177,15 @@ pipeline {
 
                         done
 
+                        for i in "${REPO_LIST[@]}"
+                        do
+                          cd "/Users/lucasverrilli/.jenkins/workspace/piplineTest/$i"
+                          echo $Email.txt >> Email2.txt
+
+                        done
+
+
+
                         '''
 
 
@@ -196,7 +205,7 @@ pipeline {
     post {
         always {
             emailext attachLog: true,
-            attachmentsPattern: 'Email.txt',
+            attachmentsPattern: 'Email2.txt',
             body:" attached is the email.txt ",
             recipientProviders: [[$class: 'DevelopersRecipientProvider'],
             [$class: 'RequesterRecipientProvider']],
