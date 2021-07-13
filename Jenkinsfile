@@ -25,13 +25,7 @@ pipeline {
         stage('chosen parameters') {
             steps {
 
-                sh '''#!/bin/bash
-                dateAndTime=`date`
-                echo " " > Email.txt
-                echo "Date and Time: " >> Email.txt
-                echo $dateAndTime >> Email.txt
-                echo " " >> Email.txt
-                '''
+
             }
         }
 
@@ -91,9 +85,9 @@ pipeline {
 # git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v1.*' | tail -1
 
 
-                          EMAIL+= "\n "
-                        EMAIL+= "Email repo: $i"
-                          EMAIL+= "\n "
+                          EMAIL+="\n "
+                        EMAIL+="Email repo: $i"
+                          EMAIL+="\n "
 
                       #  disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
@@ -102,10 +96,10 @@ pipeline {
 
                         echo "tag: $disc"
                         echo "---------------------------latest vs QA ---------------------------------"
-                        EMAIL+=  "latest verison: \n"
-                        EMAIL+= " $disc"
+                        EMAIL+="latest verison: \n"
+                        EMAIL+=" $disc"
 
-                        EMAIL+= "\n "
+                        EMAIL+="\n "
 
                         echo "difference between latest tag and QA:"  >> Email.txt
 
@@ -115,23 +109,23 @@ pipeline {
                         then
 
 
-                        EMAIL+= "\n "
-                          EMAIL+=   $(git diff --stat-graph-width=1 $disc..origin/QA)
-                        EMAIL+= "\n "
+                        EMAIL+="\n "
+                          EMAIL+=$(git diff --stat-graph-width=1 $disc..origin/QA)
+                        EMAIL+="\n "
 
                         else
 
-                           EMAIL+= "\n "
-                           EMAIL+= "There are no differences between latest tag and QA "
-                          EMAIL+= "\n "
+                           EMAIL+="\n "
+                           EMAIL+="There are no differences between latest tag and QA "
+                          EMAIL+="\n "
 
                         fi
 
 
                         echo "-------------------------latest vs dev------------------------------------"
-                          EMAIL+= "\n "
+                          EMAIL+="\n "
 
-                        EMAIL+= "difference between latest tag and dev: \n"
+                        EMAIL+="difference between latest tag and dev: \n"
 
                         diffsdev=$(git diff --stat $disc origin/dev)
                         echo $diffsdev
@@ -139,21 +133,21 @@ pipeline {
                         then
 
 
-                        EMAIL+= "\n "
-                        EMAIL+= $(git diff --stat-graph-width=1 $disc..origin/dev)
-                        EMAIL+= "\n "
+                        EMAIL+="\n "
+                        EMAIL+=$(git diff --stat-graph-width=1 $disc..origin/dev)
+                        EMAIL+="\n "
 
                         else
 
-                             EMAIL+= "\n "
-                           EMAIL+= "There are no differences between latest tag and dev "
-                            EMAIL+= "\n "
+                             EMAIL+="\n "
+                           EMAIL+="There are no differences between latest tag and dev "
+                            EMAIL+="\n "
 
                         fi
 
                         echo "-------------------------latest vs master------------------------------------"
                         #email section
-                        EMAIL+= "difference between latest tag and master:"
+                        EMAIL+="difference between latest tag and master:"
 
                         diffsM=$(git diff --stat $disc..origin/master)
                         echo $diffsM
@@ -162,20 +156,20 @@ pipeline {
                         then
 
 
-                        EMAIL+= "\n "
-                        EMAIL+= $(git diff --stat-graph-width=1 $disc..origin/master)
-                        EMAIL+= "\n "
+                        EMAIL+="\n "
+                        EMAIL+=$(git diff --stat-graph-width=1 $disc..origin/master)
+                        EMAIL+="\n "
 
 
 
                         else
-                         EMAIL+= "\n "
-                         EMAIL+= "There are no differences between latest tag and master "
-                        EMAIL+= "\n "
+                         EMAIL+="\n "
+                         EMAIL+="There are no differences between latest tag and master "
+                        EMAIL+="\n "
 
 
                         fi
-                        EMAIL+= " ~~~~~~~~~~~~~~~~~~end of repo~~~~~~~~~~~~~~~~~~~~~~ "
+                        EMAIL+=" ~~~~~~~~~~~~~~~~~~end of repo~~~~~~~~~~~~~~~~~~~~~~ "
 
                         echo "-------------------------------------------------------------------"
                         # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
