@@ -97,7 +97,7 @@ pipeline {
                           for j in "${devLst}"
 
                           do
-                          print $j
+                          echo $j
                           done
 
                         echo "repo: $i"
