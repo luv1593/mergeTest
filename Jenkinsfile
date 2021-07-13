@@ -118,11 +118,26 @@ pipeline {
 
 
                         echo "-------------------------latest vs dev------------------------------------"
-                        #email section
+                        echo " " >> Email.txt
+
                         echo "difference between latest tag and dev:"  >> Email.txt
-                        echo " " >> Email.txt
-                        echo $(git diff  --stat-graph-width=1 $disc..origin/dev) >> Email.txt
-                        echo " " >> Email.txt
+
+                        diffsdev=$(git diff --stat origin/$disc origin/dev)
+                        if [[ "$diffsdev" = *"insertions"* ||  "$diffsdev" = *"deletions"* ||  "$diffsdev" = *"insertion"* ||  "$diffsdev" = *"deletion"* ]];
+                        then
+
+
+                        echo "                                              " >> Email.txt
+                        echo $(git diff --stat-graph-width=1 $disc..origin/dev) >> Email.txt
+                        echo "                                              " >> Email.txt
+
+                        else
+
+                           echo "                                              " >> Email.txt
+                           echo "There are no differences between latest tag and dev " >> Email.txt
+                           echo "                                              " >> Email.txt
+
+                        fi
 
                         echo "-------------------------latest vs master------------------------------------"
                         #email section
