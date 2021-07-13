@@ -57,8 +57,8 @@ pipeline {
 
                         dateAndTime=`date`
                         EMAIL='\n'
-                        EMAIL+='Date and Time: \n'
-                        EMAIL+='$dateAndTime \n'
+                        EMAIL+='Date and Time:  \n'
+                        EMAIL+=$dateAndTime
 
 
                       for i in "${REPO_LIST[@]}"
@@ -97,7 +97,7 @@ pipeline {
                         echo 'tag: $disc'
                         echo '---------------------------latest vs QA ---------------------------------'
                         EMAIL+='latest verison: \n'
-                        EMAIL+=' $disc'
+                        EMAIL+=$disc
 
                         EMAIL+='\n '
 
