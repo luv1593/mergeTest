@@ -88,7 +88,7 @@ pipeline {
 # git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v1.*' | tail -1
 
 
-                          EMAIL+='\\n'
+                          EMAIL+='\n'
                         EMAIL+='Email repo: $i'
                           EMAIL+='\n '
 
@@ -201,11 +201,11 @@ pipeline {
         }
 
     }
-    //CHOSE email
+    //move to bash
     post {
         always {
             emailext attachLog: true,
-            attachmentsPattern: 'Email.txt',
+            attachmentsPattern: 'Email.html',
             body:" attached is the email.txt ",
             recipientProviders: [[$class: 'DevelopersRecipientProvider'],
             [$class: 'RequesterRecipientProvider']],
