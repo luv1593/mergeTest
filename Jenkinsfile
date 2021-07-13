@@ -168,6 +168,8 @@ pipeline {
                         # get latest tag from all 3 branches then if master is not latest report where latest is , created a branch not from master
                         #if master is not most up to date then tag was created from not master
 
+                        cd ..
+
                         done
 
                         '''
