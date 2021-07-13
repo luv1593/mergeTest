@@ -87,7 +87,7 @@ pipeline {
 
                       #  disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
-                        disc=$( git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v1.*' | tail -1)
+                        disc=$( git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/$i.git | grep -o 'v1.*' | tail -1)
 
 
                         echo "tag: $disc"
