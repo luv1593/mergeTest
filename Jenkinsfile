@@ -62,10 +62,10 @@ pipeline {
 
 
                         dateAndTime=`date`
-                        $EMAIL= "\n"
-                        $EMAIL+= "Date and Time: \n"
-                        $EMAIL+= "\n $dateAndTime"
-                        $EMAIL+= "\n "
+                        EMAIL= "\n"
+                        EMAIL+= "  ${EMAIL} Date and Time: \n"
+                        EMAIL+= "${EMAIL}  $dateAndTime \n"
+                
 
                       for i in "${REPO_LIST[@]}"
                       do
