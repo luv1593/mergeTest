@@ -185,6 +185,8 @@ pipeline {
 
                         done
 
+                        echo $EMAIL
+
                         echo $EMAIL > Email.txt
 
                         '''
