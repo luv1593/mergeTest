@@ -94,7 +94,7 @@ pipeline {
                         git clone https://github.com/luv1593/$i.git
                         cd "$i"
 
-                          for j in "${devLst}"
+                          for j in "${devLst[@]}"
 
                           do
                           echo $j
