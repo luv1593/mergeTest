@@ -40,10 +40,13 @@ pipeline {
               script {
 
 
+                cleanWs()
+
+
               //put all info into 1 vari and at end append and clean
 
 
-              cleanWs()
+
 
                 //jenkins needs to open repo
 
