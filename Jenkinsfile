@@ -62,7 +62,7 @@ pipeline {
 
 
                         dateAndTime=`date`
-                        EMAIL= "\n "
+                        $EMAIL= "\n"
                         EMAIL+= "Date and Time: \n"
                         EMAIL+= "\n $dateAndTime"
                         EMAIL+= "\n "
