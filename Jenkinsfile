@@ -93,7 +93,8 @@ pipeline {
 
 
                           EMAIL+='\n'
-                        EMAIL+='Email repo: $i'
+                        EMAIL+='Email repo: '
+                        EMAIL+=$i
                           EMAIL+='\n '
 
                       #  disc=$( git describe --tags `git rev-list --tags --max-count=1`)
