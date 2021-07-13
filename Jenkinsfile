@@ -60,7 +60,7 @@ pipeline {
                       for i in "${REPO_LIST[@]}"
                       do
                         git clone https://github.com/luv1593/mergeTest.git
-                        cd "$(/Users/lucasverrilli/Documents/GitHub/$i "$0")"
+                        cd "$(/Users/lucasverrilli/.jenkins/workspace/piplineTest/$i "$0")"
 
                         echo "repo: $i"
 
