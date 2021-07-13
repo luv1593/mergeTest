@@ -71,7 +71,7 @@ pipeline {
                       for i in "${REPO_LIST[@]}"
                       do
                         git clone https://github.com/luv1593/$i.git
-                        cd "/Users/lucasverrilli/.jenkins/workspace/piplineTest/$i"
+                        cd "$i"
 
                         echo "repo: $i"
 
