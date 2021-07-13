@@ -58,6 +58,7 @@ pipeline {
                         dateAndTime=`date`
                         EMAIL='\n'
                         EMAIL+='Date and Time:  \n'
+                        EMAIL=\n
                         EMAIL+=$dateAndTime
 
 
