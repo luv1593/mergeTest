@@ -24,7 +24,7 @@ pipeline {
     stages {
         stage('chosen parameters') {
             steps {
-
+              echo "hello"
 
             }
         }
