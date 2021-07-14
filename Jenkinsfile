@@ -86,6 +86,16 @@ pipeline {
                         EMAIL+=$' \n'
                         EMAIL+=$dateAndTime
 
+
+
+
+
+
+                      for i in "${REPO_LIST[@]}"
+                      do
+                        git clone https://github.com/luv1593/$i.git
+                        cd "$i"
+
                         branArr=()
                         branch=$(git branch -r)
 
@@ -95,13 +105,6 @@ pipeline {
                           branArr+=($i)
                         done
 
-
-
-
-                      for i in "${REPO_LIST[@]}"
-                      do
-                        git clone https://github.com/luv1593/$i.git
-                        cd "$i"
 
                         ITT=0
 
