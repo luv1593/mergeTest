@@ -62,20 +62,20 @@ pipeline {
                                            'origin/DEVELOPMENT'
                                            )
 
-                      declare -a mastLst=(' master'
-                                            ' prod'
-                                            ' production'
-                                            ' main'
-                                            ' MASTER'
-                                            ' PROD'
-                                            ' PRODUCTION'
-                                            ' MAIN'
+                      declare -a mastLst=('origin/master'
+                                            'origin/prod'
+                                            'origin/production'
+                                            'origin/main'
+                                            'origin/MASTER'
+                                            'origin/PROD'
+                                            'origin/PRODUCTION'
+                                            'origin/MAIN'
                                             )
 
                       declare -a QALst=(' QA'
-                                  ' qa'
-                                  ' test'
-                                  ' TEST'
+                                  'origin/qa'
+                                  'origin/test'
+                                  'origin/TEST'
                                   )
 
 
@@ -122,7 +122,7 @@ pipeline {
 
                         if [ "$j" == "$l" ];
                         then
-                          
+
                           DEVSTR=$j
 
 
