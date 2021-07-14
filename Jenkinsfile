@@ -110,7 +110,7 @@ pipeline {
                         do
                         echo $j
                         echo $ITT
-                        echo "${branArr[$ITT]}"
+                        echo "${branArr[ITT]}"
                         ((ITT=ITT+1))
 
                         if [ "$j" == "${branArr[ITT]}" ];
