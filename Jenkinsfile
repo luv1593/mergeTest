@@ -87,7 +87,7 @@ pipeline {
                         EMAIL+=$dateAndTime
 
 
-
+                      DEVSTR=""
 
 
 
@@ -121,6 +121,8 @@ pipeline {
                         if [ "$j" == "$l" ];
                         then
                           echo "RIGHT HERE"
+                          DEVSTR=$j
+                          echo"DEVSTR: $DEVSTR"
 
                         fi
 
