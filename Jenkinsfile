@@ -107,29 +107,17 @@ pipeline {
                         done
 
 
-                        ITT=0
+                    
 
                       for l in "${branArr[@]}"
                       do
                         for j in "${devLst[@]}"
-
                         do
-                        echo $j
-                        echo $ITT
-                        echo $l
-
-                        ((ITT=ITT+1))
-
                         if [ "$j" == "$l" ];
                         then
-
                           DEVSTR=$j
-
-
                         fi
-
                         done
-
                       done
 
 
@@ -139,8 +127,7 @@ pipeline {
                       do
                         for w in "${mastLst[@]}"
                         do
-                        echo $q
-                        echo $w
+
                         if [ "$q" == "$w" ];
                         then
                           MASSTR=$q
@@ -153,8 +140,7 @@ pipeline {
                       do
                         for p in "${QALst[@]}"
                         do
-                        echo $o
-                        echo $p
+
                         if [ "$o" == "$p" ];
                         then
                           QASTR=$o
