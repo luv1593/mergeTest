@@ -101,7 +101,6 @@ pipeline {
 
                         for i in $branch
                         do
-                          echo $i
                           branArr+=($i)
                         done
 
@@ -113,7 +112,7 @@ pipeline {
                         do
                         echo $j
                         echo $ITT
-                        echo "${branArr[@]}"
+                        echo "${branArr[ITT]}"
                         ((ITT=ITT+1))
 
                         if [ "$j" == "${branArr[ITT]}" ];
