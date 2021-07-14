@@ -86,6 +86,15 @@ pipeline {
                         EMAIL+=$' \n'
                         EMAIL+=$dateAndTime
 
+                        branArr=()
+                        branch=$(git branch -r)
+
+                        for i in $branch
+                        do
+                          #echo $i
+                          branArr+=($i)
+                        done
+
 
 
 
@@ -94,15 +103,17 @@ pipeline {
                         git clone https://github.com/luv1593/$i.git
                         cd "$i"
 
+                        ITT=0
+
                         for j in "${devLst[@]}"
 
                         do
                         echo $j
 
-                        if [ "$(git checkout $j)" == *"Switched to a new branch"*  ];
+                        if [ "$j" == "${branArr[ITT]}" ];
                         then
                           echo "RIGHT HERE"
-
+                          ((ITT=ITT+1))
                         fi
 
                         done
