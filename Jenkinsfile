@@ -37,16 +37,6 @@ pipeline {
                 cleanWs()
 
 
-              //put all info into 1 vari and at end append and clean
-
-
-
-
-                //jenkins needs to open repo
-
-                  //git 'https://github.com/luv1593/branchTest.git'
-
-
                         sh '''#!/bin/bash
 
                         echo "-------------------------------------------------------------------------"
@@ -188,6 +178,7 @@ echo "MASSTR: $MASSTR"
 
                         disc=$( git ls-remote --tags --sort=v:committerdate https://github.com/NIT-Administrative-Systems/$i.git | grep -o '*' | tail -1)
                         #fix so its chopped up right.
+                        echo $disc
 
 
                         #if no release compare to master to other branches
