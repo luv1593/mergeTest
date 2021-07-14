@@ -98,12 +98,13 @@ pipeline {
 
                         do
                         echo $j
-                        devFind=$(git checkout $j)
-                        if [ "$devFind" = *"Switched"*  ];
+
+                        if [ "$(git checkout $j)" = *"Switched to a new branch"*  ];
                         then
                           echo "RIGHT HERE"
 
                         fi
+
                         done
 
                         echo "repo: $i"
