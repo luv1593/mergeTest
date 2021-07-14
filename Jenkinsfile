@@ -107,7 +107,7 @@ pipeline {
                         done
 
 
-                    
+
 
                       for l in "${branArr[@]}"
                       do
@@ -200,14 +200,14 @@ echo "MASSTR: $MASSTR"
                         EMAIL+='difference between latest tag and QA:'
 
                         #more branch names
-                        diffsQ=$(git diff --stat $disc origin/QA)
+                        diffsQ=$(git diff --stat $disc $QASTR)
                         echo $diffsQ
                         if [[ "$diffsQ" = *"insertions"* ||  "$diffsQ" = *"deletions"* ||  "$diffsQ" = *"insertion"* ||  "$diffsQ" = *"deletion"* ]];
                         then
 
 
                         EMAIL+=\n
-                        EMAIL+=$(git diff --stat-graph-width=1 $disc..origin/QA)
+                        EMAIL+=$(git diff --stat-graph-width=1 $disc..$QASTR)
                         EMAIL+='\n '
 
                         else
@@ -224,14 +224,14 @@ echo "MASSTR: $MASSTR"
 
                         EMAIL+='difference between latest tag and dev: \n'
 
-                        diffsdev=$(git diff --stat $disc origin/dev)
+                        diffsdev=$(git diff --stat $disc $DEVSTR)
                         echo $diffsdev
                         if [[ "$diffsdev" = *"insertions"* ||  "$diffsdev" = *"deletions"* ||  "$diffsdev" = *"insertion"* ||  "$diffsdev" = *"deletion"* ]];
                         then
 
 
                         EMAIL+='\n '
-                        EMAIL+=$(git diff --stat-graph-width=1 $disc..origin/dev)
+                        EMAIL+=$(git diff --stat-graph-width=1 $disc..$DEVSTR)
                         EMAIL+='\n '
 
                         else
@@ -246,7 +246,7 @@ echo "MASSTR: $MASSTR"
                         #email section
                         EMAIL+='difference between latest tag and master:'
 
-                        diffsM=$(git diff --stat $disc..origin/master)
+                        diffsM=$(git diff --stat $disc..$MASSTR)
                         echo $diffsM
 
                         if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ||  "$diffsM" = *"insertion"* ||  "$diffsM" = *"deletion"* ]];
@@ -254,7 +254,7 @@ echo "MASSTR: $MASSTR"
 
 
                         EMAIL+='\n '
-                        EMAIL+=$(git diff --stat-graph-width=1 $disc..origin/master)
+                        EMAIL+=$(git diff --stat-graph-width=1 $disc..$MASSTR)
                         EMAIL+='\n '
 
 
