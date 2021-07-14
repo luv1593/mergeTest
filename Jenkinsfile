@@ -102,6 +102,8 @@ pipeline {
                         if [[ "$devFind" = *"error"*  ]];
                         then
                           echo "not the right one"
+
+                        fi
                         done
 
                         echo "repo: $i"
