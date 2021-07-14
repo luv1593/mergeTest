@@ -54,12 +54,12 @@ pipeline {
                                                'branchTest'
                                               )
 
-                        declare -a devLst=( 'develop'
-                                           ' dev'
-                                           ' development'
-                                           ' DEV'
-                                           ' DEVELOP'
-                                           ' DEVELOPMENT'
+                        declare -a devLst=( 'origin/develop'
+                                           'origin/dev'
+                                           'origin/development'
+                                           'origin/DEV'
+                                           'origin/DEVELOP'
+                                           'origin/DEVELOPMENT'
                                            )
 
                       declare -a mastLst=(' master'
@@ -115,7 +115,7 @@ pipeline {
                         echo $j
                         echo $ITT
                         echo $l
-                        
+
                         ((ITT=ITT+1))
 
                         if [ "$j" == "${branArr[ITT]}" ];
