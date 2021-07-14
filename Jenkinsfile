@@ -50,8 +50,8 @@ pipeline {
                         sh '''#!/bin/bash
 
                         echo "-------------------------------------------------------------------------"
-                        declare -a REPO_LIST=( 'mergeTest'
-                                               'branchTest'
+                        declare -a REPO_LIST=( 'SysDev-MoneyCat'
+                                               'CloudOps-standard-vpc'
                                               )
 
                         declare -a devLst=( 'origin/develop'
@@ -70,6 +70,7 @@ pipeline {
                                             'origin/PROD'
                                             'origin/PRODUCTION'
                                             'origin/MAIN'
+                                            'origon/stable'
                                             )
 
                       declare -a QALst=('origin/QA'
@@ -95,7 +96,7 @@ pipeline {
 
                       for i in "${REPO_LIST[@]}"
                       do
-                        git clone https://github.com/luv1593/$i.git
+                        git clone https://github.com/NIT-Administrative-Systems/$i.git
                         cd "$i"
                         git pull
 
