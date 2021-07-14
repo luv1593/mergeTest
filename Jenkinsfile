@@ -137,31 +137,37 @@ pipeline {
 
                       for q in "${branArr[@]}"
                       do
-                        for w in "${QALst[@]}"
-
+                        for w in "${mastLst[@]}"
                         do
-                        echo"-----"
                         echo $q
-
                         echo $w
-                        echo"-----"
-
-
                         if [ "$q" == "$w" ];
                         then
-
-                          QASTR=$q
-
-
+                          MASSTR=$q
                         fi
-
                         done
-
                       done
+
+
+                      for o in "${branArr[@]}"
+                      do
+                        for p in "${QALst[@]}"
+                        do
+                        echo $o
+                        echo $p
+                        if [ "$o" == "$p" ];
+                        then
+                          QASTR=$o
+                        fi
+                        done
+                      done
+
+
 
 
 echo "QASTR: $QASTR"
 echo "DEVSTR: $DEVSTR"
+echo "MASSTR: $MASSTR"
 
 
 
