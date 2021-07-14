@@ -109,6 +109,8 @@ pipeline {
 
                         do
                         echo $j
+                        echo $ITT
+                        echo ${branArr[ITT]}
 
                         if [ "$j" == "${branArr[ITT]}" ];
                         then
