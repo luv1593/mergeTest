@@ -178,10 +178,10 @@ echo "MASSTR: $MASSTR"
 # git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v1.*' | tail -1
 
 
-                          EMAIL+='\n'
+                        EMAIL+='\n'
                         EMAIL+='Email repo: '
                         EMAIL+=$i
-                          EMAIL+='\n '
+                        EMAIL+='\n '
 
                       #  disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
