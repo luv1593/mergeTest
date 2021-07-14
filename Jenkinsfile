@@ -91,7 +91,7 @@ pipeline {
 
                         for i in $branch
                         do
-                          #echo $i
+                          echo $i
                           branArr+=($i)
                         done
 
