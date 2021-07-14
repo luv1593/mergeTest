@@ -88,6 +88,8 @@ pipeline {
 
 
                       DEVSTR=""
+                      QASTR=""
+                      MASSTR=""
 
 
 
@@ -120,15 +122,48 @@ pipeline {
 
                         if [ "$j" == "$l" ];
                         then
-                          echo "RIGHT HERE"
+                          
                           DEVSTR=$j
-                          echo "DEVSTR: $DEVSTR"
+
 
                         fi
 
                         done
 
                       done
+
+
+
+
+                      for q in "${branArr[@]}"
+                      do
+                        for w in "${QALst[@]}"
+
+                        do
+                        echo $q
+                        echo $ITT
+                        echo $w
+
+                        ((ITT=ITT+1))
+
+                        if [ "$q" == "$w" ];
+                        then
+
+                          QASTR=$q
+
+
+                        fi
+
+                        done
+
+                      done
+
+
+echo "QASTR: $QASTR"
+echo "DEVSTR: $DEVSTR"
+
+
+
 
                         echo "repo: $i"
 
