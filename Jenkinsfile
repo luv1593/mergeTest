@@ -99,9 +99,9 @@ pipeline {
                         branArr=()
                         branch=$(git branch -r)
 
-                        for i in $branch
+                        for k in $branch
                         do
-                          branArr+=($i)
+                          branArr+=($k)
                         done
 
 
