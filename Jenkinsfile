@@ -72,7 +72,7 @@ pipeline {
                                             'origin/MAIN'
                                             )
 
-                      declare -a QALst=(' QA'
+                      declare -a QALst=('origin/QA'
                                   'origin/qa'
                                   'origin/test'
                                   'origin/TEST'
