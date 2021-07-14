@@ -191,7 +191,7 @@ echo "MASSTR: $MASSTR"
 
                         #if no release compare to master to other branches
 
-                        echo 'tag: $disc'
+                        echo "tag: $disc"
                         echo '---------------------------latest vs QA ---------------------------------'
                         EMAIL+='latest verison: \n'
                         EMAIL+=$disc
