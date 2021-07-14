@@ -122,7 +122,7 @@ pipeline {
                         then
                           echo "RIGHT HERE"
                           DEVSTR=$j
-                          echo"DEVSTR: $DEVSTR"
+                          echo "DEVSTR: $DEVSTR"
 
                         fi
 
