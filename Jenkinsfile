@@ -107,11 +107,14 @@ pipeline {
 
                         ITT=0
 
+                      for l in "${branArr[@]}"
+                      do
                         for j in "${devLst[@]}"
 
                         do
                         echo $j
                         echo $ITT
+                        echo $l
                         echo "${branArr[ITT]}"
                         ((ITT=ITT+1))
 
@@ -122,6 +125,8 @@ pipeline {
                         fi
 
                         done
+
+                      done
 
                         echo "repo: $i"
 
