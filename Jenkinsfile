@@ -118,7 +118,7 @@ pipeline {
 
                         ((ITT=ITT+1))
 
-                        if [ "$j" == "${branArr[ITT]}" ];
+                        if [ "$j" == "$l" ];
                         then
                           echo "RIGHT HERE"
 
