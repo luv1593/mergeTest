@@ -176,7 +176,7 @@ echo "MASSTR: $MASSTR"
 
                       #  disc=$( git describe --tags `git rev-list --tags --max-count=1`)
 
-                        disc=$( git ls-remote --tags --sort=v:committerdate https://github.com/NIT-Administrative-Systems/$i.git | grep -o '*' | tail -1)
+                        disc=$( git ls-remote --tags --sort=v:committerdate https://github.com/NIT-Administrative-Systems/$i.git | grep -o 'v.*' | tail -1)
                         #fix so its chopped up right.
                         echo $disc
 
