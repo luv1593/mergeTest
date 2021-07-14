@@ -99,7 +99,7 @@ pipeline {
                         do
                         echo $j
                         devFind=$(git checkout $j)
-                        if [[ "$devFind" = *"switched"*  ]];
+                        if [[ "$devFind" = *"Switched"*  ]];
                         then
                           echo "RIGHT HERE"
 
