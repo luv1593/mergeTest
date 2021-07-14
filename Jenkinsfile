@@ -94,11 +94,15 @@ pipeline {
                         git clone https://github.com/luv1593/$i.git
                         cd "$i"
 
-                          for j in "${devLst[@]}"
+                        for j in "${devLst[@]}"
 
-                          do
-                          echo $j
-                          done
+                        do
+                        echo $j
+                        devFind=$(git checkout $j)
+                        if [[ "$devFind" = *"error"*  ]];
+                        then
+                          echo "not the right one"
+                        done
 
                         echo "repo: $i"
 
