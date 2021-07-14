@@ -54,8 +54,8 @@ pipeline {
                                                'branchTest'
                                               )
 
-                        declare -a devLst=( 'dev'
-                                           ' develop'
+                        declare -a devLst=( 'develop'
+                                           ' dev'
                                            ' development'
                                            ' DEV'
                                            ' DEVELOP'
@@ -99,9 +99,9 @@ pipeline {
                         do
                         echo $j
                         devFind=$(git checkout $j)
-                        if [[ "$devFind" = *"error"*  ]];
+                        if [[ "$devFind" = *"switched"*  ]];
                         then
-                          echo "not the right one"
+                          echo "RIGHT HERE"
 
                         fi
                         done
