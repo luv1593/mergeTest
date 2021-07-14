@@ -99,7 +99,7 @@ pipeline {
                         do
                         echo $j
 
-                        if [ "$(git checkout $j)" = *"Switched to a new branch"*  ];
+                        if [ "$(git checkout $j)" == *"Switched to a new branch"*  ];
                         then
                           echo "RIGHT HERE"
 
