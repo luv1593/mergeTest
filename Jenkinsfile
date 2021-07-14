@@ -74,7 +74,7 @@ pipeline {
 
                       declare -a QALst=('origin/QA'
                                   'origin/qa'
-                                  'origin/test'
+                                  'origin/QAQHASsd'
                                   'origin/TEST'
                                   )
 
@@ -97,6 +97,7 @@ pipeline {
                       do
                         git clone https://github.com/luv1593/$i.git
                         cd "$i"
+                        git pull
 
                         branArr=()
                         branch=$(git branch -r)
@@ -161,7 +162,7 @@ echo "MASSTR: $MASSTR"
                         echo "repo: $i"
 
 
-                        git pull
+
 
 
 
