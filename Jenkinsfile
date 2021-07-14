@@ -111,11 +111,12 @@ pipeline {
                         echo $j
                         echo $ITT
                         echo ${branArr[ITT]}
+                        ((ITT=ITT+1))
 
                         if [ "$j" == "${branArr[ITT]}" ];
                         then
                           echo "RIGHT HERE"
-                          ((ITT=ITT+1))
+                          
                         fi
 
                         done
