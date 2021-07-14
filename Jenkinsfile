@@ -140,11 +140,12 @@ pipeline {
                         for w in "${QALst[@]}"
 
                         do
+                        echo"-----"
                         echo $q
-                        echo $ITT
-                        echo $w
 
-                        ((ITT=ITT+1))
+                        echo $w
+                        echo"-----"
+
 
                         if [ "$q" == "$w" ];
                         then
