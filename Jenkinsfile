@@ -205,7 +205,9 @@ pipeline {
 
                         #what if no tag / what if no tag and no master?
 
+                        echo "--------"
                         echo $CHKPOINT
+                        echo "--------"
 
                         if [ "$CHKPOINT" == "fatal: No names found, cannot describe anything." ];
                         then
