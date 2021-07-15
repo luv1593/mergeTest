@@ -215,7 +215,7 @@ pipeline {
                           disc=$(git describe --tags `git rev-list --tags --max-count=1`)
 
                         else
-                          disc=$MASSTR
+                          disc="$MASSTR"
 
                         fi
 
