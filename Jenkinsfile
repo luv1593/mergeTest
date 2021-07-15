@@ -48,6 +48,7 @@ pipeline {
                         #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
                         declare -a REPO_LIST=( 'SysDev-MoneyCat'
                                                'dynamic-forms'
+                                               'JST-Skills-Inventory'
                                               )
 
                         #This list is the check list for the development branch, any new names for the development branch can be
@@ -198,7 +199,18 @@ pipeline {
                         EMAIL+='\n '
 
                         #command to get the latest tag from the  repo
-                        disc=$( git describe --tags `git rev-list --tags --max-count=1` )
+                        disc=""
+                        if [ $(git describe --tags `git rev-list --tags --max-count=1`) = *"fatal"* ];
+                        then
+                          disc=$MASSTR
+
+                        else
+                          disc=$(git describe --tags `git rev-list --tags --max-count=1`)
+
+                        fi
+
+
+                        #disc=$( git describe --tags `git rev-list --tags --max-count=1` )
 
 
                         #if no release compare to master to other branches
