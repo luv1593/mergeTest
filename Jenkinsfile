@@ -199,8 +199,9 @@ pipeline {
                         EMAIL+='\n '
 
                         #command to get the latest tag from the  repo
+                        CHKPOINT=$(git describe --tags `git rev-list --tags --max-count=1`)
                         disc=""
-                        if [ $(git describe --tags `git rev-list --tags --max-count=1`) = *"fatal"* ];
+                        if [ "$CHKPOINT" = *"fatal"* ];
                         then
                           disc=$MASSTR
 
