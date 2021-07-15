@@ -203,11 +203,11 @@ pipeline {
                         disc="None"
 
 
-                        #what if no tag/ what if no tag and no master?
+                        #what if no tag / what if no tag and no master?
 
                         echo $CHKPOINT
 
-                        if [[ "$CHKPOINT" == "fatal: No names found, cannot describe anything." ]];
+                        if [ "$CHKPOINT" == "fatal: No names found, cannot describe anything." ];
                         then
                           disc=$MASSTR
 
