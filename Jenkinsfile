@@ -41,7 +41,7 @@ pipeline {
 
                         echo "-------------------------------------------------------------------------"
                         declare -a REPO_LIST=( 'SysDev-MoneyCat'
-                                               'CloudOps-standard-vpc'
+                                               'dynamic-forms'
                                               )
 
                         declare -a devLst=( 'origin/develop'
