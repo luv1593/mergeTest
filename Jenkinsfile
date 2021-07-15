@@ -209,7 +209,7 @@ pipeline {
                         echo $CHKPOINT
                         echo "--------"
 
-                        if [ "$CHKPOINT" == "fatal: No names found, cannot describe anything." ];
+                        if [[ "$CHKPOINT" == *"fatal: No names found"* ]];
                         then
                           disc=$MASSTR
 
