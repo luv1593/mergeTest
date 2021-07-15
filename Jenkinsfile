@@ -224,7 +224,7 @@ pipeline {
 
                         echo "tag: $disc"
 
-#MAKE into a function \/\/\/ inputs(BranchSTR , Tag, EmailSTR)
+# MAKE into a function inputs(BranchSTR , Tag, EmailSTR)
                         #QA comparison section
                         echo '---------------------------latest vs QA ---------------------------------'
                         EMAIL+='latest verison: \n'
