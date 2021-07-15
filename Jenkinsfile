@@ -254,21 +254,32 @@ pipeline {
 
                         EMAIL+='difference between latest tag and dev: \n'
 
-                        diffsdev=$(git diff --stat $disc $DEVSTR)
-                        echo $diffsdev
-                        if [[ "$diffsdev" = *"insertions"* ||  "$diffsdev" = *"deletions"* ||  "$diffsdev" = *"insertion"* ||  "$diffsdev" = *"deletion"* ]];
+                        if [ "$DEVSTR" != "None" ];
                         then
 
+                          diffsdev=$(git diff --stat $disc $DEVSTR)
+                          echo $diffsdev
+                          if [[ "$diffsdev" = *"insertions"* ||  "$diffsdev" = *"deletions"* ||  "$diffsdev" = *"insertion"* ||  "$diffsdev" = *"deletion"* ]];
+                          then
 
-                        EMAIL+='\n '
-                        EMAIL+=$(git diff --stat-graph-width=1 $disc..$DEVSTR)
-                        EMAIL+='\n '
+
+                          EMAIL+='\n '
+                          EMAIL+=$(git diff --stat-graph-width=1 $disc..$DEVSTR)
+                          EMAIL+='\n '
+
+                          else
+
+                               EMAIL+='\n '
+                             EMAIL+='There are no differences between latest tag and dev '
+                              EMAIL+='\n '
+
+                          fi
 
                         else
 
-                             EMAIL+='\n '
-                           EMAIL+='There are no differences between latest tag and dev '
-                            EMAIL+='\n '
+                        EMAIL+='\n '
+                        EMAIL+='There is no branch matching development. (If there is a development branch check the name and make sure its on the pick list)'
+                        EMAIL+='\n '
 
                         fi
 
@@ -279,26 +290,40 @@ pipeline {
                         #email section
                         EMAIL+='difference between latest tag and master:'
 
-                        diffsM=$(git diff --stat $disc..$MASSTR)
-                        echo $diffsM
 
-                        if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ||  "$diffsM" = *"insertion"* ||  "$diffsM" = *"deletion"* ]];
+                        if [ "$MASSTR" != "None" ];
                         then
 
+                          diffsM=$(git diff --stat $disc..$MASSTR)
+                          echo $diffsM
 
-                        EMAIL+='\n '
-                        EMAIL+=$(git diff --stat-graph-width=1 $disc..$MASSTR)
-                        EMAIL+='\n '
+                          if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ||  "$diffsM" = *"insertion"* ||  "$diffsM" = *"deletion"* ]];
+                          then
 
 
+                          EMAIL+='\n '
+                          EMAIL+=$(git diff --stat-graph-width=1 $disc..$MASSTR)
+                          EMAIL+='\n '
+
+
+
+                          else
+                           EMAIL+='\n '
+                           EMAIL+='There are no differences between latest tag and master '
+                          EMAIL+='\n '
+
+
+                          fi
 
                         else
-                         EMAIL+='\n '
-                         EMAIL+='There are no differences between latest tag and master '
+
+                        EMAIL+='\n '
+                        EMAIL+='There is no branch matching master. (If there is a master branch check the name and make sure its on the pick list)'
                         EMAIL+='\n '
 
-
                         fi
+
+
                         EMAIL+=' ~~~~~~~~~~~~~~~~~~end of repo~~~~~~~~~~~~~~~~~~~~~~ '
 
                         echo "-------------------------------------------------------------------"
