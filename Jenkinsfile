@@ -210,12 +210,12 @@ pipeline {
                         echo $CHKPOINT
                         echo "--------"
 
-                        if [[ "$CHKPOINT" == " " ]];
+                        if [[ "$CHKPOINT" != " " ]];
                         then
-                          disc=$MASSTR
+                          disc=$(git describe --tags `git rev-list --tags --max-count=1`)
 
                         else
-                          disc=$(git describe --tags `git rev-list --tags --max-count=1`)
+                          disc=$MASSTR
 
                         fi
 
