@@ -14,6 +14,7 @@ pipeline {
 
     }
 
+    //police blotter cron (so no plugin)
 
     //The Cron pattern is chosen based on the users choice
     triggers {
@@ -209,7 +210,7 @@ pipeline {
                         echo $CHKPOINT
                         echo "--------"
 
-                        if [[ "$CHKPOINT" == *"fatal: No names found"* ]];
+                        if [[ "$( git describe --tags `git rev-list --tags --max-count=1` )" == *"fatal: No names found"* ]];
                         then
                           disc=$MASSTR
 
