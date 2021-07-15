@@ -190,7 +190,7 @@ pipeline {
 
 # git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v.1.*' | head -1
 # git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v1.*' | tail -1
-#disc=$( git ls-remote --tags --sort=v:committerdate https://github.com/NIT-Administrative-Systems/$i.git | grep -o 'v.*' | tail -1)
+# git ls-remote --tags --sort=v:committerdate https://github.com/NIT-Administrative-Systems/$i.git | grep -o 'v.*' | tail -1
 
                         #adds repo name to the email
                         EMAIL+='\n'
@@ -201,7 +201,11 @@ pipeline {
                         #command to get the latest tag from the  repo
                         CHKPOINT=$(git describe --tags `git rev-list --tags --max-count=1`)
                         disc=""
-                        if [[ "$CHKPOINT" = *"fatal"* ]];
+
+
+                        #what if no tag/ what if no tag and no master?
+
+                        if [[ "$CHKPOINT" = *"fatal:"* ]];
                         then
                           disc=$MASSTR
 
@@ -241,7 +245,7 @@ pipeline {
 
 
                         EMAIL+=\n
-                        EMAIL+=$(git diff --stat-graph-width=1 $disc..$QASTR)
+                        EMAIL+=$(git diff --stat-graph-width=1 $disc..$QASTR | tail -1)
                         EMAIL+='\n '
 
                         else
@@ -277,7 +281,7 @@ pipeline {
 
 
                           EMAIL+='\n '
-                          EMAIL+=$(git diff --stat-graph-width=1 $disc..$DEVSTR)
+                          EMAIL+=$(git diff --stat-graph-width=1 $disc..$DEVSTR | tail -1)
                           EMAIL+='\n '
 
                           else
@@ -315,7 +319,7 @@ pipeline {
 
 
                           EMAIL+='\n '
-                          EMAIL+=$(git diff --stat-graph-width=1 $disc..$MASSTR)
+                          EMAIL+=$(git diff --stat-graph-width=1 $disc..$MASSTR | tail -1)
                           EMAIL+='\n '
 
 
