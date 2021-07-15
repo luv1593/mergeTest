@@ -194,6 +194,10 @@ echo "MASSTR: $MASSTR"
                         EMAIL+='difference between latest tag and QA:'
 
                         #more branch names
+                      if [ "$QASTR" != "None" ];
+                      then
+
+
                         diffsQ=$(git diff --stat $disc $QASTR)
                         echo $diffsQ
                         if [[ "$diffsQ" = *"insertions"* ||  "$diffsQ" = *"deletions"* ||  "$diffsQ" = *"insertion"* ||  "$diffsQ" = *"deletion"* ]];
@@ -211,6 +215,15 @@ echo "MASSTR: $MASSTR"
                           EMAIL+='\n '
 
                         fi
+
+                      else
+
+                      EMAIL+='\n '
+                      EMAIL+='There is no branch matching QA. (If there is a QA branch check the name and make sure its on the pick list)'
+                      EMAIL+='\n '
+
+                      fi
+
 
 
                         echo '-------------------------latest vs dev------------------------------------'
