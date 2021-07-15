@@ -78,9 +78,7 @@ pipeline {
                         EMAIL+=$dateAndTime
 
 
-                      DEVSTR=""
-                      QASTR=""
-                      MASSTR=""
+
 
 
 
@@ -98,6 +96,9 @@ pipeline {
                           branArr+=($k)
                         done
 
+                        DEVSTR="None"
+                        QASTR="None"
+                        MASSTR="None"
 
 
 
