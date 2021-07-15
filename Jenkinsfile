@@ -224,6 +224,7 @@ pipeline {
 
                         echo "tag: $disc"
 
+#MAKE into a function \/\/\/ inputs(BranchSTR , Tag, EmailSTR)
                         #QA comparison section
                         echo '---------------------------latest vs QA ---------------------------------'
                         EMAIL+='latest verison: \n'
@@ -265,7 +266,7 @@ pipeline {
                       EMAIL+='\n '
 
                       fi
-
+#Make into a function ^^^^^^ Output (EmailSTR)
 
                         #DEVELOPMENT compare section works the same as the QA section
                         echo '-------------------------latest vs dev------------------------------------'
