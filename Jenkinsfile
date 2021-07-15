@@ -210,7 +210,7 @@ pipeline {
                         echo $CHKPOINT
                         echo "--------"
 
-                        if [[ "$(git describe --tags `git rev-list --tags --max-count=1`)" == *"fatal: No names found"* ]];
+                        if [[ "$CHKPOINT" == " " ]];
                         then
                           disc=$MASSTR
 
