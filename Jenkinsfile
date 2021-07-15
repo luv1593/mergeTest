@@ -199,13 +199,15 @@ pipeline {
                         EMAIL+='\n '
 
                         #command to get the latest tag from the  repo
-                        CHKPOINT=$(git describe --tags `git rev-list --tags --max-count=1`)
+                        CHKPOINT=$( git describe --tags `git rev-list --tags --max-count=1` )
                         disc="None"
 
 
                         #what if no tag/ what if no tag and no master?
 
-                        if [[ "$CHKPOINT" = *"fatal:"* ]];
+                        echo $CHKPOINT
+
+                        if [[ "$CHKPOINT" == "fatal: No names found, cannot describe anything." ]];
                         then
                           disc=$MASSTR
 
@@ -215,10 +217,10 @@ pipeline {
                         fi
 
 
-                        #disc=$( git describe --tags `git rev-list --tags --max-count=1` )
 
 
-                        #if no release compare to master to other branches
+
+
 
                         echo "tag: $disc"
 
