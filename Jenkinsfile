@@ -201,7 +201,7 @@ pipeline {
                         #command to get the latest tag from the  repo
                         CHKPOINT=$(git describe --tags `git rev-list --tags --max-count=1`)
                         disc=""
-                        if [ "$CHKPOINT" = *"fatal"* ];
+                        if [[ "$CHKPOINT" = *"fatal"* ]];
                         then
                           disc=$MASSTR
 
