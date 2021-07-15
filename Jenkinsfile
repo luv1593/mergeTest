@@ -202,7 +202,7 @@ pipeline {
                         #command to get the latest tag from the  repo
                         CHKPOINT=$(git describe --tags)
 
-
+                        disc=$MASSTR
 
                         #what if no tag / what if no tag and no master?
 
