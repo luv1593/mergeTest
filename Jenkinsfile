@@ -200,7 +200,7 @@ pipeline {
                         EMAIL+='\n '
 
                         #command to get the latest tag from the  repo
-                        CHKPOINT=$(git describe --tags `git rev-list --tags --max-count=1` | grep "fatal:" || true)
+                        CHKPOINT=$(git describe --tags `git rev-list --tags --max-count=1` | grep "fatal:" || false)
 
 
 
