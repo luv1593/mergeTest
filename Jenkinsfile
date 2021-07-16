@@ -52,7 +52,7 @@ pipeline {
 
                                                 EMAIL+='\n '
 
-                                                EMAIL+='difference between latest tag and $1:'
+                                                EMAIL+="difference between latest tag and '$1':"
 
                                               #If there is no branch that matched a name in the QA check list then it says there is no match
                                               #If a match is found the branch is compared to the latest version
@@ -74,7 +74,7 @@ pipeline {
                                                 else
 
                                                    EMAIL+='\n '
-                                                   EMAIL+='There are no differences between latest tag and $1 '
+                                                   EMAIL+="There are no differences between latest tag and '$1'"
                                                    EMAIL+='\n '
 
                                                 fi
