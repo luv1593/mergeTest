@@ -238,7 +238,7 @@ pipeline {
 
 
 # MAKE into a function inputs(BranchSTR , Tag, EmailSTR)
-
+compare_Function () {
                         #QA comparison section
                         echo '---------------------------latest vs QA ---------------------------------'
                         EMAIL+='latest verison: \n'
@@ -280,6 +280,8 @@ pipeline {
                       EMAIL+='\n '
 
                       fi
+
+
 #Make into a function ^^^^^^ Output (EmailSTR)
 
                         #DEVELOPMENT compare section works the same as the QA section
