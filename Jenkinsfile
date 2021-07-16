@@ -224,13 +224,7 @@ pipeline {
 
 
 
-                        cd ..
 
-                        done
-
-                        echo $EMAIL
-
-                        echo $EMAIL > Email.txt
 
 
 
@@ -238,7 +232,7 @@ pipeline {
 
 
 # MAKE into a function inputs(BranchSTR , Tag, EmailSTR)
-compare_Function () {
+
                         #QA comparison section
                         echo '---------------------------latest vs QA ---------------------------------'
                         EMAIL+='latest verison: \n'
@@ -366,6 +360,13 @@ compare_Function () {
 
                         #steps back so the next repo is not created in the current repo folder
 
+                        cd ..
+
+                        done
+
+                        echo $EMAIL
+
+                        echo $EMAIL > Email.txt
 
                         '''
 
