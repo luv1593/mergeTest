@@ -6,28 +6,6 @@
 pipeline {
     agent any
 
-    //These are the choices for parameters for the Cron patterns.
-    parameters{
-      choice(name: "Schedule",
-            choices: ['never', 'week','day', 'hour', "9am Everyday"],
-            description: "How often would you like the pipeline to run?")
-
-    }
-
-    //police blotter cron (so no plugin)
-
-    //The Cron pattern is chosen based on the users choice
-    triggers {
-        parameterizedCron('''
-            */1 * 31 2 * %Schedule="never"
-            */1 1 * * 1 %Schedule="week"
-            */1 1 1 * * %Schedule="day"
-            */1 1 * * * %Schedule="hour"
-            0 9 * * * %Schedule="9am Everyday"
-
-        ''')
-    }
-
 
     //These are the stages of the build
     stages {
@@ -46,7 +24,7 @@ pipeline {
 
                         comparison () {
                                                 #QA comparison section
-                                                EMAIL+='---------------------------latest vs '$1' ---------------------------------'
+                                                EMAIL+='--------------------------- latest vs '$1' ---------------------------------'
 
 
                                                 EMAIL+='\n '
