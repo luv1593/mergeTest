@@ -47,8 +47,7 @@ pipeline {
                         comparison () {
                                                 #QA comparison section
                                                 echo '---------------------------latest vs '$1' ---------------------------------'
-                                                EMAIL+='latest verison: \n'
-                                                EMAIL+=$disc
+
 
                                                 EMAIL+='\n '
 
@@ -275,7 +274,8 @@ pipeline {
                                                "$QASTR"
                                                )
 
-
+                       EMAIL+='latest verison: \n'
+                       EMAIL+=$disc
                        for g in "${branchARR[@]}"
                        do
                          comparison "$g"
