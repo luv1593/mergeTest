@@ -46,7 +46,7 @@ pipeline {
 
                         comparison () {
                                                 #QA comparison section
-                                                echo '---------------------------latest vs '$1' ---------------------------------'
+                                                EMAIL+='---------------------------latest vs '$1' ---------------------------------'
 
 
                                                 EMAIL+='\n '
@@ -280,6 +280,7 @@ pipeline {
                        do
                          comparison "$g"
                        done
+                       EMAIL+=~~~~~~~~~~~~~~~~~~ End of Repo ~~~~~~~~~~~~~~~~~~
 
 
                         #steps back so the next repo is not created in the current repo folder
@@ -287,7 +288,7 @@ pipeline {
 
                         done
 
-                        printf $EMAIL
+                        echo $EMAIL
 
                         echo $EMAIL > Email.txt
 
