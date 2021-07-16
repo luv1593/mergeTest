@@ -287,7 +287,7 @@ pipeline {
 
                         done
 
-                        echo $EMAIL
+                        printf $EMAIL
 
                         echo $EMAIL > Email.txt
 
