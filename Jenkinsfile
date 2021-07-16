@@ -43,6 +43,55 @@ pipeline {
                         //Bash script for git comparisons
                         sh '''#!/bin/bash
 
+
+                        comparison () {
+                                                #QA comparison section
+                                                echo '---------------------------latest vs '$1' ---------------------------------'
+                                                EMAIL+='latest verison: \n'
+                                                EMAIL+=$disc
+
+                                                EMAIL+='\n '
+
+                                                EMAIL+='difference between latest tag and $1:'
+
+                                              #If there is no branch that matched a name in the QA check list then it says there is no match
+                                              #If a match is found the branch is compared to the latest version
+                                              #If there is a difference between the 2 then the differences are put in the email, if not it says "no differences"
+                                              if [ "$1" != "None" ];
+                                              then
+
+
+                                                diffs=$(git diff --stat $disc $1)
+                                                echo $diffs
+                                                if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ||  "$diffs" = *"insertion"* ||  "$diffs" = *"deletion"* ]];
+                                                then
+
+
+                                                EMAIL+=\n
+                                                EMAIL+=$(git diff --stat-graph-width=1 $disc..$1 | tail -1)
+                                                EMAIL+='\n '
+
+                                                else
+
+                                                   EMAIL+='\n '
+                                                   EMAIL+='There are no differences between latest tag and $1 '
+                                                   EMAIL+='\n '
+
+                                                fi
+
+                                              else
+
+                                              EMAIL+='\n '
+                                              EMAIL+='There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list)'
+                                              EMAIL+='\n '
+
+                                              fi
+
+                        }
+
+                        #Make into a function ^^^^^^ Output (EmailSTR)
+
+
                         echo "-------------------------------------------------------------------------"
 
                         #This is the list of the repos that will be looked at. This list can be added to as more repos are made.
@@ -221,145 +270,19 @@ pipeline {
                         #prints the repo being looked at
                         echo "repo: $i"
 
+                        declare -a branchARR=( "$MASSTR"
+                                               "$DEVSTR"
+                                               "$QASTR"
+                                               )
 
 
+                       for g in "${branchARR[@]}"
+                       do
+                         comparison "$g"
+                       done
 
-
-
-
-
-
-
-
-# MAKE into a function inputs(BranchSTR , Tag, EmailSTR)
-
-                        #QA comparison section
-                        echo '---------------------------latest vs QA ---------------------------------'
-                        EMAIL+='latest verison: \n'
-                        EMAIL+=$disc
-
-                        EMAIL+='\n '
-
-                        EMAIL+='difference between latest tag and QA:'
-
-                      #If there is no branch that matched a name in the QA check list then it says there is no match
-                      #If a match is found the branch is compared to the latest version
-                      #If there is a difference between the 2 then the differences are put in the email, if not it says "no differences"
-                      if [ "$QASTR" != "None" ];
-                      then
-
-
-                        diffsQ=$(git diff --stat $disc $QASTR)
-                        echo $diffsQ
-                        if [[ "$diffsQ" = *"insertions"* ||  "$diffsQ" = *"deletions"* ||  "$diffsQ" = *"insertion"* ||  "$diffsQ" = *"deletion"* ]];
-                        then
-
-
-                        EMAIL+=\n
-                        EMAIL+=$(git diff --stat-graph-width=1 $disc..$QASTR | tail -1)
-                        EMAIL+='\n '
-
-                        else
-
-                           EMAIL+='\n '
-                           EMAIL+='There are no differences between latest tag and QA '
-                           EMAIL+='\n '
-
-                        fi
-
-                      else
-
-                      EMAIL+='\n '
-                      EMAIL+='There is no branch matching QA. (If there is a QA branch check the name and make sure its on the pick list)'
-                      EMAIL+='\n '
-
-                      fi
-
-
-#Make into a function ^^^^^^ Output (EmailSTR)
-
-                        #DEVELOPMENT compare section works the same as the QA section
-                        echo '-------------------------latest vs dev------------------------------------'
-                        EMAIL+='\n '
-
-                        EMAIL+='difference between latest tag and dev: \n'
-
-                        if [ "$DEVSTR" != "None" ];
-                        then
-
-                          diffsdev=$(git diff --stat $disc $DEVSTR)
-                          echo $diffsdev
-                          if [[ "$diffsdev" = *"insertions"* ||  "$diffsdev" = *"deletions"* ||  "$diffsdev" = *"insertion"* ||  "$diffsdev" = *"deletion"* ]];
-                          then
-
-
-                          EMAIL+='\n '
-                          EMAIL+=$(git diff --stat-graph-width=1 $disc..$DEVSTR | tail -1)
-                          EMAIL+='\n '
-
-                          else
-
-                               EMAIL+='\n '
-                             EMAIL+='There are no differences between latest tag and dev '
-                              EMAIL+='\n '
-
-                          fi
-
-                        else
-
-                        EMAIL+='\n '
-                        EMAIL+='There is no branch matching development. (If there is a development branch check the name and make sure its on the pick list)'
-                        EMAIL+='\n '
-
-                        fi
-
-
-
-                        #master compare section works the same as the QA and development section
-                        echo '-------------------------latest vs master------------------------------------'
-                        #email section
-                        EMAIL+='difference between latest tag and master:'
-
-
-                        if [ "$MASSTR" != "None" ];
-                        then
-
-                          diffsM=$(git diff --stat $disc..$MASSTR)
-                          echo $diffsM
-
-                          if [[ "$diffsM" = *"insertions"* ||  "$diffsM" = *"deletions"* ||  "$diffsM" = *"insertion"* ||  "$diffsM" = *"deletion"* ]];
-                          then
-
-
-                          EMAIL+='\n '
-                          EMAIL+=$(git diff --stat-graph-width=1 $disc..$MASSTR | tail -1)
-                          EMAIL+='\n '
-
-
-
-                          else
-                           EMAIL+='\n '
-                           EMAIL+='There are no differences between latest tag and master '
-                          EMAIL+='\n '
-
-
-                          fi
-
-                        else
-
-                        EMAIL+='\n '
-                        EMAIL+='There is no branch matching master. (If there is a master branch check the name and make sure its on the pick list)'
-                        EMAIL+='\n '
-
-                        fi
-
-
-                        EMAIL+=' ~~~~~~~~~~~~~~~~~~end of repo~~~~~~~~~~~~~~~~~~~~~~ '
-
-                        echo "-------------------------------------------------------------------"
 
                         #steps back so the next repo is not created in the current repo folder
-
                         cd ..
 
                         done
