@@ -166,15 +166,6 @@ pipeline {
 
 
 
-                      #prints out all of the strings for user to see
-                      echo "QASTR: $QASTR"
-                      echo "DEVSTR: $DEVSTR"
-                      echo "MASSTR: $MASSTR"
-
-
-
-                      #prints the repo being looked at
-                      echo "repo: $i"
 
 
 
@@ -204,18 +195,50 @@ pipeline {
 
                         disc=$(git describe --tags `git rev-list --tags --max-count=1`)
 
-                        if [ "$disc"==" " ];
+                        if [ "$disc" == " " ];
                         then
-                          echo "here"
                           disc=$MASSTR
+                          if [ "$disc" == "None" ];
+                          then
+                            disc=$QASTR
+                            if [ "$disc" == "None" ];
+                              then
+                              disc=$DEVSTR
+
+                            fi
+                          fi
                         fi
 
 
-
-
+                        #prints out all of the strings for user to see
                         echo "tag: $disc"
+                        echo "QASTR: $QASTR"
+                        echo "DEVSTR: $DEVSTR"
+                        echo "MASSTR: $MASSTR"
+
+
+
+                        #prints the repo being looked at
+                        echo "repo: $i"
+
+
+
+
+                        cd ..
+
+                        done
+
+                        echo $EMAIL
+
+                        echo $EMAIL > Email.txt
+
+
+
+
+
 
 # MAKE into a function inputs(BranchSTR , Tag, EmailSTR)
+
                         #QA comparison section
                         echo '---------------------------latest vs QA ---------------------------------'
                         EMAIL+='latest verison: \n'
@@ -340,13 +363,7 @@ pipeline {
                         echo "-------------------------------------------------------------------"
 
                         #steps back so the next repo is not created in the current repo folder
-                        cd ..
 
-                        done
-
-                        echo $EMAIL
-
-                        echo $EMAIL > Email.txt
 
                         '''
 
