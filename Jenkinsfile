@@ -204,6 +204,12 @@ pipeline {
 
                         disc=$(git describe --tags `git rev-list --tags --max-count=1`)
 
+                        if [ "$disc" = " " ];
+                        then
+                          echo "here"
+                          disc=$MASSTR
+                        fi
+
 
 
 
