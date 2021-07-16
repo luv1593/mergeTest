@@ -200,27 +200,9 @@ pipeline {
                         EMAIL+='\n '
 
                         #command to get the latest tag from the  repo
-                        CHKPOINT=$(git describe --tags)
-
-                        disc="$MASSTR"
-
-                        #what if no tag / what if no tag and no master?
-
-                        echo "--------"
-                        echo $CHKPOINT
-                        echo "--------"
-
-                        if [[ "$CHKPOINT" != " " ]];
-                        then
-                          disc=$(git describe --tags `git rev-list --tags --max-count=1`)
-
-                        else
-                          disc="$MASSTR"
-
-                        fi
 
 
-
+                        disc=$(git describe --tags `git rev-list --tags --max-count=1`)
 
 
 
