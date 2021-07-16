@@ -195,7 +195,7 @@ pipeline {
 
                         disc=$(git describe --tags `git rev-list --tags --max-count=1`)
 
-                        if [ "$disc"==" " ];
+                        if [ "$disc" == "" ];
                         then
                           disc=$MASSTR
                           if [ "$disc" == "None" ];
