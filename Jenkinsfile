@@ -116,9 +116,9 @@ pipeline {
 
                         #adds date and time to email
                         dateAndTime=`date`
-                        EMAIL=$"                                       "
-                        EMAIL+=$'Date and Time: '
-                        EMAIL+=$"                                        "
+                  
+                        EMAIL+=$'${newline}Date and Time: ${newline}'
+
                         EMAIL+=$dateAndTime
 
 
