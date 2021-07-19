@@ -27,7 +27,7 @@ pipeline {
                                                 EMAIL+='--------------------------- latest vs '$1' ---------------------------------'
 
 
-                                                EMAIL+='\n '
+                                                EMAIL+='${newline} '
 
                                                 EMAIL+="difference between latest tag and '$1':"
 
@@ -44,23 +44,23 @@ pipeline {
                                                 then
 
 
-                                                EMAIL+=\n
+                                                EMAIL+=${newline}
                                                 EMAIL+=$(git diff --stat-graph-width=1 $disc..$1 | tail -1)
-                                                EMAIL+='\n '
+                                                EMAIL+='${newline} '
 
                                                 else
 
-                                                   EMAIL+='\n '
+                                                   EMAIL+='${newline} '
                                                    EMAIL+="There are no differences between latest tag and '$1'"
-                                                   EMAIL+='\n '
+                                                   EMAIL+='${newline} '
 
                                                 fi
 
                                               else
 
-                                              EMAIL+='\n '
+                                              EMAIL+='${newline} '
                                               EMAIL+='There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list)'
-                                              EMAIL+='\n '
+                                              EMAIL+='${newline} '
 
                                               fi
 
@@ -112,11 +112,13 @@ pipeline {
                                   )
 
 
+                        newline=$'${newline}'
+
                         #adds date and time to email
                         dateAndTime=`date`
-                        EMAIL=$' \n'
+                        EMAIL=$' ${newline}'
                         EMAIL+=$'Date and Time: '
-                        EMAIL+=$' \n'
+                        EMAIL+=$' ${newline}'
                         EMAIL+=$dateAndTime
 
 
@@ -211,10 +213,10 @@ pipeline {
 # git ls-remote --tags --sort=v:committerdate https://github.com/NIT-Administrative-Systems/$i.git | grep -o 'v.*' | tail -1
 
                         #adds repo name to the email
-                        EMAIL+='\n'
+                        EMAIL+='${newline}'
                         EMAIL+='Email repo: '
                         EMAIL+=$i
-                        EMAIL+='\n '
+                        EMAIL+='${newline} '
 
                         #command to get the latest tag from the  repo
 
@@ -252,7 +254,7 @@ pipeline {
                                                "$QASTR"
                                                )
 
-                       EMAIL+='latest verison: \n'
+                       EMAIL+='latest verison: ${newline}'
                        EMAIL+=$disc
                        for g in "${branchARR[@]}"
                        do
