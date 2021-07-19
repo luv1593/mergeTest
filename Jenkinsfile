@@ -116,8 +116,8 @@ pipeline {
 
                         #adds date and time to email
                         dateAndTime=`date`
-
-                        EMAIL+=$"$newlineDate and Time: $newline"
+                        EMAIL+='\n%s\n'
+                        EMAIL+=$"Date and Time: "
 
                         EMAIL+=$dateAndTime
 
