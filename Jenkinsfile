@@ -27,7 +27,7 @@ pipeline {
                                                 EMAIL+='--------------------------- latest vs '$1' ---------------------------------'
 
 
-                                                EMAIL+='${newline} '
+                                                EMAIL+="${newline} "
 
                                                 EMAIL+="difference between latest tag and '$1':"
 
@@ -46,21 +46,21 @@ pipeline {
 
                                                 EMAIL+=${newline}
                                                 EMAIL+=$(git diff --stat-graph-width=1 $disc..$1 | tail -1)
-                                                EMAIL+='${newline} '
+                                                EMAIL+="${newline} "
 
                                                 else
 
-                                                   EMAIL+='${newline} '
+                                                   EMAIL+="${newline} "
                                                    EMAIL+="There are no differences between latest tag and '$1'"
-                                                   EMAIL+='${newline} '
+                                                   EMAIL+="${newline} "
 
                                                 fi
 
                                               else
 
-                                              EMAIL+='${newline} '
+                                              EMAIL+="${newline} "
                                               EMAIL+='There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list)'
-                                              EMAIL+='${newline} '
+                                              EMAIL+="${newline} "
 
                                               fi
 
@@ -214,9 +214,9 @@ pipeline {
 
                         #adds repo name to the email
                         EMAIL+='${newline}'
-                        EMAIL+='Email repo: '
+                        EMAIL+="Email repo: "
                         EMAIL+=$i
-                        EMAIL+='${newline} '
+                        EMAIL+="${newline} "
 
                         #command to get the latest tag from the  repo
 
@@ -254,13 +254,13 @@ pipeline {
                                                "$QASTR"
                                                )
 
-                       EMAIL+='latest verison: ${newline}'
+                       EMAIL+="latest verison: ${newline}"
                        EMAIL+=$disc
                        for g in "${branchARR[@]}"
                        do
                          comparison "$g"
                        done
-                       EMAIL+='~~~~~~~~~~~~~~~~~~ End of Repo ~~~~~~~~~~~~~~~~~~'
+                       EMAIL+="~~~~~~~~~~~~~~~~~~ End of Repo ~~~~~~~~~~~~~~~~~~"
 
 
                         #steps back so the next repo is not created in the current repo folder
