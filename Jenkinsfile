@@ -213,7 +213,7 @@ pipeline {
 # git ls-remote --tags --sort=v:committerdate https://github.com/NIT-Administrative-Systems/$i.git | grep -o 'v.*' | tail -1
 
                         #adds repo name to the email
-                        EMAIL+='${newline}'
+                        EMAIL+="${newline}"
                         EMAIL+="Email repo: "
                         EMAIL+=$i
                         EMAIL+="${newline} "
