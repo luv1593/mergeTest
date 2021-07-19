@@ -112,7 +112,7 @@ pipeline {
                                   )
 
 
-                        newline=$'${newline}'
+                        newline=$'\n'
 
                         #adds date and time to email
                         dateAndTime=`date`
