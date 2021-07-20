@@ -289,13 +289,9 @@ pipeline {
     post {
 
         always {
-            to: 'lucas.verrilli@northwestern.edu',
-            emailext attachLog: true,
-            attachmentsPattern: 'Email.txt',
-            body:" attached is the email.txt ",
-            recipientProviders: [[$class: 'DevelopersRecipientProvider'],
-            [$class: 'RequesterRecipientProvider']],
-            subject: "Jenkins pipeline Test Build Number: '${currentBuild.number}' "
+            mail to: 'lucas.verrilli@northwestern.edu',
+                  subject: "Status of pipeline: test",
+                  body: "${env.BUILD_URL} has result "
         }
     }
 
