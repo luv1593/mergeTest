@@ -241,7 +241,7 @@ pipeline {
                         echo "QASTR: $QASTR"
                         echo "DEVSTR: $DEVSTR"
                         echo "MASSTR: $MASSTR"
-                        EMAIL+="hello this is a test HERE I AM!"
+                        EMAIL+="hello this HERE I AM!"
 
 
 
@@ -272,7 +272,6 @@ pipeline {
 
                         echo $EMAIL > Email.txt
 
-                        rm -rf pipelineTest
 
                         '''
 
