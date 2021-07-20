@@ -18,6 +18,7 @@ pipeline {
 
 
 
+
                         //Bash script for git comparisons
                         sh '''#!/bin/bash
 
@@ -265,13 +266,18 @@ pipeline {
 
                         done
 
-                        echo $EMAIL
+                        
 
                         echo $EMAIL > Email.txt
 
                         rm -rf pipelineTest
 
                         '''
+                        file = new File("${Jenkins.instance.getJob('pipelineTest').workspace}/Email.txt").text
+                        String fileContents = file.getText('UTF-8')
+
+                        echo fileContents
+
 
 
                         }
