@@ -266,15 +266,14 @@ pipeline {
 
                         done
 
-                        
+
 
                         echo $EMAIL > Email.txt
 
                         rm -rf pipelineTest
 
                         '''
-                        file = new File("${Jenkins.instance.getJob('pipelineTest').workspace}/Email.txt").text
-                        String fileContents = file.getText('UTF-8')
+                        String fileContents = new File('.jenkins/workspace/piplineTest/Email.txt').getText('UTF-8')
 
                         echo fileContents
 
