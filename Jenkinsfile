@@ -16,7 +16,7 @@ pipeline {
               script {
 
                 //The WorkSpace is cleared before the script is run so no old versions of the repos are viewed.
-                cleanWs()
+                
 
                         //Bash script for git comparisons
                         sh '''#!/bin/bash
@@ -269,7 +269,7 @@ pipeline {
 
                         echo $EMAIL > Email.txt
 
-
+                        rm -r pipelineTest
 
                         '''
 
