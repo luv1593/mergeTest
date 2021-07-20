@@ -273,7 +273,7 @@ pipeline {
                         rm -rf pipelineTest
 
                         '''
-                        String fileContents = new File('.jenkins/workspace/piplineTest/Email.txt').getText('UTF-8')
+                        fileContents = new File('.jenkins/workspace/piplineTest/Email.txt').getText('UTF-8')
 
                         echo fileContents
 
