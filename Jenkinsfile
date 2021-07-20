@@ -272,6 +272,8 @@ pipeline {
 
                         echo $EMAIL > Email.txt
 
+                        sendmail lucasv0107@gmail.com  < Email.txt
+
                         '''
 
 
@@ -281,7 +283,12 @@ pipeline {
         }
 
     }
-    //move to bash
+    //jenkins email with formating
+    //get Schedule working (no plugin)
+    //move to bash ^^
+    //mimetype html
+
+    /*
     post {
     //what are other options?
         always {
@@ -293,6 +300,7 @@ pipeline {
             subject: "Jenkins pipeline Test Build Number: '${currentBuild.number}' "
         }
     }
+    */
 
 
 
