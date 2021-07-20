@@ -289,8 +289,7 @@ pipeline {
     post {
 
         always {
-            mail to: 'lucas.verrilli@northwestern.edu',
-                 to: 'patricia-r@northwestern.edu',
+            mail to: ('lucas.verrilli@northwestern.edu', 'patricia-r@northwestern.edu') ,
                   subject: "Status of pipeline: test",
                   body: " Jenkins pipeline Test Build Number: '${currentBuild.number}' "
         }
