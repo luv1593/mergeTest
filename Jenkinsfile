@@ -289,7 +289,7 @@ pipeline {
     post {
 
         always {
-            mail to: 'lucas.verrilli@northwestern.edu',
+            to: 'lucas.verrilli@northwestern.edu',
             emailext attachLog: true,
             attachmentsPattern: 'Email.txt',
             body:" attached is the email.txt ",
