@@ -15,7 +15,7 @@ pipeline {
             steps {
               script {
 
-                //The WorkSpace is cleared before the script is run so no old versions of the repos are viewed.
+
 
 
                         //Bash script for git comparisons
@@ -23,7 +23,7 @@ pipeline {
 
 
                         comparison () {
-                                                #QA comparison section
+
                                                 EMAIL+='--------------------------- latest vs '$1' ---------------------------------'
 
 
@@ -217,7 +217,7 @@ pipeline {
 
                         #command to get the latest tag from the  repo
 
-
+                        #only master
                         disc=$(git describe --tags `git rev-list --tags --max-count=1`)
 
                         if [ "$disc" == "" ];
@@ -282,14 +282,15 @@ pipeline {
     }
     //jenkins email with formating
     //get Schedule working (no plugin)
-    //move to bash ^^
+
     //mimetype html
 
 
+    //mimetype html
     post {
 
         always {
-            mail to: 'lucas.verrilli@northwestern.edu,patricia-r@northwestern.edu' ,
+            mail to: 'lucas.verrilli@northwestern.edu' ,
                   subject: "Status of pipeline: test",
                   body: " Jenkins pipeline Test Build Number: '${currentBuild.number}' "
         }
