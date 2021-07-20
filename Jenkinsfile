@@ -38,7 +38,7 @@ pipeline {
                                               then
 
 
-                                                diffs=$(git diff --stat $disc $1)
+                                                diffs=$(git diff --stat-graph-width=1 $disc $1)
                                                 echo $diffs
                                                 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ||  "$diffs" = *"insertion"* ||  "$diffs" = *"deletion"* ]];
                                                 then
@@ -116,13 +116,10 @@ pipeline {
 
                         #adds date and time to email
                         dateAndTime=`date`
-                        EMAIL+='\n%s\n'
+
                         EMAIL+=$"Date and Time: "
 
                         EMAIL+=$dateAndTime
-
-
-
 
 
                       #Goes through each repo in the list
@@ -272,7 +269,7 @@ pipeline {
 
                         echo $EMAIL > Email.txt
 
-                        sendmail lucasv0107@gmail.com  < Email.txt
+
 
                         '''
 
@@ -288,9 +285,9 @@ pipeline {
     //move to bash ^^
     //mimetype html
 
-    /*
+
     post {
-    //what are other options?
+
         always {
             emailext attachLog: true,
             attachmentsPattern: 'Email.txt',
@@ -300,7 +297,7 @@ pipeline {
             subject: "Jenkins pipeline Test Build Number: '${currentBuild.number}' "
         }
     }
-    */
+
 
 
 
