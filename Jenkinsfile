@@ -241,7 +241,8 @@ pipeline {
                         echo "QASTR: $QASTR"
                         echo "DEVSTR: $DEVSTR"
                         echo "MASSTR: $MASSTR"
-                        EMAIL+="hello this HERE I AM!"
+
+                        Email+= "tag: $disc, QASTR: $QASTR, DEVSTR: $DEVSTR, MASSTR: $MASSTR"
 
 
 
