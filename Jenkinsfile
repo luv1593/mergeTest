@@ -241,6 +241,8 @@ pipeline {
                         echo "QASTR: $QASTR"
                         echo "DEVSTR: $DEVSTR"
                         echo "MASSTR: $MASSTR"
+                        EMAIL+="hello this is a test HERE I AM!"
+
 
 
 
@@ -273,6 +275,7 @@ pipeline {
                         rm -rf pipelineTest
 
                         '''
+
                         fileContents = new File('.jenkins/workspace/piplineTest/Email.txt').getText('UTF-8')
 
                         echo fileContents
