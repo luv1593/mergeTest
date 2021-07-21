@@ -312,7 +312,7 @@ pipeline {
     post {
 
         always {
-          def EmailData = readFile(file: 'Email.txt')
+           EmailData = readFile(file: 'Email.txt')
 
             mail to: 'lucasv0107@gmail.com' ,
                   subject: "Status of pipeline: test",
