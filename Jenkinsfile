@@ -13,9 +13,9 @@ pipeline {
 
     stage('Setup') {
     steps {
-      script {
-        sh "rm -rf pipeline"
-            }
+        dir ('piplineTest') {
+            deleteDir()
+                    }
           }
         }
 
