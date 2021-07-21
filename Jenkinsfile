@@ -11,7 +11,13 @@ pipeline {
     stages {
 
 
-
+    stage('Setup') {
+    steps {
+      script {
+        sh "rm -rf pipeline"
+            }
+          }
+        }
 
         //This stage finds the branches are compares them to the latest tag
         stage('build') {
@@ -19,7 +25,7 @@ pipeline {
               script {
 
 
-                
+
 
 
                         //Bash script for git comparisons
