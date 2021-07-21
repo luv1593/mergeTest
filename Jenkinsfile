@@ -14,7 +14,7 @@ pipeline {
     stage('Setup') {
     steps {
 //get dynamic pipeline dir
-        dir ('Lucas-Test1') {
+        dir ('piplineTest') {
             deleteDir()
                     }
           }
@@ -315,7 +315,7 @@ pipeline {
         always {
 
 
-            mail to: 'lucasv0107@gmail.com' ,
+            mail to: 'lucasv0107@gmail.com,patricia-r@northwestern.edu' ,
                   subject: "Status of pipeline: test",
                   body: " Jenkins pipeline Test Build Number: '${currentBuild.number}': '${EmailData}'"
         }
