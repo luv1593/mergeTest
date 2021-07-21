@@ -291,7 +291,7 @@ pipeline {
                         //echo fileContents
 
 
-
+                        EmailData = readFile(file: 'Email.txt')
 
 
 
@@ -312,7 +312,7 @@ pipeline {
     post {
 
         always {
-           EmailData = readFile(file: 'Email.txt')
+
 
             mail to: 'lucasv0107@gmail.com' ,
                   subject: "Status of pipeline: test",
