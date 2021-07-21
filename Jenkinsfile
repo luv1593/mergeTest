@@ -19,7 +19,7 @@ pipeline {
               script {
 
 
-                cleanWs()
+                
 
 
                         //Bash script for git comparisons
