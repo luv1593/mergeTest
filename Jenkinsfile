@@ -74,14 +74,12 @@ pipeline {
 
                         #This is the list of the repos that will be looked at. This list can be added to as more repos are made.
                         #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
-                        declare -a REPO_LIST=( 'mergeTest'
-                                               'branchTest'
-
+                        declare -a REPO_LIST=( 'SysDev-MoneyCat'
+                                               'dynamic-forms'
+                                               'JST-Skills-Inventory'
                                               )
 
-                                              #'SysDev-MoneyCat'
-                                              #'dynamic-forms'
-                                              #'JST-Skills-Inventory'
+
 
                         #This list is the check list for the development branch, any new names for the development branch can be
                         #added here or the github branch name can be changed.
@@ -131,7 +129,7 @@ pipeline {
                       for i in "${REPO_LIST[@]}"
                       do
                         #clones sets the directory and pulls the repo so all the information is up to date.
-                        git clone https://github.com/luv1593/$i.git
+                        git clone https://github.com/NIT-Administrative-Systems/$i.git
                         cd "$i"
                         git pull
 
@@ -280,9 +278,12 @@ pipeline {
 
                         '''
 
-                        fileContents = new File('.jenkins/workspace/piplineTest/Email.txt').getText('UTF-8')
+                        //fileContents = new File('.jenkins/workspace/piplineTest/Email.txt').getText('UTF-8')
+                        //echo fileContents
 
-                        echo fileContents
+                        def data = readFile(file: 'Email.txt')
+                        println(data)
+
 
 
 
