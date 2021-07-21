@@ -14,7 +14,7 @@ pipeline {
     stage('Setup') {
     steps {
 //get dynamic pipelineTest dir   (newTestPipeline, Lucas-Test1)
-        dir ('LucasPiplineTest2') {
+        dir ('${env.WORKSPACE}') {
             deleteDir()
                     }
           }
@@ -324,7 +324,7 @@ pipeline {
     post {
 
         always {
-
+//add email param
 
             mail to: 'lucasv0107@gmail.com,patricia-r@northwestern.edu' ,
                   subject: "Status of pipeline: test",
