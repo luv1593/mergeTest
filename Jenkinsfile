@@ -292,7 +292,7 @@ pipeline {
 
                         def EmailData = readFile(file: 'Email.txt')
 
-
+                        echo EmailData
 
 
 
