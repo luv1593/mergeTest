@@ -282,7 +282,7 @@ pipeline {
                         //echo fileContents
 
                         def data = readFile(file: 'Email.txt')
-                        println(data)
+
 
 
 
@@ -305,7 +305,7 @@ pipeline {
         always {
             mail to: 'lucasv0107@gmail.com' ,
                   subject: "Status of pipeline: test",
-                  body: " Jenkins pipeline Test Build Number: '${currentBuild.number}' "
+                  body: " Jenkins pipeline Test Build Number: '${currentBuild.number}': ${data} "
         }
     }
 
