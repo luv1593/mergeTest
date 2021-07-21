@@ -13,8 +13,8 @@ pipeline {
 
     stage('Setup') {
     steps {
-//get dynamic pipeline dir
-        dir ('piplineTest') {
+//get dynamic pipelineTest dir
+        dir ('Lucas-Test1') {
             deleteDir()
                     }
           }
