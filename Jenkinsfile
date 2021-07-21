@@ -11,13 +11,7 @@ pipeline {
     stages {
 
 
-    stage('Setup') {
-    steps {
-        dir ('piplineTest') {
-            deleteDir()
-                    }
-          }
-        }
+
 
         //This stage finds the branches are compares them to the latest tag
         stage('build') {
@@ -25,7 +19,7 @@ pipeline {
               script {
 
 
-
+                cleanWs()
 
 
                         //Bash script for git comparisons
