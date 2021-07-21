@@ -138,9 +138,13 @@ pipeline {
                       #Goes through each repo in the list
                       for i in "${REPO_LIST[@]}"
                       do
+                        echo "repo(start for loop): '$i'"
                         #clones sets the directory and pulls the repo so all the information is up to date.
                         git clone https://github.com/NIT-Administrative-Systems/$i.git
+
                         cd "$i"
+                        pwd
+                        echo "after CD"
                         git pull
 
 
@@ -231,7 +235,10 @@ pipeline {
                         #command to get the latest tag from the  repo
 
                         #only master
+
+                        echo "repo: '$i'"
                         disc=$(git describe --tags `git rev-list --tags --max-count=1`)
+                        echo "repo:"
 
                         if [ "$disc" == "" ];
                         then
@@ -249,6 +256,7 @@ pipeline {
 
 
                         #prints out all of the strings for user to see
+
                         echo "tag: $disc"
                         echo "QASTR: $QASTR"
                         echo "DEVSTR: $DEVSTR"
