@@ -290,9 +290,9 @@ pipeline {
                         //fileContents = new File('.jenkins/workspace/piplineTest/Email.txt').getText('UTF-8')
                         //echo fileContents
 
-                        def EmailData = readFile(file: 'Email.txt')
+                        def env.EmailData = readFile(file: 'Email.txt')
 
-                        echo EmailData
+                        echo env.EmailData
 
 
 
@@ -314,7 +314,7 @@ pipeline {
         always {
             mail to: 'lucasv0107@gmail.com' ,
                   subject: "Status of pipeline: test",
-                  body: " Jenkins pipeline Test Build Number: '${currentBuild.number}': '${EmailData}'"
+                  body: " Jenkins pipeline Test Build Number: '${currentBuild.number}': '${env.EmailData}'"
         }
     }
 
