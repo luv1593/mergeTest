@@ -82,6 +82,8 @@ pipeline {
 
                         echo "-------------------------------------------------------------------------"
 
+                        echo git config user.name
+
                         #This is the list of the repos that will be looked at. This list can be added to as more repos are made.
                         #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
                         declare -a REPO_LIST=( 'SysDev-MoneyCat'
@@ -296,8 +298,7 @@ pipeline {
 
                         '''
 
-                        //fileContents = new File('.jenkins/workspace/piplineTest/Email.txt').getText('UTF-8')
-                        //echo fileContents
+
 
 
                         EmailData = readFile(file: 'Email.txt')
