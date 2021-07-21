@@ -305,7 +305,7 @@ pipeline {
         always {
             mail to: 'lucasv0107@gmail.com' ,
                   subject: "Status of pipeline: test",
-                  body: " Jenkins pipeline Test Build Number: '${currentBuild.number}': ${env.EmailData} "
+                  body: " Jenkins pipeline Test Build Number: '${currentBuild.number}': ${EmailData} "
         }
     }
 
