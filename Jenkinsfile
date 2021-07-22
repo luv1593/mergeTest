@@ -14,8 +14,10 @@ pipeline {
     stage('Setup') {
     steps {
 //get dynamic pipelineTest dir   (newTestPipeline, Lucas-Test1)
-    
+
             deleteDir()
+
+            echo jenkins-git-credentials
 
 
           }
@@ -90,7 +92,7 @@ pipeline {
                         git config --global user.name
                         git config --global user.email
 
-                        jenkins-git-credentials
+
 
                         #This is the list of the repos that will be looked at. This list can be added to as more repos are made.
                         #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
