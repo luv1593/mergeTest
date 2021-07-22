@@ -85,6 +85,7 @@ pipeline {
 
                         echo "user"
                         git config user.name luv1593
+                        git config user.email lucas.verrilli@northwestern.edu
 
                         #This is the list of the repos that will be looked at. This list can be added to as more repos are made.
                         #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
