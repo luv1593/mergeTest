@@ -87,6 +87,9 @@ pipeline {
                         git config user.name 'luv1593'
                         git config user.email 'lucas.verrilli@northwestern.edu'
 
+                        git config user.name
+                        git config user.email
+
                         #This is the list of the repos that will be looked at. This list can be added to as more repos are made.
                         #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
                         declare -a REPO_LIST=( 'SysDev-MoneyCat'
