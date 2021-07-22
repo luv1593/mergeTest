@@ -14,10 +14,10 @@ pipeline {
     stage('Setup') {
     steps {
 //get dynamic pipelineTest dir   (newTestPipeline, Lucas-Test1)
-        dir ('${env.WORKSPACE}') {
+        dir (' ') {
             deleteDir()
                     }
-                    echo credentials-id
+
           }
         }
 
