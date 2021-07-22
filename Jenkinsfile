@@ -84,8 +84,7 @@ pipeline {
                         echo "-------------------------------------------------------------------------"
 
                         echo "user"
-                        git config user.name 'luv1593'
-                        git config user.email 'lucas.verrilli@northwestern.edu'
+                        
 
                         git config user.name
                         git config user.email
