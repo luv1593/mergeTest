@@ -17,7 +17,7 @@ pipeline {
 
             deleteDir()
 
-            echo jenkins-git-credentials
+  
 
 
           }
