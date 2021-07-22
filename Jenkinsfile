@@ -17,7 +17,7 @@ pipeline {
         dir ('${env.WORKSPACE}') {
             deleteDir()
                     }
-                    credentials('awsCloudOpsCJT')        
+
           }
         }
 
@@ -83,7 +83,8 @@ pipeline {
 
                         echo "-------------------------------------------------------------------------"
 
-                        #git config user.name
+                        echo "user"
+                        git config user.name
 
                         #This is the list of the repos that will be looked at. This list can be added to as more repos are made.
                         #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
