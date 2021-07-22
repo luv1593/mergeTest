@@ -14,9 +14,9 @@ pipeline {
     stage('Setup') {
     steps {
 //get dynamic pipelineTest dir   (newTestPipeline, Lucas-Test1)
-        dir () {
+    
             deleteDir()
-                    }
+
 
           }
         }
