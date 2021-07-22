@@ -17,6 +17,7 @@ pipeline {
         dir ('${env.WORKSPACE}') {
             deleteDir()
                     }
+                    ACCESS = credentials('awsCloudOpsCJT')        
           }
         }
 
