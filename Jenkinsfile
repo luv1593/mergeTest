@@ -17,7 +17,7 @@ pipeline {
         dir ('${env.WORKSPACE}') {
             deleteDir()
                     }
-
+                    echo credentials-id
           }
         }
 
