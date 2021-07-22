@@ -150,7 +150,8 @@ pipeline {
                       do
                         echo "repo(start for loop): '$i'"
                         #clones sets the directory and pulls the repo so all the information is up to date.
-                        git clone https://github.com/NIT-Administrative-Systems/$i.git
+                        #git clone https://github.com/NIT-Administrative-Systems/$i.git
+                        git clone git@github.com:NIT-Administrative-Systems/$i.git
 
                         cd "$i"
                         pwd
