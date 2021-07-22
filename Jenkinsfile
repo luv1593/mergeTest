@@ -331,7 +331,7 @@ pipeline {
 
     //mimetype html
 
-  /*
+
     post {
 
         always {
@@ -342,7 +342,7 @@ pipeline {
                   body: " Jenkins pipeline Test Build Number: '${currentBuild.number}': '${EmailData}'"
         }
     }
-*/
+
 
 
 
