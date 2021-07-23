@@ -31,17 +31,13 @@ pipeline {
               withCredentials([
                   usernamePassword(credentialsId: 'GitHub-awsCloudOpsCJT', passwordVariable: 'GITHUB_PASSWORD', usernameVariable: 'GITHUB_USERNAME'),
               ]) {
-                  sh"""
-                  git config --global credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper '!f() { echo "username=""" + '${GITHUB_USERNAME}' + """"; echo "password=""" + '${GITHUB_PASSWORD}' + """"; }; f' &&
-                  """
+
 
 
               script {
-
-
-
-
-
+                sh"""
+                git config --global credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper '!f() { echo "username=""" + '${GITHUB_USERNAME}' + """"; echo "password=""" + '${GITHUB_PASSWORD}' + """"; }; f' &&
+                """
 
                         //Bash script for git comparisons
                         sh '''#!/bin/bash
@@ -298,7 +294,9 @@ pipeline {
 
 
                         '''
-
+                        sh"""
+                        git config --global --unset credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper
+                        """
 
 
 
@@ -310,9 +308,7 @@ pipeline {
                         }
 
 
-                            sh"""
-                            git config --global --unset credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper
-                            """
+
                         }
             }
 
