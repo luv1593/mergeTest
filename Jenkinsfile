@@ -63,14 +63,14 @@ pipeline {
                                               then
 
 
-                                                diffs=$(git diff --stat-graph-width=1 \$disc \$1)
+                                                diffs=\$(git diff --stat-graph-width=1 \$disc \$1)
                                                 echo \$diffs
                                                 if [[ "\$diffs" = *"insertions"* ||  "\$diffs" = *"deletions"* ||  "\$diffs" = *"insertion"* ||  "\$diffs" = *"deletion"* ]];
                                                 then
 
                                                   #not in sync
                                                 EMAIL+=\$newline
-                                                EMAIL+=$(git diff --stat-graph-width=1 \$disc..\$1 | tail -1)
+                                                EMAIL+=\$(git diff --stat-graph-width=1 \$disc..\$1 | tail -1)
                                                 EMAIL+="\${newline} "
 
                                                 else
@@ -152,7 +152,7 @@ pipeline {
                         #adds date and time to email
                         dateAndTime=`date`
 
-                        EMAIL+=$"Date and Time: "
+                        EMAIL+=\$"Date and Time: "
 
                         EMAIL+=\$dateAndTime
 
@@ -172,7 +172,7 @@ pipeline {
 
                         #gets all of the branches in the repo into an array
                         branArr=()
-                        branch=$(git branch -r)
+                        branch=\$(git branch -r)
 
                         for k in \$branch
                         do
@@ -240,7 +240,7 @@ pipeline {
                         #only master
 
                         echo "repo: '\$i'"
-                        disc=$(git describe --tags `git rev-list --tags --max-count=1`)
+                        disc=\$(git describe --tags `git rev-list --tags --max-count=1`)
                         echo "repo:"
 
                         if [ "\$disc" == "" ];
