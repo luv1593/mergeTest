@@ -44,7 +44,7 @@ pipeline {
                         sh """#!/bin/bash
 
                         echo "username"
-                        echo '${GITHUB_USERNAME}'
+                        echo "${GITHUB_USERNAME}"
 
 
 
