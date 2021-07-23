@@ -28,11 +28,10 @@ pipeline {
                 sh"""
                 git config --global credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper '!f() { echo "username=""" + '${GITHUB_USERNAME}' + """"; echo "password=""" + '${GITHUB_PASSWORD}' + """"; }; f'
                 """
+
+                sh 'git clone https://github.com/luv1593/mergeTest.git'
+                sh 'cd mergeTest'
                 
-                sh """
-                git clone https://github.com/luv1593/mergeTest.git'
-                cd mergeTest
-                """
 
                 //Bash script for git comparisons
                 sh 'pwd'
