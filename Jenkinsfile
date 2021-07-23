@@ -37,7 +37,7 @@ pipeline {
 
               script {
                 sh"""
-                git config --global credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper '!f() { echo "username=""" + '${GITHUB_USERNAME}' + """"; echo "password=""" + '${GITHUB_PASSWORD}' + """"; }; f' store
+                git config --global credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper '!f() { echo "username=""" + '${GITHUB_USERNAME}' + """"; echo "password=""" + '${GITHUB_PASSWORD}' + """"; }; f'
                 """
 
                         //Bash script for git comparisons
@@ -163,7 +163,7 @@ pipeline {
                       do
                         echo "repo(start for loop): '$i'"
                         #clones sets the directory and pulls the repo so all the information is up to date.
-                        git clone https://github.com/NIT-Administrative-Systems/$i.git
+                        git clone https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@github.com/NIT-Administrative-Systems/$i.git
                         #git clone git@github.com:NIT-Administrative-Systems/$i.git
 
                         cd "$i"
