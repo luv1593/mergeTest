@@ -41,7 +41,7 @@ pipeline {
                 """
 
                         //Bash script for git comparisons
-                        sh '''#!/bin/bash
+                        sh """#!/bin/bash
 
                         echo "username"
                         echo ${GITHUB_USERNAME}
@@ -148,7 +148,7 @@ pipeline {
                                   )
 
 
-                        newline="\n"
+                        newline=$"\n"
 
                         #adds date and time to email
                         dateAndTime=`date`
@@ -298,7 +298,7 @@ pipeline {
                         echo $EMAIL > Email.txt
 
 
-                        '''
+                        """
                         sh"""
                         git config --global --unset credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper
                         """
