@@ -136,7 +136,7 @@ pipeline {
                                   )
 
 
-                        newline=\n
+                        newline="%c\n"
 
                         #adds date and time to email
                         dateAndTime=`date`
@@ -281,7 +281,7 @@ pipeline {
 
                         done
 
-                        printf $EMAIL
+                        echo $EMAIL
 
                         echo $EMAIL > Email.txt
 
