@@ -43,7 +43,7 @@ pipeline {
                         //Bash script for git comparisons
                         sh """#!/bin/bash
 
-                        newline='$\n'
+
 
 
 
@@ -91,7 +91,9 @@ pipeline {
 
                         }
 
-                        #Make into a function ^^^^^^ Output (EmailSTR)
+
+
+                          newline='$\n'
 
 
                         echo "-------------------------------------------------------------------------"
