@@ -57,13 +57,13 @@ pipeline {
                                                 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ||  "$diffs" = *"insertion"* ||  "$diffs" = *"deletion"* ]];
                                                 then
 
-                                                  //not in sync
+                                                  #not in sync
                                                 EMAIL+=${newline}
                                                 EMAIL+=$(git diff --stat-graph-width=1 $disc..$1 | tail -1)
                                                 EMAIL+="${newline} "
 
                                                 else
-                                                    //in sync
+                                                    #in sync
                                                    EMAIL+="${newline} "
                                                    EMAIL+="There are no differences between latest tag and '$1'"
                                                    EMAIL+="${newline} "
@@ -71,7 +71,7 @@ pipeline {
                                                 fi
 
                                               else
-                                                //no branch
+                                                #no branch
                                               EMAIL+="${newline} "
                                               EMAIL+='There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list)'
                                               EMAIL+="${newline} "
@@ -136,7 +136,7 @@ pipeline {
                                   )
 
 
-                        newline="\n"
+                        newline=\n
 
                         #adds date and time to email
                         dateAndTime=`date`
