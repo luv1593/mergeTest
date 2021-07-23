@@ -42,11 +42,6 @@ pipeline {
 
                         //Bash script for git comparisons
                         sh """#!/bin/bash
-
-
-
-
-
                         comparison () {
 
                                                 EMAIL+='--------------------------- latest vs '\$1' ---------------------------------'
