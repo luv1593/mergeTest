@@ -41,8 +41,8 @@ pipeline {
                 """
 
                         //Bash script for git comparisons
-                        sh """#!/bin/bash
-
+                        sh """
+                        
                         newline='$\n'
 
 
