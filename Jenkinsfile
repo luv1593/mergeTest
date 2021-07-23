@@ -136,7 +136,7 @@ pipeline {
                                   )
 
 
-                        newline='\n'
+                        newline="\n"
 
                         #adds date and time to email
                         dateAndTime=`date`
