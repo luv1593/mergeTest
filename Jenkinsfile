@@ -34,6 +34,7 @@ pipeline {
 
 
 
+
               script {
                 sh"""
                 git config --global credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper '!f() { echo "username=""" + '${GITHUB_USERNAME}' + """"; echo "password=""" + '${GITHUB_PASSWORD}' + """"; }; f'
@@ -41,6 +42,10 @@ pipeline {
 
                         //Bash script for git comparisons
                         sh '''#!/bin/bash
+
+                        echo "username"
+                        echo ${GITHUB_USERNAME}
+                        
 
 
                         comparison () {
