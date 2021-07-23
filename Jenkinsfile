@@ -312,7 +312,7 @@ pipeline {
         always {
 //add email param
 
-            mail to: 'lucasv0107@gmail.com,patricia-r@northwestern.edu' ,
+            mail to: 'lucasv0107@gmail.com' ,
                   subject: "Status of pipeline: test",
                   body: " Jenkins pipeline Test Build Number: '${currentBuild.number}': '${EmailData}'"
         }
