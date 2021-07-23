@@ -43,8 +43,7 @@ pipeline {
                         //Bash script for git comparisons
                         sh """#!/bin/bash
 
-                        echo "username"
-                        echo "$GITHUB_USERNAME"
+                        newline=$"\n"
 
 
 
@@ -55,38 +54,38 @@ pipeline {
 
                                                 EMAIL+="$newline "
 
-                                                EMAIL+="difference between latest tag and '$1':"
+                                                EMAIL+="difference between latest tag and '\$1':"
 
                                               #If there is no branch that matched a name in the QA check list then it says there is no match
                                               #If a match is found the branch is compared to the latest version
                                               #If there is a difference between the 2 then the differences are put in the email, if not it says "no differences"
-                                              if [ "$1" != "None" ];
+                                              if [ "\$1" != "None" ];
                                               then
 
 
-                                                diffs=$(git diff --stat-graph-width=1 $disc $1)
-                                                echo $diffs
-                                                if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ||  "$diffs" = *"insertion"* ||  "$diffs" = *"deletion"* ]];
+                                                diffs=$(git diff --stat-graph-width=1 \$disc \$1)
+                                                echo \$diffs
+                                                if [[ "\$diffs" = *"insertions"* ||  "\$diffs" = *"deletions"* ||  "\$diffs" = *"insertion"* ||  "\$diffs" = *"deletion"* ]];
                                                 then
 
                                                   #not in sync
-                                                EMAIL+=${newline}
-                                                EMAIL+=$(git diff --stat-graph-width=1 $disc..$1 | tail -1)
-                                                EMAIL+="${newline} "
+                                                EMAIL+=\$newline
+                                                EMAIL+=$(git diff --stat-graph-width=1 \$disc..\$1 | tail -1)
+                                                EMAIL+="\${newline} "
 
                                                 else
                                                     #in sync
-                                                   EMAIL+="${newline} "
-                                                   EMAIL+="There are no differences between latest tag and '$1'"
-                                                   EMAIL+="${newline} "
+                                                   EMAIL+="\${newline} "
+                                                   EMAIL+="There are no differences between latest tag and '\$1'"
+                                                   EMAIL+="\${newline} "
 
                                                 fi
 
                                               else
                                                 #no branch
-                                              EMAIL+="${newline} "
-                                              EMAIL+='There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list)'
-                                              EMAIL+="${newline} "
+                                              EMAIL+="\${newline} "
+                                              EMAIL+='There is no branch matching '\$1'. (If there is a '\$1' branch check the name and make sure its on the pick list)'
+                                              EMAIL+="\${newline} "
 
                                               fi
 
@@ -148,25 +147,25 @@ pipeline {
                                   )
 
 
-                        newline=$"\n"
+
 
                         #adds date and time to email
                         dateAndTime=`date`
 
                         EMAIL+=$"Date and Time: "
 
-                        EMAIL+=$dateAndTime
+                        EMAIL+=\$dateAndTime
 
 
                       #Goes through each repo in the list
-                      for i in "${REPO_LIST[@]}"
+                      for i in "\${REPO_LIST[@]}"
                       do
-                        echo "repo(start for loop): '$i'"
+                        echo "repo(start for loop): '\$i'"
                         #clones sets the directory and pulls the repo so all the information is up to date.
-                        git clone https://${GITHUB_USERNAME}:${GITHUB_PASSWORD}@github.com/NIT-Administrative-Systems/$i.git
-                        #git clone git@github.com:NIT-Administrative-Systems/$i.git
+                        git clone https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/NIT-Administrative-Systems/\$i.git
+                        #git clone git@github.com:NIT-Administrative-Systems/\$i.git
 
-                        cd "$i"
+                        cd "\$i"
 
                         git pull
 
@@ -175,9 +174,9 @@ pipeline {
                         branArr=()
                         branch=$(git branch -r)
 
-                        for k in $branch
+                        for k in \$branch
                         do
-                          branArr+=($k)
+                          branArr+=(\$k)
                         done
 
 
@@ -189,13 +188,13 @@ pipeline {
 
 
                       #finds the dev branch and saves that name
-                      for l in "${branArr[@]}"
+                      for l in "\${branArr[@]}"
                       do
-                        for j in "${devLst[@]}"
+                        for j in "\${devLst[@]}"
                         do
-                        if [ "$j" == "$l" ];
+                        if [ "\$j" == "\$l" ];
                         then
-                          DEVSTR=$j
+                          DEVSTR=\$j
                         fi
                         done
                       done
@@ -203,56 +202,56 @@ pipeline {
 
 
                       #Finds the master branch and saves the name
-                      for q in "${branArr[@]}"
+                      for q in "\${branArr[@]}"
                       do
-                        for w in "${mastLst[@]}"
+                        for w in "\${mastLst[@]}"
                         do
 
-                        if [ "$q" == "$w" ];
+                        if [ "\$q" == "\$w" ];
                         then
-                          MASSTR=$q
+                          MASSTR=\$q
                         fi
                         done
                       done
 
 
                       #finds the QA branch and saves the name
-                      for o in "${branArr[@]}"
+                      for o in "\${branArr[@]}"
                       do
-                        for p in "${QALst[@]}"
+                        for p in "\${QALst[@]}"
                         do
 
-                        if [ "$o" == "$p" ];
+                        if [ "\$o" == "\$p" ];
                         then
-                          QASTR=$o
+                          QASTR=\$o
                         fi
                         done
                       done
 
 
                         #adds repo name to the email
-                        EMAIL+="${newline}"
+                        EMAIL+="\${newline}"
                         EMAIL+="Email repo: "
-                        EMAIL+=$i
-                        EMAIL+="${newline} "
+                        EMAIL+=\$i
+                        EMAIL+="\${newline} "
 
                         #command to get the latest tag from the  repo
 
                         #only master
 
-                        echo "repo: '$i'"
+                        echo "repo: '\$i'"
                         disc=$(git describe --tags `git rev-list --tags --max-count=1`)
                         echo "repo:"
 
-                        if [ "$disc" == "" ];
+                        if [ "\$disc" == "" ];
                         then
-                          disc=$MASSTR
-                          if [ "$disc" == "None" ];
+                          disc=\$MASSTR
+                          if [ "\$disc" == "None" ];
                           then
-                            disc=$QASTR
-                            if [ "$disc" == "None" ];
+                            disc=\$QASTR
+                            if [ "\$disc" == "None" ];
                               then
-                              disc=$DEVSTR
+                              disc=\$DEVSTR
 
                             fi
                           fi
@@ -261,10 +260,10 @@ pipeline {
 
                         #prints out all of the strings for user to see
 
-                        echo "tag: $disc"
-                        echo "QASTR: $QASTR"
-                        echo "DEVSTR: $DEVSTR"
-                        echo "MASSTR: $MASSTR"
+                        echo "tag: \$disc"
+                        echo "QASTR: \$QASTR"
+                        echo "DEVSTR: \$DEVSTR"
+                        echo "MASSTR: \$MASSTR"
 
 
 
@@ -272,18 +271,18 @@ pipeline {
 
 
                         #prints the repo being looked at
-                        echo "repo: $i"
+                        echo "repo: \$i"
 
-                        declare -a branchARR=( "$MASSTR"
-                                               "$DEVSTR"
-                                               "$QASTR"
+                        declare -a branchARR=( "\$MASSTR"
+                                               "\$DEVSTR"
+                                               "\$QASTR"
                                                )
 
-                       EMAIL+="latest verison: ${newline}"
-                       EMAIL+=$disc
-                       for g in "${branchARR[@]}"
+                       EMAIL+="latest verison: \${newline}"
+                       EMAIL+=\$disc
+                       for g in "\${branchARR[@]}"
                        do
-                         comparison "$g"
+                         comparison "\$g"
                        done
                        EMAIL+="~~~~~~~~~~~~~~~~~~ End of Repo ~~~~~~~~~~~~~~~~~~"
 
@@ -293,9 +292,9 @@ pipeline {
 
                         done
 
-                        echo -e $EMAIL
+                        echo -e \$EMAIL
 
-                        echo $EMAIL > Email.txt
+                        echo \$EMAIL > Email.txt
 
 
                         """
@@ -311,7 +310,7 @@ pipeline {
 
 
                         }
-
+                        //call sh file in jenkins file
 
 
                         }
