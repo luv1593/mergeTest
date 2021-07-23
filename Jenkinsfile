@@ -41,9 +41,9 @@ pipeline {
                 """
 
                         //Bash script for git comparisons
-                        sh """
-                        
-                        newline='$\n'
+                        sh """#!/bin/bash
+
+                        newline="${"\n"}"
 
 
 
@@ -52,7 +52,7 @@ pipeline {
                                                 EMAIL+='--------------------------- latest vs '\$1' ---------------------------------'
 
 
-                                                EMAIL+=$"\$newline "
+                                                EMAIL+="\$newline "
 
                                                 EMAIL+="difference between latest tag and '\$1':"
 
@@ -69,7 +69,7 @@ pipeline {
                                                 then
 
                                                   #not in sync
-                                                EMAIL+=$\$newline
+                                                EMAIL+=\$newline
                                                 EMAIL+=\$(git diff --stat-graph-width=1 \$disc..\$1 | tail -1)
                                                 EMAIL+="\${newline} "
 
