@@ -42,6 +42,11 @@ pipeline {
 
                         //Bash script for git comparisons
                         sh """#!/bin/bash
+
+                        newline='$\n'
+
+
+
                         comparison () {
 
                                                 EMAIL+='--------------------------- latest vs '\$1' ---------------------------------'
@@ -66,7 +71,7 @@ pipeline {
                                                   #not in sync
                                                 EMAIL+=$\$newline
                                                 EMAIL+=\$(git diff --stat-graph-width=1 \$disc..\$1 | tail -1)
-                                                EMAIL+=$"\${newline} "
+                                                EMAIL+="\${newline} "
 
                                                 else
                                                     #in sync
@@ -86,9 +91,7 @@ pipeline {
 
                         }
 
-
-
-                          newline='$\n'
+                        #Make into a function ^^^^^^ Output (EmailSTR)
 
 
                         echo "-------------------------------------------------------------------------"
