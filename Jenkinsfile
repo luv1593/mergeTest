@@ -57,13 +57,13 @@ pipeline {
                                                 if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ||  "$diffs" = *"insertion"* ||  "$diffs" = *"deletion"* ]];
                                                 then
 
-
+                                                  //not in sync
                                                 EMAIL+=${newline}
                                                 EMAIL+=$(git diff --stat-graph-width=1 $disc..$1 | tail -1)
                                                 EMAIL+="${newline} "
 
                                                 else
-
+                                                    //in sync
                                                    EMAIL+="${newline} "
                                                    EMAIL+="There are no differences between latest tag and '$1'"
                                                    EMAIL+="${newline} "
@@ -71,7 +71,7 @@ pipeline {
                                                 fi
 
                                               else
-
+                                                //no branch
                                               EMAIL+="${newline} "
                                               EMAIL+='There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list)'
                                               EMAIL+="${newline} "
@@ -132,12 +132,11 @@ pipeline {
                       #added here or the github branch name can be changed.
                       declare -a QALst=('origin/QA'
                                   'origin/qa'
-                                  'origin/QAQHASsd'
                                   'origin/TEST'
                                   )
 
 
-                        newline=$'\n'
+                        newline='\n'
 
                         #adds date and time to email
                         dateAndTime=`date`
@@ -219,25 +218,6 @@ pipeline {
                         done
                       done
 
-
-
-
-
-
-
-
-
-
-#open git repo here-> git ls-remote --tags --sort=v:refname https://github.com/luv1593/mergeTest.git (get last)
-#local dir
-#cant stop script in loop
-
-#latest commit hash: git for-each-ref
-#latest commit hash + changes: git show --pretty=format:"%H"
-
-# git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v.1.*' | head -1
-# git ls-remote --tags --sort=v:committerdate https://github.com/luv1593/mergeTest.git | grep -o 'v1.*' | tail -1
-# git ls-remote --tags --sort=v:committerdate https://github.com/NIT-Administrative-Systems/$i.git | grep -o 'v.*' | tail -1
 
                         #adds repo name to the email
                         EMAIL+="${newline}"
@@ -324,11 +304,6 @@ pipeline {
 
     }
     //jenkins email with formating
-    //get Schedule working (no plugin)
-
-    //mimetype html
-
-
     //mimetype html
 
 
