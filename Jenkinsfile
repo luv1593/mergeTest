@@ -26,7 +26,15 @@ pipeline {
         //This stage finds the branches are compares them to the latest tag
         stage('build') {
             steps {
+
+
+              withCredentials([
+                  usernamePassword(credentialsId: 'GitHub-awsCloudOpsCJT', passwordVariable: 'GITHUB_PASSWORD', usernameVariable: 'GITHUB_USERNAME'),
+              ]) {
+
+
               script {
+
 
 
 
@@ -34,6 +42,7 @@ pipeline {
 
                         //Bash script for git comparisons
                         sh '''#!/bin/bash
+                        git config --global credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper '!f() { echo "username=""" + '${GITHUB_USERNAME}' + """"; echo "password=""" + '${GITHUB_PASSWORD}' + """"; }; f' &&
 
 
                         comparison () {
@@ -285,6 +294,8 @@ pipeline {
 
                         echo $EMAIL > Email.txt
 
+                        git config --global --unset credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper
+
 
                         '''
 
@@ -297,6 +308,8 @@ pipeline {
 
 
                         }
+
+                      }
 
             }
         }
