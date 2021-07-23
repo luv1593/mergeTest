@@ -43,7 +43,7 @@ pipeline {
                         //Bash script for git comparisons
                         sh """#!/bin/bash
 
-                        newline="${"\n"}"
+                        newline='$\n'
 
 
 
@@ -52,7 +52,7 @@ pipeline {
                                                 EMAIL+='--------------------------- latest vs '\$1' ---------------------------------'
 
 
-                                                EMAIL+="\$newline "
+                                                EMAIL+=$'\$newline '
 
                                                 EMAIL+="difference between latest tag and '\$1':"
 
@@ -69,9 +69,9 @@ pipeline {
                                                 then
 
                                                   #not in sync
-                                                EMAIL+=\$newline
+                                                EMAIL+=$\$newline
                                                 EMAIL+=\$(git diff --stat-graph-width=1 \$disc..\$1 | tail -1)
-                                                EMAIL+="\${newline} "
+                                                EMAIL+=$"\${newline} "
 
                                                 else
                                                     #in sync
@@ -96,12 +96,6 @@ pipeline {
 
                         echo "-------------------------------------------------------------------------"
 
-                        #echo "user"
-                      #  git config user.name ' '
-                      #  git config user.email ' '
-
-                      #  git config --global user.name
-                      #  git config --global user.email
 
 
 
