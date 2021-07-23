@@ -155,8 +155,7 @@ pipeline {
                         #git clone git@github.com:NIT-Administrative-Systems/$i.git
 
                         cd "$i"
-                        pwd
-                        echo "after CD"
+
                         git pull
 
 
@@ -282,7 +281,7 @@ pipeline {
 
                         done
 
-                        echo $EMAIL
+                        printf $EMAIL
 
                         echo $EMAIL > Email.txt
 
