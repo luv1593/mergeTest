@@ -136,7 +136,7 @@ pipeline {
                                   )
 
 
-                        newline="%c\n"
+                        newline="\n"
 
                         #adds date and time to email
                         dateAndTime=`date`
@@ -281,7 +281,7 @@ pipeline {
 
                         done
 
-                        echo $EMAIL
+                        echo -e $EMAIL
 
                         echo $EMAIL > Email.txt
 
@@ -305,7 +305,7 @@ pipeline {
     //jenkins email with formating
     //mimetype html
 
-
+/*
     post {
 
         always {
@@ -318,7 +318,7 @@ pipeline {
     }
 
 
-
+*/
 
 
 }
