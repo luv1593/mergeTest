@@ -30,6 +30,7 @@ pipeline {
                 """
 
                 //Bash script for git comparisons
+                sh 'pwd'
                 sh './BashScript.sh'
 
                 sh"""
