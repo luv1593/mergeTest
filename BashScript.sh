@@ -8,7 +8,7 @@ comparison () {
   EMAIL+='--------------------------- latest vs '$1' ---------------------------------'
 
 
-  EMAIL+='$newline '
+  EMAIL+=$newline
 
   EMAIL+='difference between latest tag and '$1': '
 
