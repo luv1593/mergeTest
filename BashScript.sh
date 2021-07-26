@@ -1,9 +1,5 @@
 #!/bin/bash
 
-newline="${"\n"}"
-
-
-
 comparison () {
 
   EMAIL+='--------------------------- latest vs '\$1' ---------------------------------'
@@ -97,7 +93,7 @@ declare -a QALst=('origin/QA'
           'origin/TEST'
           )
 
-
+newline=$"\n"
 
 
 #adds date and time to email
@@ -228,7 +224,7 @@ do
 
   EMAIL+="latest verison: \${newline}"
   EMAIL+=\$disc
-  
+
   for g in "\${branchARR[@]}"
   do
     comparison "\$g"
