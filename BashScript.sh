@@ -237,6 +237,6 @@ do
 
 done
 
-echo $EMAIL
+echo -e $EMAIL
 
 echo $EMAIL > Email.txt
