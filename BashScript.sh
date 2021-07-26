@@ -16,7 +16,7 @@ comparison () {
   then
 
 
-    diffs=\$(git diff --stat-graph-width=1 \$disc \$1)
+    diffs=$(git diff --stat-graph-width=1 \$disc \$1)
     echo \$diffs
     if [[ "\$diffs" = *"insertions"* ||  "\$diffs" = *"deletions"* ||  "\$diffs" = *"insertion"* ||  "\$diffs" = *"deletion"* ]];
     then
