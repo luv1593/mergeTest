@@ -105,9 +105,9 @@ newline=$"\n"
 #adds date and time to email
 dateAndTime=`date`
 
-EMAIL+=$"Date and Time: "
+EMAIL+="<p1>Date and Time: "
 
-EMAIL+=$dateAndTime
+EMAIL+="$dateAndTime </p1>"
 
 
 #Goes through each repo in the list
@@ -181,10 +181,8 @@ do
 
 
   #adds repo name to the email
-  EMAIL+="${newline}"
-  EMAIL+="Email repo: "
-  EMAIL+=$i
-  EMAIL+="${newline}"
+  EMAIL+="<p2>Email repo: "
+  EMAIL+="$i </p2>"
 
   #command to get the latest tag from the  repo
 
