@@ -223,7 +223,8 @@ do
             )
 
   EMAIL+="latest verison: ${newline}"
-  EMAIL+=$disc ${newline}
+  EMAIL+=$disc
+  EMAIL+=${newline}
 
   for g in "${branchARR[@]}"
   do
