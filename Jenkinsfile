@@ -57,12 +57,7 @@ pipeline {
     }
 
 
-    stage('webhooks') {
-      steps {
-
-
-      }
-    }
+    
 
 
 
