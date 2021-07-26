@@ -65,7 +65,7 @@ pipeline {
   //jenkins email with formating
   //mimetype html
 
-/*
+
 post {
 
   always {
@@ -76,9 +76,4 @@ post {
       body: " Jenkins pipeline Test Build Number: '${currentBuild.number}': '${EmailData}'"
     }
   }
-
-
-*/
-
-
 }
