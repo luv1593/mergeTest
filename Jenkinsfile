@@ -36,7 +36,7 @@ pipeline {
                 dir('mergeTest') {
                   sh "chmod +x -R ${env.WORKSPACE}"
                   sh './BashScript.sh'
-                  EmailData = readFile(file: 'Email.txt')
+                  //EmailData = readFile(file: 'Email.txt')
                 }
                 sh"""
                 git config --global --unset credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper
@@ -57,7 +57,7 @@ pipeline {
     }
 
 
-    
+
 
 
 
@@ -66,7 +66,7 @@ pipeline {
   //jenkins email with formating
   //mimetype html
 
-
+/*
 post {
 
   always {
@@ -77,4 +77,5 @@ post {
       body: " Jenkins pipeline Test Build Number: '${currentBuild.number}': '${EmailData}'"
     }
   }
+  */
 }
