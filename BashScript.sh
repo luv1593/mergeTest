@@ -182,8 +182,8 @@ do
 
   #adds repo name to the email
   EMAIL+="${newline}"
-  EMAIL+="Email repo: "
-  EMAIL+=$i
+  EMAIL+=" <p4> Email repo: "
+  EMAIL+="$i <\p4>"
   EMAIL+="${newline}"
 
   #command to get the latest tag from the  repo
@@ -228,7 +228,7 @@ do
              "$QASTR"
             )
 
-  EMAIL+="latest verison: $disc"
+  EMAIL+="<p3>latest verison: $disc <\p3>"
   EMAIL+=${newline}
 
   for g in "${branchARR[@]}"
