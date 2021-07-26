@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"Build Number: ${currentBuild.number}\"}" $TEAMS_WEBHOOK_URL
+curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"Build Number: $currentBuild.number\"}" $TEAMS_WEBHOOK_URL
 
 comparison () {
 
