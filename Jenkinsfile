@@ -30,7 +30,7 @@ pipeline {
                 """
 
                 sh 'git clone https://github.com/luv1593/mergeTest.git'
-                sh 'cd mergeTest'
+                sh 'cd /workspace/Training/LucasPiplineTest2/mergeTest'
 
 
                 //Bash script for git comparisons
