@@ -178,7 +178,7 @@ do
   EMAIL+="${newline}"
   EMAIL+="Email repo: "
   EMAIL+=$i
-  EMAIL+="${newline} "
+  EMAIL+="${newline}"
 
   #command to get the latest tag from the  repo
 
@@ -223,7 +223,7 @@ do
             )
 
   EMAIL+="latest verison: ${newline}"
-  EMAIL+=$disc
+  EMAIL+=$disc ${newline}
 
   for g in "${branchARR[@]}"
   do
