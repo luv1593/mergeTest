@@ -222,8 +222,7 @@ do
              "$QASTR"
             )
 
-  EMAIL+="latest verison: ${newline}"
-  EMAIL+=$disc
+  EMAIL+="latest verison: $disc"
   EMAIL+=${newline}
 
   for g in "${branchARR[@]}"
