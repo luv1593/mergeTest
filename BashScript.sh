@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"test\"}" $TEAMS_WEBHOOK_URL
+curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"Build Number: ${currentBuild.number}\"}" $TEAMS_WEBHOOK_URL
 
 comparison () {
 
@@ -8,7 +8,7 @@ comparison () {
   EMAIL+='--------------------------- latest vs '$1' ---------------------------------'
 
 
-  EMAIL+=$newline
+  EMAIL+="\n"
 
   EMAIL+='difference between latest tag and '$1': '
 
