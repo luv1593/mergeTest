@@ -6,6 +6,9 @@
 pipeline {
   agent any
 
+  environment{
+    TEAMS_WEBHOOK_URL = credentials('training-repo-alert-webhook')
+  }
 
     //These are the stages of the build
     stages {
@@ -28,24 +31,16 @@ pipeline {
                 sh"""
                 git config --global credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper '!f() { echo "username=""" + '${GITHUB_USERNAME}' + """"; echo "password=""" + '${GITHUB_PASSWORD}' + """"; }; f'
                 """
-
+                //Bash script for git comparisons
                 sh 'git clone https://github.com/luv1593/mergeTest.git'
                 dir('mergeTest') {
                   sh "chmod +x -R ${env.WORKSPACE}"
                   sh './BashScript.sh'
                   EmailData = readFile(file: 'Email.txt')
                 }
-
-
-                //Bash script for git comparisons
-                sh 'pwd'
-
-
                 sh"""
                 git config --global --unset credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper
                 """
-
-
 
 
 
@@ -60,6 +55,17 @@ pipeline {
       }
 
     }
+
+
+    stage('webhooks') {
+      steps {
+
+
+      }
+    }
+
+
+
 
   }
   //jenkins email with formating
