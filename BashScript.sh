@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 
 newline="${"\n"}"
 
@@ -112,132 +112,132 @@ EMAIL+=\$dateAndTime
 for i in "\${REPO_LIST[@]}"
 do
 
-#clones sets the directory and pulls the repo so all the information is up to date.
-git clone https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/NIT-Administrative-Systems/\$i.git
-#git clone git@github.com:NIT-Administrative-Systems/\$i.git
+  #clones sets the directory and pulls the repo so all the information is up to date.
+  git clone https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/NIT-Administrative-Systems/\$i.git
+  #git clone git@github.com:NIT-Administrative-Systems/\$i.git
 
-cd "\$i"
+  cd "\$i"
 
-git pull
-
-
-#gets all of the branches in the repo into an array
-branArr=()
-branch=\$(git branch -r)
-
-for k in \$branch
-do
-branArr+=(\$k)
-done
+  git pull
 
 
-#assigens default values to the strings that will become the branch names
-#this is done so that if there is no match it will say so.
-DEVSTR="None"
-QASTR="None"
-MASSTR="None"
+  #gets all of the branches in the repo into an array
+  branArr=()
+  branch=\$(git branch -r)
+
+  for k in \$branch
+  do
+    branArr+=(\$k)
+  done
 
 
-#finds the dev branch and saves that name
-for l in "\${branArr[@]}"
-do
-for j in "\${devLst[@]}"
-do
-if [ "\$j" == "\$l" ];
-then
-DEVSTR=\$j
-fi
-done
-done
+  #assigens default values to the strings that will become the branch names
+  #this is done so that if there is no match it will say so.
+  DEVSTR="None"
+  QASTR="None"
+  MASSTR="None"
+
+
+  #finds the dev branch and saves that name
+  for l in "\${branArr[@]}"
+  do
+    for j in "\${devLst[@]}"
+    do
+      if [ "\$j" == "\$l" ];
+      then
+        DEVSTR=\$j
+      fi
+    done
+  done
 
 
 
-#Finds the master branch and saves the name
-for q in "\${branArr[@]}"
-do
-for w in "\${mastLst[@]}"
-do
-if [ "\$q" == "\$w" ];
-then
-MASSTR=\$q
-fi
-done
-done
+  #Finds the master branch and saves the name
+  for q in "\${branArr[@]}"
+  do
+    for w in "\${mastLst[@]}"
+    do
+      if [ "\$q" == "\$w" ];
+      then
+        MASSTR=\$q
+      fi
+    done
+  done
 
 
-#finds the QA branch and saves the name
-for o in "\${branArr[@]}"
-do
-for p in "\${QALst[@]}"
-do
-if [ "\$o" == "\$p" ];
-then
-QASTR=\$o
-fi
-done
-done
+  #finds the QA branch and saves the name
+  for o in "\${branArr[@]}"
+  do
+    for p in "\${QALst[@]}"
+    do
+      if [ "\$o" == "\$p" ];
+      then
+        QASTR=\$o
+      fi
+    done
+  done
 
 
-#adds repo name to the email
-EMAIL+="\${newline}"
-EMAIL+="Email repo: "
-EMAIL+=\$i
-EMAIL+="\${newline} "
+  #adds repo name to the email
+  EMAIL+="\${newline}"
+  EMAIL+="Email repo: "
+  EMAIL+=\$i
+  EMAIL+="\${newline} "
 
-#command to get the latest tag from the  repo
+  #command to get the latest tag from the  repo
 
-#only master
+  #only master
 
-echo "repo: '\$i'"
-disc=\$(git describe --tags `git rev-list --tags --max-count=1`)
-echo "repo:"
+  echo "repo: '\$i'"
+  disc=\$(git describe --tags `git rev-list --tags --max-count=1`)
+  echo "repo:"
 
-if [ "\$disc" == "" ];
-then
-disc=\$MASSTR
-if [ "\$disc" == "None" ];
-then
-disc=\$QASTR
-if [ "\$disc" == "None" ];
-then
-disc=\$DEVSTR
+  if [ "\$disc" == "" ];
+  then
+    disc=\$MASSTR
+    if [ "\$disc" == "None" ];
+    then
+      disc=\$QASTR
+      if [ "\$disc" == "None" ];
+      then
+        disc=\$DEVSTR
+      fi
+    fi
+  fi
 
-fi
-fi
-fi
 
+  #prints out all of the strings for user to see
 
-#prints out all of the strings for user to see
-
-echo "tag: \$disc"
-echo "QASTR: \$QASTR"
-echo "DEVSTR: \$DEVSTR"
-echo "MASSTR: \$MASSTR"
-
+  echo "tag: \$disc"
+  echo "QASTR: \$QASTR"
+  echo "DEVSTR: \$DEVSTR"
+  echo "MASSTR: \$MASSTR"
 
 
 
 
 
-#prints the repo being looked at
-echo "repo: \$i"
 
-declare -a branchARR=( "\$MASSTR"
-           "\$DEVSTR"
-           "\$QASTR"
-          )
+  #prints the repo being looked at
+  echo "repo: \$i"
 
-EMAIL+="latest verison: \${newline}"
-EMAIL+=\$disc
-for g in "\${branchARR[@]}"
-do
-comparison "\$g"
-done
-EMAIL+="~~~~~~~~~~~~~~~~~~ End of Repo ~~~~~~~~~~~~~~~~~~"
+  declare -a branchARR=( "\$MASSTR"
+             "\$DEVSTR"
+             "\$QASTR"
+            )
+
+  EMAIL+="latest verison: \${newline}"
+  EMAIL+=\$disc
+  
+  for g in "\${branchARR[@]}"
+  do
+    comparison "\$g"
+  done
+  EMAIL+="~~~~~~~~~~~~~~~~~~ End of Repo ~~~~~~~~~~~~~~~~~~"
 
 
-#steps back so the next repo is not created in the current repo folder
-cd ..
+  #steps back so the next repo is not created in the current repo folder
+  cd ..
 
 done
 
