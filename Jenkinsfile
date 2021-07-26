@@ -33,6 +33,7 @@ pipeline {
                 dir('mergeTest') {
                   sh "chmod +x -R ${env.WORKSPACE}"
                   sh './BashScript.sh'
+                  EmailData = readFile(file: 'Email.txt')
                 }
 
 
@@ -46,7 +47,7 @@ pipeline {
 
 
 
-    EmailData = readFile(file: 'Email.txt')
+
 
 
 
