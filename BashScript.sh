@@ -1,16 +1,16 @@
 #!/bin/bash
 
-curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"Build Number: $(currentBuild.number)\"}" $TEAMS_WEBHOOK_URL
+curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"test\"}" $TEAMS_WEBHOOK_URL
 
 comparison () {
 
 
-  EMAIL+='<p1>--------------------------- latest vs '$1' ---------------------------------</p1>'
+  EMAIL+='--------------------------- latest vs '$1' ---------------------------------'
 
 
-  EMAIL+="\n"
+  EMAIL+=$newline
 
-  EMAIL+='<p2>difference between latest tag and '$1': </p2>'
+  EMAIL+='difference between latest tag and '$1': '
 
   #If there is no branch that matched a name in the QA check list then it says there is no match
   #If a match is found the branch is compared to the latest version
@@ -182,8 +182,8 @@ do
 
   #adds repo name to the email
   EMAIL+="${newline}"
-  EMAIL+=" <p4> Email repo: "
-  EMAIL+="$i <\p4>"
+  EMAIL+="Email repo: "
+  EMAIL+=$i
   EMAIL+="${newline}"
 
   #command to get the latest tag from the  repo
@@ -228,7 +228,7 @@ do
              "$QASTR"
             )
 
-  EMAIL+="<p3>latest verison: $disc <\p3>"
+  EMAIL+="latest verison: $disc"
   EMAIL+=${newline}
 
   for g in "${branchARR[@]}"
@@ -242,9 +242,7 @@ do
 
   #conditional send
   #neat
-  curl -H 'Content-Type: application/json' -d '{"@context": "http://schema.org/extensions","@type": "MessageCard","title": '$i', "text": '$EMAIL'}' $TEAMS_WEBHOOK_URL
-
-  #curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"$i\", \"text\":\"$EMAIL\"}" $TEAMS_WEBHOOK_URL
+  curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"$i\", \"text\":\"$EMAIL\"}" $TEAMS_WEBHOOK_URL
   EMAIL=" "
 
 
