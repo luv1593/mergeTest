@@ -231,13 +231,13 @@ do
   for g in "${branchARR[@]}"
   do
     comparison "$g"
-    curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"$i\", \"text\":\"$EMAIL\"}" $TEAMS_WEBHOOK_URL
-    EMAIL=" "
-
   done
   EMAIL+="~~~~~~~~~~~~~~~~~~ End of Repo ~~~~~~~~~~~~~~~~~~"
   EMAIL+=${newline}
   EMAIL+=${newline}
+
+  curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"$i\", \"text\":\"$EMAIL\"}" $TEAMS_WEBHOOK_URL
+  EMAIL=" "
 
 
   #steps back so the next repo is not created in the current repo folder
