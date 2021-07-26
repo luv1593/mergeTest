@@ -31,14 +31,14 @@ pipeline {
 
                 sh 'git clone https://github.com/luv1593/mergeTest.git'
                 dir('mergeTest') {
-                  sh "pwd"
+                  sh "chmod +x -R ${env.WORKSPACE}"
                   sh './BashScript.sh'
                 }
 
 
                 //Bash script for git comparisons
                 sh 'pwd'
-              
+
 
                 sh"""
                 git config --global --unset credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper
