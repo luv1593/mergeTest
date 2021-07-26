@@ -58,8 +58,11 @@ echo "-------------------------------------------------------------------------"
 #This is the list of the repos that will be looked at. This list can be added to as more repos are made.
 #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
 declare -a REPO_LIST=( 'SysDev-MoneyCat'
-               'dynamic-forms'
-               'JST-Skills-Inventory'
+               'SysDev-FRS'
+               'SysDev-URG'
+               'SysDev-GSTS'
+               'ecats-api'
+               'ecats-ui'
               )
 
 
@@ -236,6 +239,9 @@ do
   EMAIL+=${newline}
   EMAIL+=${newline}
 
+
+  #conditional send
+  #neat
   curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"$i\", \"text\":\"$EMAIL\"}" $TEAMS_WEBHOOK_URL
   EMAIL=" "
 
