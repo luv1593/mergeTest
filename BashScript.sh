@@ -1,9 +1,9 @@
 #!/bin/bash
 
+curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"test\"}" $TEAMS_WEBHOOK_URL
+
 comparison () {
 
-
-  curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"test\"}" $TEAMS_WEBHOOK_URL
 
   EMAIL+='--------------------------- latest vs '$1' ---------------------------------'
 
@@ -231,6 +231,9 @@ do
   for g in "${branchARR[@]}"
   do
     comparison "$g"
+    curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"$i\", \"text\":\"$EMAIL\"}" $TEAMS_WEBHOOK_URL
+    EMAIL=" "
+
   done
   EMAIL+="~~~~~~~~~~~~~~~~~~ End of Repo ~~~~~~~~~~~~~~~~~~"
   EMAIL+=${newline}
