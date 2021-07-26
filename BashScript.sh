@@ -5,12 +5,12 @@ curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"Build Number
 comparison () {
 
 
-  EMAIL+='--------------------------- latest vs '$1' ---------------------------------'
+  EMAIL+='<p1>--------------------------- latest vs '$1' ---------------------------------</p1>'
 
 
   EMAIL+="\n"
 
-  EMAIL+='difference between latest tag and '$1': '
+  EMAIL+='<p2>difference between latest tag and '$1': </p2>'
 
   #If there is no branch that matched a name in the QA check list then it says there is no match
   #If a match is found the branch is compared to the latest version
