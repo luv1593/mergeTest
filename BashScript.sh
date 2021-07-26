@@ -2,6 +2,9 @@
 
 comparison () {
 
+
+  curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"hello\"}" ${env.TEAMS_WEBHOOK_URL}
+
   EMAIL+='--------------------------- latest vs '$1' ---------------------------------'
 
 
