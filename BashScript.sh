@@ -242,7 +242,9 @@ do
 
   #conditional send
   #neat
-  curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"$i\", \"text\":\"$EMAIL\"}" $TEAMS_WEBHOOK_URL
+  curl -H 'Content-Type: application/json' -d '{"@context": "http://schema.org/extensions","@type": "MessageCard","title": '$i', "text": '$EMAIL'}' &lt;$TEAMS_WEBHOOK_URL&gt;
+
+  #curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"$i\", \"text\":\"$EMAIL\"}" $TEAMS_WEBHOOK_URL
   EMAIL=" "
 
 
