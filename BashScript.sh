@@ -230,6 +230,8 @@ do
     comparison "$g"
   done
   EMAIL+="~~~~~~~~~~~~~~~~~~ End of Repo ~~~~~~~~~~~~~~~~~~"
+  EMAIL+=${newline}
+  EMAIL+=${newline}
 
 
   #steps back so the next repo is not created in the current repo folder
