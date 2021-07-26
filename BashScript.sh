@@ -1,6 +1,6 @@
 #!/bin/bash
 
-curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"Build Number: $currentBuild.number\"}" $TEAMS_WEBHOOK_URL
+curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"Build Number: $(currentBuild.number)\"}" $TEAMS_WEBHOOK_URL
 
 comparison () {
 
@@ -242,7 +242,7 @@ do
 
   #conditional send
   #neat
-  curl -H 'Content-Type: application/json' -d '{"@context": "http://schema.org/extensions","@type": "MessageCard","title": '$i', "text": '$EMAIL'}' &lt;$TEAMS_WEBHOOK_URL&gt;
+  curl -H 'Content-Type: application/json' -d '{"@context": "http://schema.org/extensions","@type": "MessageCard","title": '$i', "text": '$EMAIL'}' $TEAMS_WEBHOOK_URL
 
   #curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"$i\", \"text\":\"$EMAIL\"}" $TEAMS_WEBHOOK_URL
   EMAIL=" "
