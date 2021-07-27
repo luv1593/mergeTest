@@ -244,8 +244,8 @@ do
   #neat
   curl -i -X POST -H "Content-Type: application/json" -d "{
       \"title\":\"$i\",
+        \"type\":\"section\",
         \"text\":\"$EMAIL\",
-        \"type\":\"html\",
     }" $TEAMS_WEBHOOK_URL
 
   EMAIL=" "
