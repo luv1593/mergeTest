@@ -231,13 +231,13 @@ do
   #  \"type\":\"string\",
   #  \"text\":\"$EMAIL\",
 
-  curl --location --request POST $TEAMS_WEBHOOK_URL \
+  curl --location --request POST '$TEAMS_WEBHOOK_URL' \
 --header 'Content-Type: application/json' \
 --data-raw 'curl -i -X POST -H "Content-Type: application/json" -d "{
     "@type":  "MessageCard ",
      "themeColor ":  "0076D7 ",
-     "title ":  "'$i' ",
-     "text ":  "'$EMAIL' ",
+     "title ":  "$i ",
+     "text ":  "$EMAIL ",
      "potentialAction ": [{
          "@type ":  "ActionCard ",
          "name ":  "Open log ",
