@@ -29,7 +29,7 @@ comparison () {
 
     else
       #in sync
-      EMAIL+="<p style='color:green'>There are no differences between $disc and '$1' :tada: </p>"
+      EMAIL+="<p style='color:green'>No differences between $disc and '$1' ✅ </p>"
 
 
     fi
@@ -238,7 +238,7 @@ do
     \"themeColor\": \"800080\",
     \"summary\": \"hello\",
     \"title\": \"$i\",
-    \"text\": \"$EMAIL :white_check_mark:\",
+    \"text\": \"$EMAIL\",
     \"potentialAction\": [{
         \"@type\": \"ActionCard\",
         \"name\": \"View Repo\",
