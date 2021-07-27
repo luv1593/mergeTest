@@ -233,25 +233,25 @@ do
 
   curl --location --request POST $TEAMS_WEBHOOK_URL \
 --header 'Content-Type: application/json' \
--d '{
-    "@type": "MessageCard",
-    "themeColor": "0076D7",
-    "summary": "hello",
-    /"title/": /"$i/",
-    /"text/": /"$EMAIL/",
-    "potentialAction": [{
-        "@type": "ActionCard",
-        "name": "Open log",
-        "actions": [{
-            "@type": "OpenUri",
-            "name": "Open log",
-            "targets": [{
-                "os": "default",
-                "uri": "http://google.com"
+-d "{
+    \"@type\": \"MessageCard\",
+    \"themeColor\": \"0076D7\",
+    \"summary\": \"hello\",
+    \"title\": \"$i\",
+    \"text\": \"$EMAIL\",
+    \"potentialAction\": [{
+        \"@type\": \"ActionCard\",
+        \"name\": \"Open log\",
+        \"actions\": [{
+            \"@type\": \"OpenUri\",
+            \"name\": \"Open log\",
+            \"targets\": [{
+                \"os\": \"default\",
+                \"uri\": \"http://google.com\"
             }]
         }]
     }]
-}'
+}"
 
 
   EMAIL=" "
