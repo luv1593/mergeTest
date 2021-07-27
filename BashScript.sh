@@ -229,35 +229,40 @@ do
 
   #dont print repos that are all good
 
+  #add repos that are all good to a list?
+  
+  if [ $BRANCHK != 3 ];
+  then
+    curl --location --request POST $TEAMS_WEBHOOK_URL \
+  --header 'Content-Type: application/json' \
+  -d "{
+      \"@type\": \"MessageCard\",
+      \"themeColor\": \"800080\",
+      \"summary\": \"hello\",
+      \"title\": \"$i\",
+      \"text\": \"$EMAIL $BRANCHK\",
+      \"potentialAction\": [{
 
-  curl --location --request POST $TEAMS_WEBHOOK_URL \
---header 'Content-Type: application/json' \
--d "{
-    \"@type\": \"MessageCard\",
-    \"themeColor\": \"800080\",
-    \"summary\": \"hello\",
-    \"title\": \"$i\",
-    \"text\": \"$EMAIL $BRANCHK\",
-    \"potentialAction\": [{
+              \"@type\": \"OpenUri\",
+              \"name\": \"View Repo\",
+              \"targets\": [{
+                  \"os\": \"default\",
+                  \"uri\": \"http://github.com/NIT-Administrative-Systems/$i\"
+              }]
+
+      } , {
 
             \"@type\": \"OpenUri\",
-            \"name\": \"View Repo\",
+            \"name\": \"View Comparison\",
             \"targets\": [{
                 \"os\": \"default\",
-                \"uri\": \"http://github.com/NIT-Administrative-Systems/$i\"
-            }]
+                \"uri\": \"http://github.com/NIT-Administrative-Systems/compare\"
+              }]
 
-    } , {
+      }]
+  }"
 
-          \"@type\": \"OpenUri\",
-          \"name\": \"View Comparison\",
-          \"targets\": [{
-              \"os\": \"default\",
-              \"uri\": \"http://github.com/NIT-Administrative-Systems/compare\"
-            }]
-
-    }]
-}"
+  fi
 
 
   EMAIL=" "
