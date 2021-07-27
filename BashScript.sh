@@ -1,16 +1,19 @@
 #!/bin/bash
 
-curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"test\"}" $TEAMS_WEBHOOK_URL
+dateAndTime=`date`
+
+curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"Date and Time: \", \"text\":\"$dateAndTime\"}" $TEAMS_WEBHOOK_URL
 
 comparison () {
 
-
-  EMAIL+='--------------------------- latest vs '$1' ---------------------------------'
+#reduce info on the post
+#bold on verson
+  EMAIL+='--------------------------- '$disc' vs '$1' ---------------------------------'
 
 
   EMAIL+=$newline
 
-  EMAIL+='difference between latest tag and '$1': '
+  #EMAIL+='difference between latest tag and '$1': '
 
   #If there is no branch that matched a name in the QA check list then it says there is no match
   #If a match is found the branch is compared to the latest version
@@ -26,22 +29,22 @@ comparison () {
 
       #not in sync
       EMAIL+=$newline
-      EMAIL+=$(git diff --stat-graph-width=1 $disc..$1 | tail -1)
+      EMAIL+="<p style='color:red'> $(git diff --stat-graph-width=1 $disc..$1 | tail -1) </p>"
       EMAIL+="${newline} "
 
     else
       #in sync
       EMAIL+="${newline} "
-      EMAIL+="<p style='color:green'>There are no differences between latest tag and '$1' </p>"
-      EMAIL+="${newline} "
+      EMAIL+="<p style='color:green'>There are no differences between $disc and '$1' </p>"
+
 
     fi
 
   else
     #no branch
     EMAIL+="${newline} "
-    EMAIL+='There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list)'
-    EMAIL+="${newline} "
+    EMAIL+="<p style='color:red'> There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list) </p>"
+
 
   fi
 
@@ -103,11 +106,11 @@ newline="</br>"
 
 
 #adds date and time to email
-dateAndTime=`date`
+#dateAndTime=`date`
 
-EMAIL+="<p1>Date and Time: "
+#EMAIL+="<p1>Date and Time: "
 
-EMAIL+="$dateAndTime </p1>"
+#EMAIL+="$dateAndTime </p1>"
 
 
 #Goes through each repo in the list
@@ -240,7 +243,7 @@ do
 
   #conditional send
   #neat
-  #button
+  #button (repo) (comparison)
   #dont print repos that are all good
   curl -i -X POST -H "Content-Type: application/json" -d "{
       \"title\":\"$i\",
