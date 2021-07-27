@@ -30,7 +30,8 @@ comparison () {
     else
       #in sync
       EMAIL+="<p style='color:green'>No differences between $disc and '$1' ✅ </p>"
-
+      BRANCHK+=1
+      echo $BRANCHK
 
     fi
 
@@ -216,6 +217,8 @@ do
   EMAIL+="latest verison: <b>$disc</b>"
   EMAIL+=${newline}
 
+  BRANCHK=0
+
   for g in "${branchARR[@]}"
   do
     comparison "$g"
@@ -224,7 +227,7 @@ do
 
   #conditional send
   #neat
-  #button (repo) (comparison)
+
   #dont print repos that are all good
 
 
@@ -235,7 +238,7 @@ do
     \"themeColor\": \"800080\",
     \"summary\": \"hello\",
     \"title\": \"$i\",
-    \"text\": \"$EMAIL\",
+    \"text\": \"$EMAIL $BRANCHK\",
     \"potentialAction\": [{
 
             \"@type\": \"OpenUri\",
