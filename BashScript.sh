@@ -220,19 +220,35 @@ do
   do
     comparison "$g"
   done
-  EMAIL+="~~~~~~~~~~~~~~~~~~ End of Repo ~~~~~~~~~~~~~~~~~~"
-  EMAIL+=${newline}
-  EMAIL+=${newline}
 
 
   #conditional send
   #neat
   #button (repo) (comparison)
   #dont print repos that are all good
+
+  #  \"title\":\"$i\",
+  #  \"type\":\"string\",
+  #  \"text\":\"$EMAIL\",
+
   curl -i -X POST -H "Content-Type: application/json" -d "{
-      \"title\":\"$i\",
-        \"type\":\"string\",
-        \"text\":\"$EMAIL\",
+    "@type": "MessageCard",
+    "themeColor": "0076D7",
+    "title": "$i"
+    "text": "$EMAIL",
+    "potentialAction": [{
+        "@type": "ActionCard",
+        "name": "Open log",
+        "actions": [{
+            "@type": "OpenUri",
+            "name": "Open log",
+            "targets": [{
+                "os": "default",
+                "uri": "http://google.com"
+            }]
+        }]
+    }]
+}
     }" $TEAMS_WEBHOOK_URL
 
   EMAIL=" "
