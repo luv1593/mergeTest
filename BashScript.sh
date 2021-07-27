@@ -59,13 +59,11 @@ echo "-------------------------------------------------------------------------"
 #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
 declare -a REPO_LIST=( 'SysDev-MoneyCat'
                'SysDev-FRS'
-               )
-
-               #'SysDev-URG'
-               #'SysDev-GSTS'
-               #'ecats-api'
-               #'ecats-ui'
-              #)
+               'SysDev-URG'
+               'SysDev-GSTS'
+               'ecats-api'
+               'ecats-ui'
+              )
 
 
 
@@ -243,6 +241,7 @@ do
   #conditional send
   #neat
   #button
+  #dont print repos that are all good
   curl -i -X POST -H "Content-Type: application/json" -d "{
       \"title\":\"$i\",
         \"type\":\"string\",
