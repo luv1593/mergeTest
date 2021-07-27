@@ -237,25 +237,23 @@ do
     \"title\": \"$i\",
     \"text\": \"$EMAIL\",
     \"potentialAction\": [{
-        \"@type\": \"ActionCard\",
-        \"name\": \"View Repo\",
-        \"actions\": [{
+      
             \"@type\": \"OpenUri\",
             \"name\": \"View Repo\",
             \"targets\": [{
                 \"os\": \"default\",
                 \"uri\": \"http://github.com/NIT-Administrative-Systems/$i\"
             }]
-        }]
+
     } , {
-      \"actions\": [{
+
           \"@type\": \"OpenUri\",
           \"name\": \"View Comparison\",
           \"targets\": [{
               \"os\": \"default\",
               \"uri\": \"http://github.com/NIT-Administrative-Systems/$i..$disc\"
             }]
-        }]
+
     }]
 }"
 
