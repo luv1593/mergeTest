@@ -242,7 +242,12 @@ do
 
   #conditional send
   #neat
-  curl -i -X POST -H "Content-Type: application/json" -data "{\"title\":\"$i\", \"text\":\"$EMAIL\", \"type\":\"mrkdwn\", }" $TEAMS_WEBHOOK_URL
+  curl -i -X POST -H "Content-Type: application/json" -d "{
+      \"title\":\"$i\",
+        \"text\":\"$EMAIL\",
+        \"type\":\"mrkdwn\",
+    }" $TEAMS_WEBHOOK_URL
+
   EMAIL=" "
 
 
