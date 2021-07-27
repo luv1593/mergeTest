@@ -232,7 +232,7 @@ do
   #  \"text\":\"$EMAIL\",
 
   curl --location --request POST $TEAMS_WEBHOOK_URL \
---header 'Content-Type:application/json' \
+--header 'Content-Type: application/json' \
 -d '{
     "@type": "MessageCard",
     "themeColor": "0076D7",
