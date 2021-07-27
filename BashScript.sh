@@ -241,10 +241,10 @@ do
     \"text\": \"$EMAIL\",
     \"potentialAction\": [{
         \"@type\": \"ActionCard\",
-        \"name\": \"Open log\",
+        \"name\": \"View Repo\",
         \"actions\": [{
             \"@type\": \"OpenUri\",
-            \"name\": \"Open log\",
+            \"name\": \"View Repo\",
             \"targets\": [{
                 \"os\": \"default\",
                 \"uri\": \"http://github.com/NIT-Administrative-Systems/$i\"
