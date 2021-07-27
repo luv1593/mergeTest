@@ -217,7 +217,7 @@ do
   EMAIL+="latest verison: <b>$disc</b>"
   EMAIL+=${newline}
 
-  BRANCHK=0
+  declare -i BRANCHK=0
 
   for g in "${branchARR[@]}"
   do
