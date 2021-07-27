@@ -183,8 +183,8 @@ do
 
 
   #adds repo name to the email
-  EMAIL+="<p2>Email repo: "
-  EMAIL+="$i </p2>"
+  EMAIL+="<h1>Email repo: "
+  EMAIL+="$i </h1>"
 
   #command to get the latest tag from the  repo
 
@@ -244,7 +244,7 @@ do
   #neat
   curl -i -X POST -H "Content-Type: application/json" -d "{
       \"title\":\"$i\",
-        \"type\":\"section\",
+        \"type\":\"string\",
         \"text\":\"$EMAIL\",
     }" $TEAMS_WEBHOOK_URL
 
