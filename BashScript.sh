@@ -247,7 +247,7 @@ do
             \"name\": \"Open log\",
             \"targets\": [{
                 \"os\": \"default\",
-                \"uri\": \"http://google.com\"
+                \"uri\": \"http://github.com/NIT-Administrative-Systems/$i\"
             }]
         }]
     }]
