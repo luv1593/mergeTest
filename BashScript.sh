@@ -237,7 +237,7 @@ do
     \"title\": \"$i\",
     \"text\": \"$EMAIL\",
     \"potentialAction\": [{
-      
+
             \"@type\": \"OpenUri\",
             \"name\": \"View Repo\",
             \"targets\": [{
@@ -251,7 +251,7 @@ do
           \"name\": \"View Comparison\",
           \"targets\": [{
               \"os\": \"default\",
-              \"uri\": \"http://github.com/NIT-Administrative-Systems/$i..$disc\"
+              \"uri\": \"http://github.com/NIT-Administrative-Systems/compare\"
             }]
 
     }]
