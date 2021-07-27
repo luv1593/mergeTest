@@ -238,7 +238,7 @@ do
     \"themeColor\": \"800080\",
     \"summary\": \"hello\",
     \"title\": \"$i\",
-    \"text\": \"$EMAIL\",
+    \"text\": \"$EMAIL :white_check_mark:\",
     \"potentialAction\": [{
         \"@type\": \"ActionCard\",
         \"name\": \"View Repo\",
