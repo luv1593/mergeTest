@@ -8,13 +8,9 @@ comparison () {
 
 #reduce info on the post
 #bold on verson
-  BOLDdisc= "<h1 style='font-weight: bold'> '$disc' </h1>"
-  BOLDbranch= "<h1 style='font-weight: bold'> '$1' </h1>"
 
-  EMAIL+='<h1> '$BOLDdisc' vs '$BOLDbranch': </h1>'
-  EMAIL+=$newline
 
-  #EMAIL+='difference between latest tag and '$1': '
+  EMAIL+='<h1> '$disc' vs '$1': </h1>'
 
   #If there is no branch that matched a name in the QA check list then it says there is no match
   #If a match is found the branch is compared to the latest version
@@ -40,7 +36,6 @@ comparison () {
 
   else
     #no branch
-    EMAIL+="${newline} "
     EMAIL+="<p style='color:red'> There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list) </p>"
 
 
