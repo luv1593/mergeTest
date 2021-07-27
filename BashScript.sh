@@ -245,7 +245,7 @@ do
   curl -i -X POST -H "Content-Type: application/json" -d "{
       \"title\":\"$i\",
         \"text\":\"$EMAIL\",
-        \"type\":\"mrkdwn\",
+        \"type\":\"html\",
     }" $TEAMS_WEBHOOK_URL
 
   EMAIL=" "
