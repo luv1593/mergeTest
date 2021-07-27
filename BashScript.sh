@@ -49,13 +49,11 @@ comparison () {
 #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
 declare -a REPO_LIST=( 'SysDev-MoneyCat'
                'SysDev-FRS'
-               )
-
-               #'SysDev-URG'
+               'SysDev-URG'
                #'SysDev-GSTS'
                #'ecats-api'
                #'ecats-ui'
-              #)
+              )
 
 
 
@@ -230,7 +228,7 @@ do
   #dont print repos that are all good
 
   #add repos that are all good to a list?
-  
+
   if [ $BRANCHK != 3 ];
   then
     curl --location --request POST $TEAMS_WEBHOOK_URL \
