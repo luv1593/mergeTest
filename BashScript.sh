@@ -237,8 +237,8 @@ do
     "@type": "MessageCard",
     "themeColor": "0076D7",
     "summary": "hello",
-    "title": "'$i'",
-    "text": "'$EMAIL'",
+    "title": " REPO GOES HERE ",
+    "text": "EMAIL DATA HERE",
     "potentialAction": [{
         "@type": "ActionCard",
         "name": "Open log",
