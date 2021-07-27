@@ -235,7 +235,7 @@ do
 --header 'Content-Type: application/json' \
 -d "{
     \"@type\": \"MessageCard\",
-    \"themeColor\": \"0076D7\",
+    \"themeColor\": \"800080\",
     \"summary\": \"hello\",
     \"title\": \"$i\",
     \"text\": \"$EMAIL\",
