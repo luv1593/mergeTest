@@ -50,9 +50,9 @@ comparison () {
 declare -a REPO_LIST=( 'SysDev-MoneyCat'
                'SysDev-FRS'
                'SysDev-URG'
-               #'SysDev-GSTS'
-               #'ecats-api'
-               #'ecats-ui'
+               'SysDev-GSTS'
+               'ecats-api'
+               'ecats-ui'
               )
 
 
@@ -238,7 +238,7 @@ do
       \"themeColor\": \"800080\",
       \"summary\": \"hello\",
       \"title\": \"$i\",
-      \"text\": \"$EMAIL $BRANCHK\",
+      \"text\": \"$EMAIL\",
       \"potentialAction\": [{
 
               \"@type\": \"OpenUri\",
