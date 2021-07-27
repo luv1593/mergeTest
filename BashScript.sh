@@ -8,7 +8,10 @@ comparison () {
 
 #reduce info on the post
 #bold on verson
-  EMAIL+=''$disc' vs '$1': '
+  BOLDdisc= "<h1 style='font-weight: bold'> '$disc' </h1>"
+  BOLDbranch= "<h1 style='font-weight: bold'> '$1' </h1>"
+
+  EMAIL+='<h1> '$BOLDdisc' vs '$BOLDbranch': </h1>'
   EMAIL+=$newline
 
   #EMAIL+='difference between latest tag and '$1': '
@@ -170,11 +173,6 @@ do
       fi
     done
   done
-
-
-  #adds repo name to the email
-  EMAIL+="<h1>Email repo: "
-  EMAIL+="$i </h1>"
 
   #command to get the latest tag from the  repo
 
