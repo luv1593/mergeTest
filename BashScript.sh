@@ -231,25 +231,27 @@ do
   #  \"type\":\"string\",
   #  \"text\":\"$EMAIL\",
 
-  curl -i -X POST -H "Content-Type: application/json" -d "{
-    \"@type\": \"MessageCard\",
-    \"themeColor\": \"0076D7\",
-    \"title\": \"$i\",
-    \"text\": \"$EMAIL\",
-    \"potentialAction\": [{
-        \"@type\": \"ActionCard\",
-        \"name\": \"Open log\",
-        \"actions\": [{
-            \"@type\": \"OpenUri\",
-            \"name\": \"Open log\",
-            \"targets\": [{
-                \"os\": \"default\",
-                \"uri\": \"http://google.com\"
+  curl --location --request POST $TEAMS_WEBHOOK_URL \
+--header 'Content-Type: application/json' \
+--data-raw 'curl -i -X POST -H "Content-Type: application/json" -d "{
+    "@type":  "MessageCard ",
+     "themeColor ":  "0076D7 ",
+     "title ":  "'$i' ",
+     "text ":  "'$EMAIL' ",
+     "potentialAction ": [{
+         "@type ":  "ActionCard ",
+         "name ":  "Open log ",
+         "actions ": [{
+             "@type ":  "OpenUri ",
+             "name ":  "Open log ",
+             "targets ": [{
+                 "os ":  "default ",
+                 "uri ":  "http://google.com "
             }]
         }]
     }]
 }
-    }" $TEAMS_WEBHOOK_URL
+    }"'
 
   EMAIL=" "
 
