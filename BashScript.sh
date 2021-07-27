@@ -227,9 +227,6 @@ do
   #button (repo) (comparison)
   #dont print repos that are all good
 
-  #  \"title\":\"$i\",
-  #  \"type\":\"string\",
-  #  \"text\":\"$EMAIL\",
 
   curl --location --request POST $TEAMS_WEBHOOK_URL \
 --header 'Content-Type: application/json' \
@@ -250,6 +247,16 @@ do
                 \"uri\": \"http://github.com/NIT-Administrative-Systems/$i\"
             }]
         }]
+    } , {
+      \"@type\": \"ActionCard\",
+      \"name\": \"View Comparison\",
+      \"actions\": [{
+          \"@type\": \"OpenUri\",
+          \"name\": \"View Comparison\",
+          \"targets\": [{
+              \"os\": \"default\",
+              \"uri\": \"http://github.com/NIT-Administrative-Systems/$i..$disc\"
+
     }]
 }"
 
