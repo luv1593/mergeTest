@@ -32,7 +32,7 @@ comparison () {
     else
       #in sync
       EMAIL+="${newline} "
-      EMAIL+="There are no differences between latest tag and '$1'"
+      EMAIL+="<p style='color:green'>There are no differences between latest tag and '$1' </p>"
       EMAIL+="${newline} "
 
     fi
