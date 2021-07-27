@@ -101,7 +101,7 @@ declare -a QALst=('origin/QA'
           'origin/TEST'
           )
 
-newline=$"\n"
+newline="</br>"
 
 
 #adds date and time to email
@@ -242,6 +242,7 @@ do
 
   #conditional send
   #neat
+  #button
   curl -i -X POST -H "Content-Type: application/json" -d "{
       \"title\":\"$i\",
         \"type\":\"string\",
