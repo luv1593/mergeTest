@@ -8,9 +8,7 @@ comparison () {
 
 #reduce info on the post
 #bold on verson
-  EMAIL+='--------------------------- '$disc' vs '$1' ---------------------------------'
-
-
+  EMAIL+=''$disc' vs '$1': '
   EMAIL+=$newline
 
   #EMAIL+='difference between latest tag and '$1': '
@@ -28,13 +26,10 @@ comparison () {
     then
 
       #not in sync
-      EMAIL+=$newline
       EMAIL+="<p style='color:red'> $(git diff --stat-graph-width=1 $disc..$1 | tail -1) </p>"
-      EMAIL+="${newline} "
 
     else
       #in sync
-      EMAIL+="${newline} "
       EMAIL+="<p style='color:green'>There are no differences between $disc and '$1' </p>"
 
 
@@ -49,12 +44,6 @@ comparison () {
   fi
 
 }
-
-
-
-
-echo "-------------------------------------------------------------------------"
-
 
 
 
