@@ -242,21 +242,19 @@ do
         \"actions\": [{
             \"@type\": \"OpenUri\",
             \"name\": \"View Repo\",
-
+            \"targets\": [{
                 \"os\": \"default\",
                 \"uri\": \"http://github.com/NIT-Administrative-Systems/$i\"
-            
+            }]
         }]
     } , {
-      \"@type\": \"ActionCard\",
-      \"name\": \"View Comparison\",
       \"actions\": [{
           \"@type\": \"OpenUri\",
           \"name\": \"View Comparison\",
-
+          \"targets\": [{
               \"os\": \"default\",
               \"uri\": \"http://github.com/NIT-Administrative-Systems/$i..$disc\"
-
+            }]
         }]
     }]
 }"
