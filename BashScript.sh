@@ -10,7 +10,7 @@ comparison () {
 #bold on verson
 
 
-  EMAIL+="<h1 Style='text-decoration:underline font-weight: bold'> '$disc' vs '$1': </h1>"
+  EMAIL+="<h1 Style='text-decoration:underline'> $disc vs $1: </h1>"
 
   #If there is no branch that matched a name in the QA check list then it says there is no match
   #If a match is found the branch is compared to the latest version
