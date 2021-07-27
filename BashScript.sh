@@ -25,7 +25,7 @@ comparison () {
     then
 
       #not in sync
-      EMAIL+="<p style='color:red'> $(git diff --stat-graph-width=1 $disc..$1 | tail -1) </p>"
+      EMAIL+="<p style='color:red'> $(git diff --stat-graph-width=1 $disc..$1 | tail -1) ⛔ </p>"
 
     else
       #in sync
