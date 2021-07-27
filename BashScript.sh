@@ -233,7 +233,7 @@ do
 
   curl --location --request POST 'https://nuwildcat.webhook.office.com/webhookb2/e58555a4-17f9-414e-8eaf-94a34bb95c6b@7d76d361-8277-4708-a477-64e8366cd1bc/IncomingWebhook/bdecddb74cfb4f27a7a7e2a2daf271d3/b1410755-6c01-4e0c-8dcb-38df2f8dad6a' \
 --header 'Content-Type: application/json' \
---data-raw '{
+-d '{
     "@type": "MessageCard",
     "themeColor": "0076D7",
     "summary": "hello",
