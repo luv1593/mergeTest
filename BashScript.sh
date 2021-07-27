@@ -29,7 +29,7 @@ comparison () {
 
     else
       #in sync
-      EMAIL+="<p style='color:green'>There are no differences between $disc and '$1' </p>"
+      EMAIL+="<p style='color:green'>There are no differences between $disc and '$1' :tada: </p>"
 
 
     fi
@@ -213,7 +213,7 @@ do
              "$QASTR"
             )
 
-  EMAIL+="latest verison: $disc"
+  EMAIL+="latest verison: <b>$disc</b>"
   EMAIL+=${newline}
 
   for g in "${branchARR[@]}"
