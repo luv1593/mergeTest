@@ -30,8 +30,7 @@ comparison () {
     else
       #in sync
       EMAIL+="<p style='color:green'>No differences between $disc and '$1' ✅ </p>"
-      BRANCHK = $(( $BRANCHK + 1 ))
-      echo $BRANCHK
+      BRANCHK=$(expr $BRANCHK + 1)
 
     fi
 
