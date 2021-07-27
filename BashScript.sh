@@ -255,7 +255,7 @@ do
               \"os\": \"default\",
               \"uri\": \"http://github.com/NIT-Administrative-Systems/$i..$disc\"
             }]
-        }]
+        
     }]
 }"
 
