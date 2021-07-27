@@ -54,11 +54,13 @@ comparison () {
 #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
 declare -a REPO_LIST=( 'SysDev-MoneyCat'
                'SysDev-FRS'
-               'SysDev-URG'
-               'SysDev-GSTS'
-               'ecats-api'
-               'ecats-ui'
-              )
+               )
+
+               #'SysDev-URG'
+               #'SysDev-GSTS'
+               #'ecats-api'
+               #'ecats-ui'
+              #)
 
 
 
