@@ -251,7 +251,7 @@ do
       }]
   }"
 
-  GoodREPO+="$i "
+  GoodREPO+="$i, "
 
   fi
 
@@ -264,4 +264,4 @@ do
 
 done
 
-curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"Up to date repos: \", \"text\":\"${GoodREPO[@]}\"}" $TEAMS_WEBHOOK_URL
+curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"Up to date repos: \", \"text\":\"${GoodREPO[@]} as of $dateAndTime\"}" $TEAMS_WEBHOOK_URL
