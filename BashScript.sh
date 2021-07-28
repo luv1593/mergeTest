@@ -15,8 +15,6 @@ comparison () {
   #If there is no branch that matched a name in the QA check list then it says there is no match
   #If a match is found the branch is compared to the latest version
   #If there is a difference between the 2 then the differences are put in the NOTIFICATION, if not it says "no differences"
-  if ["$disc" == "None"];
-  then
     if [ "$1" != "None" ];
     then
 
@@ -44,10 +42,7 @@ comparison () {
 
     fi
 
-    NOTIFICATION+="<p style='color:red'> There is no latest tag or master banch in this repo. ⛔ </p>"
 
-
-  fi
 
 }
 
@@ -61,7 +56,6 @@ declare -a REPO_LIST=( 'SysDev-MoneyCat'
                'SysDev-GSTS'
                'ecats-api'
                'ecats-ui'
-               'myHRHandySQL'
               )
 
 
@@ -184,6 +178,10 @@ do
   if [ "$disc" == "" ];
   then
     disc=$MASSTR
+    if [ "$disc" == "None" ];
+    then
+
+    fi
   fi
 
 
