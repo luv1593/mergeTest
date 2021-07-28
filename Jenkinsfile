@@ -6,6 +6,22 @@
 pipeline {
   agent any
 
+  triggers {
+          /*
+              //Everyday at 8:30am
+
+              //Never
+              // 1 23 31 2 *
+
+              Every 5 minutes
+              5 * * * *
+
+              Every 30 minutes
+              30 * * * *
+            */
+        cron('30 8 * * * ')
+    }
+
   environment{
     TEAMS_WEBHOOK_URL = credentials('training-repo-alert-webhook')
   }
