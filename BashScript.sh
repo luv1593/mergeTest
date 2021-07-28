@@ -31,7 +31,7 @@ comparison () {
       #in sync
       NOTIFICATION+="<p style='color:green'>No differences between $disc and '$1' ✅ </p>"
       BRANCHK=$(expr $BRANCHK + 1)
-      GoodREPO+=$1
+
 
     fi
 
@@ -250,6 +250,8 @@ do
               }]
       }]
   }"
+
+  GoodREPO+="$i "
 
   fi
 
