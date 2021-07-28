@@ -10,11 +10,11 @@ comparison () {
 #bold on verson
 
 
-  EMAIL+="<h1 Style='text-decoration:underline'> <b> $disc </b> vs <b> $1</b>: </h1>"
+  NOTIFICATION+="<h1 Style='text-decoration:underline'> <b> $disc </b> vs <b> $1</b>: </h1>"
 
   #If there is no branch that matched a name in the QA check list then it says there is no match
   #If a match is found the branch is compared to the latest version
-  #If there is a difference between the 2 then the differences are put in the email, if not it says "no differences"
+  #If there is a difference between the 2 then the differences are put in the NOTIFICATION, if not it says "no differences"
   if [ "$1" != "None" ];
   then
 
@@ -25,18 +25,19 @@ comparison () {
     then
 
       #not in sync
-      EMAIL+="<p style='color:red'> $(git diff --stat-graph-width=1 $disc..$1 | tail -1) ⛔ </p>"
+      NOTIFICATION+="<p style='color:red'> $(git diff --stat-graph-width=1 $disc..$1 | tail -1) ⛔ </p>"
 
     else
       #in sync
-      EMAIL+="<p style='color:green'>No differences between $disc and '$1' ✅ </p>"
+      NOTIFICATION+="<p style='color:green'>No differences between $disc and '$1' ✅ </p>"
       BRANCHK=$(expr $BRANCHK + 1)
+      GoodREPO+=$1
 
     fi
 
   else
     #no branch
-    EMAIL+="<p style='color:red'> There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list) </p>"
+    NOTIFICATION+="<p style='color:red'> There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list) </p>"
 
 
   fi
@@ -89,15 +90,9 @@ declare -a QALst=('origin/QA'
           'origin/TEST'
           )
 
+ declare -a GoodREPO=()
+
 newline="</br>"
-
-
-#adds date and time to email
-#dateAndTime=`date`
-
-#EMAIL+="<p1>Date and Time: "
-
-#EMAIL+="$dateAndTime </p1>"
 
 
 #Goes through each repo in the list
@@ -211,8 +206,8 @@ do
              "$QASTR"
             )
 
-  EMAIL+="latest verison: <b>$disc</b>"
-  EMAIL+=${newline}
+  NOTIFICATION+="latest verison: <b>$disc</b>"
+  NOTIFICATION+=${newline}
 
   declare -i BRANCHK=0
 
@@ -238,32 +233,28 @@ do
       \"themeColor\": \"800080\",
       \"summary\": \"hello\",
       \"title\": \"$i\",
-      \"text\": \"$EMAIL\",
+      \"text\": \"$NOTIFICATION\",
       \"potentialAction\": [{
-
               \"@type\": \"OpenUri\",
               \"name\": \"View Repo\",
               \"targets\": [{
                   \"os\": \"default\",
                   \"uri\": \"http://github.com/NIT-Administrative-Systems/$i\"
               }]
-
       } , {
-
             \"@type\": \"OpenUri\",
             \"name\": \"View Comparison\",
             \"targets\": [{
                 \"os\": \"default\",
                 \"uri\": \"http://github.com/NIT-Administrative-Systems/compare\"
               }]
-
       }]
   }"
 
   fi
 
 
-  EMAIL=" "
+  NOTIFICATION=" "
 
 
   #steps back so the next repo is not created in the current repo folder
@@ -271,6 +262,4 @@ do
 
 done
 
-echo -e $EMAIL
-
-echo $EMAIL > Email.txt
+curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"Up to date repos: \", \"text\":\"${GoodREPO[@]}\"}" $TEAMS_WEBHOOK_URL
