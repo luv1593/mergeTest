@@ -214,9 +214,6 @@ do
 
   #conditional send
   #neat
-
-  #dont print repos that are all good
-
   #add repos that are all good to a list?
 
   if [ $BRANCHK != 3 ];
@@ -227,7 +224,7 @@ do
       \"@type\": \"MessageCard\",
       \"themeColor\": \"800080\",
       \"summary\": \"hello\",
-      \"title\": \"$i\",
+      \"title\": \"<h style='font-size:30px'>$i</h>\",
       \"text\": \"$NOTIFICATION\",
       \"potentialAction\": [{
               \"@type\": \"OpenUri\",
@@ -259,4 +256,4 @@ do
 
 done
 
-curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"Up to date repos: \", \"text\":\"${GoodREPO[@]} as of $dateAndTime\"}" $TEAMS_WEBHOOK_URL
+curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"Up to date repos as of $dateAndTime: \", \"text\":\"${GoodREPO[@]}\"}" $TEAMS_WEBHOOK_URL
