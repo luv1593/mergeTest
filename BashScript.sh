@@ -239,7 +239,7 @@ do
             \"name\": \"View Comparison\",
             \"targets\": [{
                 \"os\": \"default\",
-                \"uri\": \"http://github.com/NIT-Administrative-Systems/compare\"
+                \"uri\": \"http://github.com/NIT-Administrative-Systems/$i/compare\"
               }]
       }]
   }"
