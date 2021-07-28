@@ -214,10 +214,11 @@ do
 
   #conditional send
   #neat
-  #add repos that are all good to a list?
 
+  #only sends notification if less than 3 branches are not up to date.
   if [ $BRANCHK != 3 ];
   then
+    #curl command to send webhook MessageCard
     curl --location --request POST $TEAMS_WEBHOOK_URL \
   --header 'Content-Type: application/json' \
   -d "{
@@ -243,11 +244,14 @@ do
       }]
   }"
 
-  GoodREPO+="$i,</br> "
+
+  else
+    #if all 3 branchs are good the repo is added to the Good list
+    GoodREPO+="$i,</br> "
 
   fi
 
-
+  #notification is clearned for next MessageCard
   NOTIFICATION=" "
 
 
@@ -256,4 +260,5 @@ do
 
 done
 
+#final curl command sends the list of repos that are in the good list
 curl -i -X POST -H "Content-Type: application/json" -d "{\"title\":\"Up to date repos as of $dateAndTime: \", \"text\":\"${GoodREPO[@]}\"}" $TEAMS_WEBHOOK_URL
