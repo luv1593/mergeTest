@@ -15,29 +15,36 @@ comparison () {
   #If there is no branch that matched a name in the QA check list then it says there is no match
   #If a match is found the branch is compared to the latest version
   #If there is a difference between the 2 then the differences are put in the NOTIFICATION, if not it says "no differences"
-  if [ "$1" != "None" ];
+  if ["$disc" == "None"];
   then
-
-
-    diffs=$(git diff --stat-graph-width=1 $disc $1)
-    echo $diffs
-    if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ||  "$diffs" = *"insertion"* ||  "$diffs" = *"deletion"* ]];
+    if [ "$1" != "None" ];
     then
 
-      #not in sync
-      NOTIFICATION+="<p style='color:red'> $(git diff --stat-graph-width=1 $disc..$1 | tail -1) ⛔ </p>"
+
+      diffs=$(git diff --stat-graph-width=1 $disc $1)
+      echo $diffs
+      if [[ "$diffs" = *"insertions"* ||  "$diffs" = *"deletions"* ||  "$diffs" = *"insertion"* ||  "$diffs" = *"deletion"* ]];
+      then
+
+        #not in sync
+        NOTIFICATION+="<p style='color:red'> $(git diff --stat-graph-width=1 $disc..$1 | tail -1) ⛔ </p>"
+
+      else
+        #in sync
+        NOTIFICATION+="<p style='color:green'>No differences between $disc and '$1' ✅ </p>"
+        BRANCHK=$(expr $BRANCHK + 1)
+
+
+      fi
 
     else
-      #in sync
-      NOTIFICATION+="<p style='color:green'>No differences between $disc and '$1' ✅ </p>"
-      BRANCHK=$(expr $BRANCHK + 1)
+      #no branch
+      NOTIFICATION+="<p style='color:red'> There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list.) </p>"
 
 
     fi
 
-  else
-    #no branch
-    NOTIFICATION+="<p style='color:red'> There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list) </p>"
+    NOTIFICATION+="<p style='color:red'> There is no latest tag or master banch in this repo. ⛔ </p>"
 
 
   fi
@@ -54,6 +61,7 @@ declare -a REPO_LIST=( 'SysDev-MoneyCat'
                'SysDev-GSTS'
                'ecats-api'
                'ecats-ui'
+               'myHRHandySQL'
               )
 
 
@@ -164,6 +172,7 @@ do
     done
   done
 
+
   #command to get the latest tag from the  repo
 
   #only master
@@ -177,11 +186,7 @@ do
     disc=$MASSTR
     if [ "$disc" == "None" ];
     then
-      disc=$QASTR
-      if [ "$disc" == "None" ];
-      then
-        disc=$DEVSTR
-      fi
+
     fi
   fi
 
@@ -224,7 +229,7 @@ do
       \"@type\": \"MessageCard\",
       \"themeColor\": \"800080\",
       \"summary\": \"hello\",
-      \"title\": \"<h style='font-size:80px'>$i</h>\",
+      \"title\": \"$i\",
       \"text\": \"$NOTIFICATION\",
       \"potentialAction\": [{
               \"@type\": \"OpenUri\",
