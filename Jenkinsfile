@@ -10,6 +10,8 @@ pipeline {
     TEAMS_WEBHOOK_URL = credentials('training-repo-alert-webhook')
   }
 
+  //add email param 
+
     //These are the stages of the build
     stages {
 
