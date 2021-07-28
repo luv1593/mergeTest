@@ -224,7 +224,7 @@ do
       \"@type\": \"MessageCard\",
       \"themeColor\": \"800080\",
       \"summary\": \"hello\",
-      \"title\": \"<h style='font-size:30px'>$i</h>\",
+      \"title\": \"<h style='font-size:80px'>$i</h>\",
       \"text\": \"$NOTIFICATION\",
       \"potentialAction\": [{
               \"@type\": \"OpenUri\",
