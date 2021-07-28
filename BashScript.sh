@@ -25,11 +25,11 @@ comparison () {
     then
 
       #not in sync
-      NOTIFICATION+="<p style='color:red'> $(git diff --stat-graph-width=1 $disc..$1 | tail -1) ⛔ </p>"
+      NOTIFICATION+="<p style='color:red'>⛔ $(git diff --stat-graph-width=1 $disc..$1 | tail -1)  </p>"
 
     else
       #in sync
-      NOTIFICATION+="<p style='color:green'>No differences between $disc and '$1' ✅ </p>"
+      NOTIFICATION+="<p style='color:green'>✅ No differences between $disc and '$1'  </p>"
       BRANCHK=$(expr $BRANCHK + 1)
 
 
@@ -37,7 +37,7 @@ comparison () {
 
   else
     #no branch
-    NOTIFICATION+="<p style='color:red'> There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list) </p>"
+    NOTIFICATION+="<p style='color:red'>⛔There is no branch matching '$1'. (If there is a '$1' branch check the name and make sure its on the pick list) </p>"
 
 
   fi
