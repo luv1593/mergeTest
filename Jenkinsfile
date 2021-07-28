@@ -10,15 +10,11 @@ pipeline {
     TEAMS_WEBHOOK_URL = credentials('training-repo-alert-webhook')
   }
 
-  //add email param 
-
     //These are the stages of the build
     stages {
-
-
+      //setup stage clears workspace dir
       stage('Setup') {
         steps {
-          //get dynamic pipelineTest dir   (newTestPipeline, Lucas-Test1)
           deleteDir()
         }
       }
@@ -38,32 +34,14 @@ pipeline {
                 dir('mergeTest') {
                   sh "chmod +x -R ${env.WORKSPACE}"
                   sh './BashScript.sh'
-                  //EmailData = readFile(file: 'Email.txt')
                 }
                 sh"""
                 git config --global --unset credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper
                 """
-
-
-
-
-
-
           }
-//call sh file in jenkins file
-
-
         }
       }
-
     }
-
-
-
-
-
-
-
   }
   //jenkins email with formating
   //mimetype html
