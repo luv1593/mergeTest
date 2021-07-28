@@ -184,10 +184,6 @@ do
   if [ "$disc" == "" ];
   then
     disc=$MASSTR
-    if [ "$disc" == "None" ];
-    then
-
-    fi
   fi
 
 
