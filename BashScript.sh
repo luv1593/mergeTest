@@ -187,15 +187,10 @@ do
 
 
   #prints out all of the strings for user to see
-
   echo "tag: $disc"
   echo "QASTR: $QASTR"
   echo "DEVSTR: $DEVSTR"
   echo "MASSTR: $MASSTR"
-
-
-
-
 
 
   #prints the repo being looked at
@@ -251,7 +246,7 @@ do
       }]
   }"
 
-  GoodREPO+="$i, "
+  GoodREPO+="$i,</br> "
 
   fi
 
