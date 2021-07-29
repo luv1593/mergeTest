@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-echo $All
+
 
 dateAndTime=`date`
 
@@ -48,16 +48,51 @@ comparison () {
 }
 
 
-
+if [ $All == true ];
+then
 #This is the list of the repos that will be looked at. This list can be added to as more repos are made.
 #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
-declare -a REPO_LIST=( 'SysDev-MoneyCat'
-               'SysDev-FRS'
-               'SysDev-URG'
-               'SysDev-GSTS'
-               'ecats-api'
-               'ecats-ui'
-              )
+  declare -a REPO_LIST=( 'SysDev-MoneyCat'
+                'SysDev-FRS'
+                'SysDev-URG'
+                'SysDev-GSTS'
+                'ecats-api'
+                'ecats-ui'
+                )
+else
+  declare -a REPO_LIST=()
+
+  if [ $SysDevMoneyCat == true  ];
+  then
+    REPO_LIST=()+= 'SysDev-MoneyCat'
+  fi
+
+  if [ $SysDevFRS == true  ];
+  then
+    REPO_LIST=()+= 'SysDev-FRS'
+  fi
+
+  if [ $SysDevURG == true  ];
+  then
+    REPO_LIST=()+= 'SysDev-URG'
+  fi
+
+  if [ $SysDevGSTS == true  ];
+  then
+    REPO_LIST=()+= 'SysDev-GSTS'
+  fi
+
+  if [ $ecatsapi == true  ];
+  then
+    REPO_LIST=()+= 'ecats-api'
+  fi
+
+  if [ $ecatsui == true  ];
+  then
+    REPO_LIST=()+= 'ecats-ui'
+  fi
+
+fi
 
 
 
