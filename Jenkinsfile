@@ -6,8 +6,14 @@
 pipeline {
   agent any
   parameters{
+
       booleanParam(defaultValue: true, name: 'All')
-      booleanParam(defaultValue: true, name: 'SysDev-MoneyCat')
+      booleanParam(defaultValue: true, name: 'SysDevMoneyCat')
+      booleanParam(defaultValue: true, name: 'SysDevFRS')
+      booleanParam(defaultValue: true, name: 'SysDevURG')
+      booleanParam(defaultValue: true, name: 'ecatsapi')
+      booleanParam(defaultValue: true, name: 'ecatsui')
+
       }
 
   triggers {
