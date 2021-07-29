@@ -6,24 +6,23 @@
 pipeline {
   agent any
   parameters{
-      choice(
-        choices: ['ONE', 'TWO'],
-        name: 'PARAMETER_01'
-        )
+      booleanParam(defaultValue: ture, name: 'All', description: "All repos")
+      booleanParam(defaultValue: ture, name: 'SysDev-MoneyCat', description: "Money cat repo")
       }
 
   triggers {
           /*
-              //Everyday at 8:30am
+              Everyday at 8:30am
+                30 8 * * *
 
-              //Never
-              // 1 23 31 2 *
+              Never
+               1 23 31 2 *
 
               Every 5 minutes
-              5 * * * *
+               5 * * * *
 
               Every 30 minutes
-              30 * * * *
+               30 * * * *
             */
         cron('30 8 * * * ')
     }
