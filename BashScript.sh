@@ -64,32 +64,32 @@ else
 
   if [ $SysDevMoneyCat == true  ];
   then
-    REPO_LIST=()+= 'SysDev-MoneyCat'
+    REPO_LIST=()+="SysDev-MoneyCat"
   fi
 
   if [ $SysDevFRS == true  ];
   then
-    REPO_LIST=()+= 'SysDev-FRS'
+    REPO_LIST=()+="SysDev-FRS"
   fi
 
   if [ $SysDevURG == true  ];
   then
-    REPO_LIST=()+= 'SysDev-URG'
+    REPO_LIST=()+="SysDev-URG"
   fi
 
   if [ $SysDevGSTS == true  ];
   then
-    REPO_LIST=()+= 'SysDev-GSTS'
+    REPO_LIST=()+="SysDev-GSTS"
   fi
 
   if [ $ecatsapi == true  ];
   then
-    REPO_LIST=()+= 'ecats-api'
+    REPO_LIST=()+="ecats-api"
   fi
 
   if [ $ecatsui == true  ];
   then
-    REPO_LIST=()+= 'ecats-ui'
+    REPO_LIST=()+="ecats-ui"
   fi
 
 fi
