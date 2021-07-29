@@ -6,8 +6,8 @@
 pipeline {
   agent any
   parameters{
-      booleanParam(defaultValue: true, name: 'All', description: "All repos")
-      booleanParam(defaultValue: true, name: 'SysDev-MoneyCat', description: "Money cat repo")
+      booleanParam(defaultValue: true, name: 'All')
+      booleanParam(defaultValue: true, name: 'SysDev-MoneyCat')
       }
 
   triggers {
