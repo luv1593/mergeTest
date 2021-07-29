@@ -94,6 +94,8 @@ else
 
 fi
 
+echo "REPO HERE:"
+echo $REPO_LIST[@]
 
 
 #This list is the check list for the development branch, any new names for the development branch can be
