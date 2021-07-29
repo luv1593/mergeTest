@@ -1,8 +1,5 @@
 #!/bin/bash
 
-
-echo $All
-
 dateAndTime=`date`
 
 curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"Date and Time: \", \"text\":\"$dateAndTime\"}" $TEAMS_WEBHOOK_URL
