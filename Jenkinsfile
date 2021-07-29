@@ -8,11 +8,11 @@ pipeline {
   parameters{
 
       booleanParam(defaultValue: true, name: 'All')
-      booleanParam(defaultValue: true, name: 'SysDevMoneyCat')
-      booleanParam(defaultValue: true, name: 'SysDevFRS')
-      booleanParam(defaultValue: true, name: 'SysDevURG')
-      booleanParam(defaultValue: true, name: 'ecatsapi')
-      booleanParam(defaultValue: true, name: 'ecatsui')
+      booleanParam(defaultValue: false, name: 'SysDevMoneyCat')
+      booleanParam(defaultValue: false, name: 'SysDevFRS')
+      booleanParam(defaultValue: false, name: 'SysDevURG')
+      booleanParam(defaultValue: false, name: 'ecatsapi')
+      booleanParam(defaultValue: false, name: 'ecatsui' description: "All will run all repositories through the program. You can also uncheck All to select specific the repositories that you want to run. ")
 
       }
 
