@@ -285,13 +285,6 @@ then
                 \"os\": \"default\",
                 \"uri\": \"http://github.com/NIT-Administrative-Systems/$i\"
             }]
-    } , {
-          \"@type\": \"OpenUri\",
-          \"name\": \"View Comparison\",
-          \"targets\": [{
-              \"os\": \"default\",
-              \"uri\": \"http://github.com/NIT-Administrative-Systems/$i/compare\"
-            }]
     }]
 }"
 
