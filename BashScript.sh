@@ -145,15 +145,14 @@ do
 
 
   #REPO CHECK IF EXISTS if still in pwd mergeTest
-  lastChr=""
   cd "$i"
   pwdSTR=$(pwd)
-  echo "pwd"
-  echo $pwdSTR
-  
+  inCD=true
+
   if [ "${pwdSTR: -9}" = "mergeTest" ];
   then
-    echo "hello EHEHHE"
+
+      inCD=false
 
   fi
 
@@ -271,37 +270,44 @@ do
   #only sends notification if less than 3 branches are not up to date.
   if [ $BRANCHK != 3 ];
   then
-    #curl command to send webhook MessageCard
-    curl --location --request POST $TEAMS_WEBHOOK_URL \
-  --header 'Content-Type: application/json' \
-  -d "{
-      \"@type\": \"MessageCard\",
-      \"themeColor\": \"800080\",
-      \"summary\": \"hello\",
-      \"title\": \"$i\",
-      \"text\": \"$NOTIFICATION\",
-      \"potentialAction\": [{
+
+    if [ inCD = false ];
+    then
+
+      echo "hjo"
+
+    else
+      #curl command to send webhook MessageCard
+      curl --location --request POST $TEAMS_WEBHOOK_URL \
+    --header 'Content-Type: application/json' \
+    -d "{
+        \"@type\": \"MessageCard\",
+        \"themeColor\": \"800080\",
+        \"summary\": \"hello\",
+        \"title\": \"$i\",
+        \"text\": \"$NOTIFICATION\",
+        \"potentialAction\": [{
+                \"@type\": \"OpenUri\",
+                \"name\": \"View Repo\",
+                \"targets\": [{
+                    \"os\": \"default\",
+                    \"uri\": \"http://github.com/NIT-Administrative-Systems/$i\"
+                }]
+        } , {
               \"@type\": \"OpenUri\",
-              \"name\": \"View Repo\",
+              \"name\": \"View Comparison\",
               \"targets\": [{
                   \"os\": \"default\",
-                  \"uri\": \"http://github.com/NIT-Administrative-Systems/$i\"
-              }]
-      } , {
-            \"@type\": \"OpenUri\",
-            \"name\": \"View Comparison\",
-            \"targets\": [{
-                \"os\": \"default\",
-                \"uri\": \"http://github.com/NIT-Administrative-Systems/$i/compare\"
-              }]
-      }]
-  }"
+                  \"uri\": \"http://github.com/NIT-Administrative-Systems/$i/compare\"
+                }]
+        }]
+    }"
 
 
-  else
-    #if all 3 branchs are good the repo is added to the Good list
-    GoodREPO+="$i,</br> "
-
+    else
+      #if all 3 branchs are good the repo is added to the Good list
+      GoodREPO+="$i,</br> "
+    fi
   fi
 
   #notification is clearned for next MessageCard
