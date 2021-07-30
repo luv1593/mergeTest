@@ -143,7 +143,15 @@ do
   git clone https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/NIT-Administrative-Systems/$i.git
   #git clone git@github.com:NIT-Administrative-Systems/\$i.git
 
+
+  #REPO CHECK IF EXISTS if still in pwd mergeTest
   cd "$i"
+  pwdSTR= pwd
+  if [ $pwdSTR = *"/mergeTest"* ];
+  then
+    echo "hello"
+
+  fi
 
   git pull
 
@@ -209,7 +217,7 @@ do
   #only master
 
   echo "repo: '$i'"
-  pwd
+
   disc=$(git describe --tags `git rev-list --tags --max-count=1`)
   echo "repo:"
 
