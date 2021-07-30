@@ -277,7 +277,7 @@ then
     \"themeColor\": \"800080\",
     \"summary\": \"Repo Compare Info\",
     \"title\": \"$i\",
-    \"text\": \"ERROR: This repo was not read correctly. Please make sure you have access to this repo.\",
+    \"text\": \"<p style='color:red'>⛔ERROR: This repo was not read correctly. Please make sure you have access to this repo.</p>\",
     \"potentialAction\": [{
             \"@type\": \"OpenUri\",
             \"name\": \"View Repo\",
