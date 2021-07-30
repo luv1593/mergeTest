@@ -149,12 +149,12 @@ do
   pwdSTR=$(pwd)
   echo "pwd"
   echo $pwdSTR
-  lastThree= ${pwdSTR: -11}
+  lastChr= ${pwdSTR: -9}
   echo "9"
-  echo $lastThree
-  if [ "$lastThree" = *"mergeTest"* ];
+  echo $lastChr
+  if [ "${pwdSTR: -9}" = *"mergeTest"* ];
   then
-    echo "hello"
+    echo "hello EHEHHE"
 
   fi
 
