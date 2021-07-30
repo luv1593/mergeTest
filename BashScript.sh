@@ -267,23 +267,45 @@ do
   #conditional send
   #neat
 
+if [ "$inCD" = false ];
+then
+
+  curl --location --request POST $TEAMS_WEBHOOK_URL \
+--header 'Content-Type: application/json' \
+-d "{
+    \"@type\": \"MessageCard\",
+    \"themeColor\": \"800080\",
+    \"summary\": \"Repo Compare Info\",
+    \"title\": \"$i\",
+    \"text\": \"ERROR: This repo was not read correctly. Please make sure you have access to this repo.\",
+    \"potentialAction\": [{
+            \"@type\": \"OpenUri\",
+            \"name\": \"View Repo\",
+            \"targets\": [{
+                \"os\": \"default\",
+                \"uri\": \"http://github.com/NIT-Administrative-Systems/$i\"
+            }]
+    } , {
+          \"@type\": \"OpenUri\",
+          \"name\": \"View Comparison\",
+          \"targets\": [{
+              \"os\": \"default\",
+              \"uri\": \"http://github.com/NIT-Administrative-Systems/$i/compare\"
+            }]
+    }]
+}"
+
+else
   #only sends notification if less than 3 branches are not up to date.
   if [ $BRANCHK != 3 ];
   then
-
-    if [ inCD = false ];
-    then
-
-      echo "hjo"
-
-    else
       #curl command to send webhook MessageCard
       curl --location --request POST $TEAMS_WEBHOOK_URL \
     --header 'Content-Type: application/json' \
     -d "{
         \"@type\": \"MessageCard\",
         \"themeColor\": \"800080\",
-        \"summary\": \"hello\",
+        \"summary\": \"Repo Compare Info\",
         \"title\": \"$i\",
         \"text\": \"$NOTIFICATION\",
         \"potentialAction\": [{
@@ -302,13 +324,12 @@ do
                 }]
         }]
     }"
-
-
     else
       #if all 3 branchs are good the repo is added to the Good list
       GoodREPO+="$i,</br> "
-    fi
   fi
+
+fi
 
   #notification is clearned for next MessageCard
   NOTIFICATION=" "
