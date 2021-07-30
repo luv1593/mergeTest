@@ -146,7 +146,7 @@ do
 
   #REPO CHECK IF EXISTS if still in pwd mergeTest
   cd "$i"
-  pwdSTR= `pwd`
+  pwdSTR=$(pwd)
   echo $pwdSTR
   lastThree= ${pwdSTR: -9}
   echo $lastThree
