@@ -145,6 +145,7 @@ do
 
 
   #REPO CHECK IF EXISTS if still in pwd mergeTest
+  lastChr=""
   cd "$i"
   pwdSTR=$(pwd)
   echo "pwd"
