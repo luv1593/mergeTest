@@ -54,7 +54,7 @@ then
 #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
   declare -a REPO_LIST=( 'SysDev-MoneyCat'
                 'SysDev-FRS'
-                'SysDev-URG'
+                'SysDev-urg'
                 'SysDev-GSTS'
                 'ecats-api'
                 'ecats-ui'
@@ -74,7 +74,7 @@ else
 
   if [ $SysDevURG == true  ];
   then
-    REPO_LIST+=("SysDev-URG")
+    REPO_LIST+=("SysDev-urg")
   fi
 
   if [ $SysDevGSTS == true  ];
