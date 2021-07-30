@@ -150,7 +150,7 @@ do
   echo $pwdSTR
   lastThree=${pwdSTR: -9}
   echo $lastThree
-  if [ $lastThree = *"mergeTest"* ];
+  if [ "$lastThree" = *"mergeTest"* ];
   then
     echo "hello"
 
