@@ -147,7 +147,7 @@ do
   #REPO CHECK IF EXISTS if still in pwd mergeTest
   cd "$i"
   pwdSTR= pwd
-  if [ $pwdSTR = *"/mergeTest"* ];
+  if [ $pwdSTR == *"/mergeTest"* ];
   then
     echo "hello"
 
