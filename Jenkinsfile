@@ -30,7 +30,7 @@ pipeline {
               Every 30 minutes
                30 * * * *
             */
-        cron('11 11 * * * ')
+        cron('30 8 * * * ')
     }
 
 
