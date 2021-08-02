@@ -264,9 +264,6 @@ do
   done
 
 
-  #conditional send
-  #neat
-
 if [ "$inCD" = false ];
 then
 
