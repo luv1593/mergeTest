@@ -71,6 +71,8 @@ pipeline {
                 dir('mergeTest') {
                   //adds permissions so the bashscript can be read
                   EVN=${env.WORKSPACE}
+                  sh "echo EVN:"
+                  sh "echo $EVN"
                   sh "chmod +x -R $EVN"
                   //runs scripts
                   sh './BashScript.sh'
