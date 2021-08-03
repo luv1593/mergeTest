@@ -56,6 +56,7 @@ then
                 'ecats-api'
                 'ecats-ui'
                 )
+                
 #if the All is not checked then it will go through and add each repo that was checked to the list. (look into dynamic option)
 else
   declare -a REPO_LIST=()
@@ -283,6 +284,8 @@ else
   if [ $BRANCHK != 3 ];
   then
       #curl command to send webhook MessageCard
+
+      #BUILD  large string and send in 1 webhook
       curl --location --request POST $TEAMS_WEBHOOK_URL \
     --header 'Content-Type: application/json' \
     -d "{
@@ -314,7 +317,7 @@ else
 fi
 
   #notification is clearned for next MessageCard
-  #NOTIFICATION=" "
+  NOTIFICATION=" "
 
 
   #steps back so the next repo is not created in the current repo folder
