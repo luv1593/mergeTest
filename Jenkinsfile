@@ -7,6 +7,8 @@ pipeline {
   agent any
   parameters{
 
+      //ADD doc for adding new repo
+
       //pipeline parameters (may need to be dynamic)
       booleanParam(defaultValue: true, name: 'All')
       booleanParam(defaultValue: false, name: 'SysDevMoneyCat')
@@ -15,6 +17,7 @@ pipeline {
       booleanParam(defaultValue: false, name: 'ecatsapi')
       booleanParam(defaultValue: false, name: 'ecatsui', description: "All will run all repositories through the program. You can also uncheck All to select specific the repositories that you want to run. ")
 
+      //choice
       }
 
   //This triggers the cron pattern for the program
@@ -32,6 +35,7 @@ pipeline {
               Every 30 minutes
                30 * * * *
             */
+        //env.param
         cron('30 8 * * * ')
     }
 
