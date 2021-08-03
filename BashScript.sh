@@ -314,7 +314,7 @@ else
 fi
 
   #notification is clearned for next MessageCard
-  NOTIFICATION=" "
+  #NOTIFICATION=" "
 
 
   #steps back so the next repo is not created in the current repo folder
