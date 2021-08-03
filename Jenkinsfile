@@ -7,6 +7,7 @@ pipeline {
   agent any
   parameters{
 
+      //pipeline parameters (may need to be dynamic)
       booleanParam(defaultValue: true, name: 'All')
       booleanParam(defaultValue: false, name: 'SysDevMoneyCat')
       booleanParam(defaultValue: false, name: 'SysDevFRS')
@@ -16,6 +17,7 @@ pipeline {
 
       }
 
+  //This triggers the cron pattern for the program
   triggers {
           /*
               Everyday at 8:30am
@@ -33,13 +35,12 @@ pipeline {
         cron('30 8 * * * ')
     }
 
-
-
+  //webhook credentials
   environment{
     TEAMS_WEBHOOK_URL = credentials('training-repo-alert-webhook')
   }
 
-    //These are the stages of the build
+    //Stages of the build
     stages {
       //setup stage clears workspace dir
       stage('Setup') {
@@ -48,22 +49,28 @@ pipeline {
         }
       }
 
-      //This stage finds the branches are compares them to the latest tag
+      //Build stage finds the branches are compares them to the latest tag using a bash script
       stage('build') {
         steps {
+          //Gets credentials for git clone
           withCredentials([
             usernamePassword(credentialsId: 'GitHub-awsCloudOpsCJT', passwordVariable: 'GITHUB_PASSWORD', usernameVariable: 'GITHUB_USERNAME'),
             ]) {
               script {
+                //config global credentials
                 sh"""
                 git config --global credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper '!f() { echo "username=""" + '${GITHUB_USERNAME}' + """"; echo "password=""" + '${GITHUB_PASSWORD}' + """"; }; f'
                 """
-                //Bash script for git comparisons
+                //clones repo to get BashScript
                 sh 'git clone https://github.com/luv1593/mergeTest.git'
+                //sets dir to mergeTest
                 dir('mergeTest') {
+                  //adds permissions so the bashscript can be read
                   sh "chmod +x -R ${env.WORKSPACE}"
+                  //runs scripts
                   sh './BashScript.sh'
                 }
+                //unsets global credentials
                 sh"""
                 git config --global --unset credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper
                 """
@@ -72,19 +79,4 @@ pipeline {
       }
     }
   }
-  //jenkins email with formating
-  //mimetype html
-
-/*
-post {
-
-  always {
-  //add email param
-
-    mail to: 'lucasv0107@gmail.com' ,
-      subject: "Status of pipeline: test",
-      body: " Jenkins pipeline Test Build Number: '${currentBuild.number}': '${EmailData}'"
-    }
-  }
-  */
 }
