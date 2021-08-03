@@ -70,7 +70,7 @@ pipeline {
                 //sets dir to mergeTest
                 dir('mergeTest') {
                   //adds permissions so the bashscript can be read
-                  env.EVNVARI = "${env.WORKSPACE}"
+                  env.EVNVARI = ${env.WORKSPACE}
                   sh "chmod +x -R $EVNVARI"
                   //runs scripts
                   sh './BashScript.sh'
