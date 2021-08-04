@@ -18,7 +18,7 @@ pipeline {
       booleanParam(defaultValue: false, name: 'ecatsui', description: "All will run all repositories through the program. You can also uncheck All to select specific the repositories that you want to run. ")
 
       //choice
-      choice(name: 'CRON', choices: ['30 8 * * * ', '0 17 * * *', '15 * * * *', '1 23 31 2 *'], description: 'Everyday at 8:30am, Everyday at 5:00pm, Every 15 minutes, Never ')
+      choice(name: 'CHOICE', choices: ['30 8 * * * ', '0 17 * * *', '15 * * * *', '1 23 31 2 *'], description: 'Everyday at 8:30am, Everyday at 5:00pm, Every 15 minutes, Never ')
 
       }
 
@@ -39,7 +39,7 @@ pipeline {
                ${params.CHOICE}
             */
 
-        cron("${params.CRON}")
+        cron("${params.CHOICE}")
     }
 
   //webhook credentials
@@ -52,7 +52,7 @@ pipeline {
 
       stage('Params') {
         steps {
-          echo "CHOICE: ${params.CRON}"
+          echo "CHOICE: ${params.CHOICE}"
         }
       }
 
