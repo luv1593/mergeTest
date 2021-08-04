@@ -55,7 +55,6 @@ then
                 'SysDev-GSTS'
                 'ecats-api'
                 'ecats-ui'
-                'NEW-REPO-HERE'
                 )
 
 #if the All is not checked then it will go through and add each repo that was checked to the list. (look into dynamic option)
