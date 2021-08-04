@@ -7,15 +7,12 @@ pipeline {
   agent any
   parameters{
 
-      //ADD doc for adding new repo
-
       //pipeline parameters (may need to be dynamic)
       booleanParam(defaultValue: true, name: 'All')
       booleanParam(defaultValue: false, name: 'SysDevMoneyCat')
       booleanParam(defaultValue: false, name: 'SysDevFRS')
       booleanParam(defaultValue: false, name: 'SysDevURG')
       booleanParam(defaultValue: false, name: 'ecatsapi')
-      //add to disc
       booleanParam(defaultValue: false, name: 'ecatsui', description: "All will run all repositories through the program. You can also uncheck All to select specific the repositories that you want to run. ")
 
       //choice
@@ -25,21 +22,6 @@ pipeline {
 
   //This triggers the cron pattern for the program
   triggers {
-          /*
-              Everyday at 8:30am
-                30 8 * * *
-
-              Never
-               1 23 31 2 *
-
-              Every 5 minutes
-               5 * * * *
-
-              Every 30 minutes
-               30 * * * *
-               ${params.CHOICE}
-            */
-
         cron("${params.CHOICE}")
     }
 
@@ -50,13 +32,6 @@ pipeline {
 
     //Stages of the build
     stages {
-
-      stage('Params') {
-        steps {
-          echo "CHOICE: ${params.CHOICE}"
-        }
-      }
-
 
       //setup stage clears workspace dir
       stage('Setup') {
@@ -82,14 +57,9 @@ pipeline {
                 //sets dir to mergeTest
                 dir('mergeTest') {
                   //adds permissions so the bashscript can be read
-                  //runs scripts
-
-
                   sh "chmod +x -R \"${env.WORKSPACE}\""
-
+                  //runs the script
                   sh './BashScript.sh'
-
-
                 }
                 //unsets global credentials
                 sh"""
