@@ -40,7 +40,7 @@ pipeline {
                ${params.CHOICE}
             */
 
-        cron("${params.CHOICE}")
+        cron("30 8 * * *")
     }
 
   //webhook credentials
