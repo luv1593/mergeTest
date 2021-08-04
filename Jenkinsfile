@@ -37,8 +37,8 @@ pipeline {
               Every 30 minutes
                30 * * * *
             */
-        //env.param
-        cron(${params.CHOICE})
+
+        cron("${params.CHOICE}")
     }
 
   //webhook credentials
