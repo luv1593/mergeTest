@@ -15,6 +15,7 @@ pipeline {
       booleanParam(defaultValue: false, name: 'SysDevFRS')
       booleanParam(defaultValue: false, name: 'SysDevURG')
       booleanParam(defaultValue: false, name: 'ecatsapi')
+      //add to disc
       booleanParam(defaultValue: false, name: 'ecatsui', description: "All will run all repositories through the program. You can also uncheck All to select specific the repositories that you want to run. ")
 
       //choice
