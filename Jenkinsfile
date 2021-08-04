@@ -18,10 +18,13 @@ pipeline {
       booleanParam(defaultValue: false, name: 'ecatsui', description: "All will run all repositories through the program. You can also uncheck All to select specific the repositories that you want to run. ")
 
       //choice
+      choice(name: 'CHOICE', choices: ['Everyday at 8:30am', 'Everyday at 5:00pm', 'Every 15 minutes', 'Never'], description: 'Pick a cron pattern')
+
       }
 
   //This triggers the cron pattern for the program
   triggers {
+        echo "${param.CHOICE}"
           /*
               Everyday at 8:30am
                 30 8 * * *
