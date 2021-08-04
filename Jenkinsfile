@@ -51,7 +51,7 @@ pipeline {
 
       stage('Params') {
         steps {
-          echo "CHOICE: ${param.CHOICE}"
+          echo "CHOICE: ${params.CHOICE}"
         }
       }
 
