@@ -55,8 +55,9 @@ then
                 'SysDev-GSTS'
                 'ecats-api'
                 'ecats-ui'
+                'NEW-REPO-HERE'
                 )
-                
+
 #if the All is not checked then it will go through and add each repo that was checked to the list. (look into dynamic option)
 else
   declare -a REPO_LIST=()
@@ -89,6 +90,11 @@ else
   if [ $ecatsui == true  ];
   then
     REPO_LIST+=("ecats-ui")
+  fi
+
+  if [ $NewRepo == true  ];
+  then
+    REPO_LIST+=("NEW-REPO-HERE")
   fi
 
 fi
@@ -137,21 +143,12 @@ do
 
   #clones sets the directory and pulls the repo so all the information is up to date.
   git clone https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/NIT-Administrative-Systems/$i.git
-  #git clone git@github.com:NIT-Administrative-Systems/\$i.git
-
 
   #REPO CHECK IF EXISTS if still in pwd mergeTest
   cd "$i"
 
   #pwd string after cd to check if we are in the repo.
   pwdSTR=$(pwd)
-
-
-  # inCD=true
-  # if [ "${pwdSTR: -9}" = "mergeTest" ];
-  # then
-  #     inCD=false
-  # fi
 
   #git pull any new info from the repo
   git pull
