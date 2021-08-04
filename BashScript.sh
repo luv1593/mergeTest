@@ -92,11 +92,6 @@ else
     REPO_LIST+=("ecats-ui")
   fi
 
-  if [ $NewRepo == true  ];
-  then
-    REPO_LIST+=("NEW-REPO-HERE")
-  fi
-
 fi
 
 #This list is the check list for the development branch, any new names for the development branch can be
