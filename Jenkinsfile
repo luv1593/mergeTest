@@ -24,7 +24,6 @@ pipeline {
 
   //This triggers the cron pattern for the program
   triggers {
-        echo "${param.CHOICE}"
           /*
               Everyday at 8:30am
                 30 8 * * *
@@ -49,6 +48,14 @@ pipeline {
 
     //Stages of the build
     stages {
+
+      stage('Params') {
+        steps {
+          echo "CHOICE: ${param.CHOICE}"
+        }
+      }
+
+
       //setup stage clears workspace dir
       stage('Setup') {
         steps {
