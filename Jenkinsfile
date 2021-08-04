@@ -18,7 +18,10 @@ pipeline {
       booleanParam(defaultValue: false, name: 'ecatsui', description: "All will run all repositories through the program. You can also uncheck All to select specific the repositories that you want to run. ")
 
       //choice
-      choice(name: 'Cron_pattern', choices: ['30 8 * * * ', '0 17 * * *', '15 * * * *', '1 23 31 2 *'], description: 'Everyday at 8:30am, Everyday at 5:00pm, Every 15 minutes, Never ')
+      choice(name: 'Cron_pattern', choices: ['30 8 * * * ', '0 17 * * *', '15 * * * *', '1 23 31 2 *'], description: 'Everyday at 8:30am,
+                                                                                                                      Everyday at 5:00pm,
+                                                                                                                      Every 15 minutes,
+                                                                                                                      Never ')
 
       }
 
