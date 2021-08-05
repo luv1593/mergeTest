@@ -1,8 +1,5 @@
 #!/bin/bash
 
-  echo "hello!"
-  echo $GITHUB_USERNAME
-
 #date and time to be printed at the start of the script
 dateAndTime=`date`
 
