@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #date and time to be printed at the start of the script
-dateAndTime=`date`
+dateAndTime=`date` 
 
 #sends the date and time to the webhook location
 curl -i -X POST -H "Content-Type: application/json" -d "{\"text\":\"Date and Time: \", \"text\":\"$dateAndTime\"}" $TEAMS_WEBHOOK_URL
