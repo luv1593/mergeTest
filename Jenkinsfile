@@ -53,7 +53,7 @@ pipeline {
                 git config --global credential.https://github.com/NIT-Administrative-Systems/AS-Common-AWS-Modules.git.helper '!f() { echo "username=""" + '${GITHUB_USERNAME}' + """"; echo "password=""" + '${GITHUB_PASSWORD}' + """"; }; f'
                 """
                 //clones repo to get BashScript
-                sh 'git clone https://github.com/luv1593/mergeTest.git'
+                sh 'git clone https://github.com/NIT-Administrative-Systems/SysDev-RepoSynchrony.git'
                 //sets dir to mergeTest
                 dir('mergeTest') {
                   //adds permissions so the bashscript can be read
