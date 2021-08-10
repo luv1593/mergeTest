@@ -12,11 +12,6 @@ pipeline {
         booleanParam(defaultValue: true, name: 'All_Repos')
         booleanParam(defaultValue: false, name: 'MoneyCat')
         booleanParam(defaultValue: false, name: 'FRS')
-        booleanParam(defaultValue: false, name: 'URG')
-        booleanParam(defaultValue: false, name: 'GSTS')
-        booleanParam(defaultValue: false, name: 'ecatsapi')
-        booleanParam(defaultValue: false, name: 'ecatsui', description: "All will run all repositories through the program. You can also uncheck All to select specific the repositories that you want to run. ")
-
         //choice
         choice(
           choices: ['30 8 * * * ', '0 17 * * *', '15 * * * *', '1 23 31 2 *'],
