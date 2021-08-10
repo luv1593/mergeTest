@@ -30,7 +30,7 @@ pipeline {
 
   //This triggers the cron pattern for the program
   triggers {
-        cron("${params.SCHEDULE}")
+        cron("30 8 * * *")
     }
 
   //webhook credentials
