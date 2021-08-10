@@ -26,6 +26,13 @@ comparison () {
 
       #This is the notification that is sent if the branch is not in sync
       NOTIFICATION+="<p style='color:red'>⛔ $(git diff --stat-graph-width=1 $disc..$1 | tail -1)  </p>"
+      if [ $1 == $DEVSTR ]:
+      then
+        git checkout $1
+        git merge $disc
+        #what does this do?
+        git push --set-upstream origin $1
+      fi
 
     else
       #This is the notification that is sent if the branch is in sync
