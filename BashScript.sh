@@ -59,12 +59,8 @@ if [ $All_Repos == true ];
 then
 #This is the list of the repos that will be looked at. This list can be added to as more repos are made.
 #NOTE: The repo must be in the NIT-Administrative-Systems GitHub site.
-  declare -a REPO_LIST=( 'SysDev-MoneyCat'
-                'SysDev-FRS'
-                'SysDev-urg'
-                'SysDev-GSTS'
-                'ecats-api'
-                'ecats-ui'
+  declare -a REPO_LIST=( 'mergeTest'
+                          'branchTest'
                 )
 
 #if the All is not checked then it will go through and add each repo that was checked to the list. (look into dynamic option)
@@ -73,32 +69,12 @@ else
 
   if [ $MoneyCat == true  ];
   then
-    REPO_LIST+=("SysDev-MoneyCat")
+    REPO_LIST+=("mergeTest")
   fi
 
   if [ $FRS == true  ];
   then
-    REPO_LIST+=("SysDev-FRS")
-  fi
-
-  if [ $URG == true  ];
-  then
-    REPO_LIST+=("SysDev-urg")
-  fi
-
-  if [ $GSTS == true  ];
-  then
-    REPO_LIST+=("SysDev-GSTS")
-  fi
-
-  if [ $ecatsapi == true  ];
-  then
-    REPO_LIST+=("ecats-api")
-  fi
-
-  if [ $ecatsui == true  ];
-  then
-    REPO_LIST+=("ecats-ui")
+    REPO_LIST+=("branchTest")
   fi
 
 fi
