@@ -32,7 +32,7 @@ comparison () {
       NOTIFICATION+="<p style='color:red'>⛔ $(git diff --stat-graph-width=1 $disc..$1 | tail -1)  </p>"
 
       echo "WORKS?"
-      if [ "$1" = "$DEVSTR" ]:
+      if [ "$1" = "$DEVSTR" ];
       then
 
 
