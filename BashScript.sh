@@ -18,6 +18,10 @@ comparison () {
   if [ "$1" != "None" ];
   then
 
+    #HOW OLD IS THE TAG ()
+
+
+
     #quick check to see if there is a difference between the branch and the tag
     diffs=$(git diff --stat-graph-width=1 $disc $1)
     echo $diffs
@@ -28,6 +32,9 @@ comparison () {
       NOTIFICATION+="<p style='color:red'>⛔ $(git diff --stat-graph-width=1 $disc..$1 | tail -1)  </p>"
       if [ $1 == $DEVSTR ]:
       then
+
+
+
         echo "trying to merge latest to dev"
         git checkout $1
         git merge $disc
@@ -35,6 +42,9 @@ comparison () {
         echo "merged to dev"
         git push --set-upstream origin $1
         echo "pushed to remote repo."
+
+        #add conflict
+
       fi
 
     else
