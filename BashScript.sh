@@ -42,7 +42,7 @@ comparison () {
         git merge $disc
         #what does this do?
         echo "merged to dev"
-        git push origin $1
+        git push $1
         echo "pushed to remote repo."
 
         #add conflict
