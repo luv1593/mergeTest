@@ -39,7 +39,7 @@ comparison () {
 
         echo "trying to merge latest to dev"
         #new name
-        DEVBRA="Temp-Dev${currentBuild.number}"
+        DEVBRA="Temp-Dev$DEVSTR"
         git branch $DEVBRA
         git checkout $DEVBRA
         git add -A
