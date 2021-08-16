@@ -41,8 +41,9 @@ comparison () {
         #new name
         DEVBRA="Temp-Dev$DEVSTR"
         git branch $DEVBRA
-        git checkout $DEVBRA
+        git checkout $MASSTR
         git add -A
+        git merge $DEVBRA
         git commit -m "Jenkins merge/pull request test."
         git push --set-upstream origin $DEVBRA
         #add conflict
