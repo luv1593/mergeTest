@@ -44,6 +44,7 @@ comparison () {
         git checkout $DEVBRA
         git add -A
         git commit -m "Jenkins merge/pull request test."
+        git push --set-upstream origin $DEVBRA
         #add conflict
 
       fi
