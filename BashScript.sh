@@ -38,13 +38,12 @@ comparison () {
 
 
         echo "trying to merge latest to dev"
-        git checkout $1
-        git merge $disc
-        #what does this do?
-        echo "merged to dev"
-        git push origin "${1:7}" 
-        echo "pushed to remote repo."
-
+        #new name
+        DEVBRA="Temp-Dev${currentBuild.number}"
+        git branch $DEVBRA
+        git checkout $DEVBRA
+        git add -A
+        git commit -m "Jenkins merge/pull request test."
         #add conflict
 
       fi
