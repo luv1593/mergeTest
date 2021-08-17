@@ -37,11 +37,11 @@ comparison () {
         git config --global push.default simple
 
         #gets tags date
-        git log -1 --format=%ai $disc
+        TAGDATE=$(git log -1 --format=%ai $disc)
 
         CURRDATE= date +%F
 
-
+        echo "${TAGDATE:10}"
         echo $CURRDATE
 
 
