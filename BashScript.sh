@@ -37,16 +37,18 @@ comparison () {
         git config --global push.default simple
 
         #gets tags date
-        TAGDATE=$(git log -1 --format=%ai $disc)
+        TAGTIMESTAMP=$(git log -1 --format=%ai $disc)
 
         CURRDATE=$(date --date='-3 month' +%F)
 
         echo "tag date:"
-        echo "${TAGDATE: 0:10}"
+        echo "${TAGTIMESTAMP: 0:10}"
         echo "curr date"
         echo $CURRDATE
 
-        if [ $CURRDATE -ge "${TAGDATE: 0:10}" ];
+        TAGDATE="${TAGTIMESTAMP: 0:10}"
+
+        if [ $CURRDATE -ge $TAGDATE ];
         then
           echo "DATE COMPARE"
         else
