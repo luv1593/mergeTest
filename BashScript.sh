@@ -48,7 +48,7 @@ comparison () {
 
         TAGDATE="${TAGTIMESTAMP: 0:10}"
 
-        if [ $CURRDATE < $TAGDATE ];
+        if [ $CURRDATE -gt $TAGDATE ];
         then
           echo "DATE COMPARE"
         else
