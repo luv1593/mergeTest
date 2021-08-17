@@ -36,6 +36,16 @@ comparison () {
       then
         git config --global push.default simple
 
+        #gets tags date
+        TAGDATE=${git log -1 --format=%ai $disc}
+
+        CURRDATE= date +%F
+
+        echo $TAGDATE
+        echo $CURRDATE
+
+
+
         git checkout $DEVSTR
         #do checks
         git merge $MASSTR
