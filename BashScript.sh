@@ -51,7 +51,7 @@ comparison () {
         TAGDATE2=$(date -d $TAGDATE +%s)
 
 
-        if [ $CURRDATE -gt $TAGDATE2 ];
+        if [ $CURRDATE < $TAGDATE2 ];
         then
           echo "DATE COMPARE"
         else
