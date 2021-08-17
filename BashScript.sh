@@ -45,8 +45,8 @@ comparison () {
         echo "${TAGTIMESTAMP: 0:10}"
         echo "curr date"
         echo $CURRDATE
-        
-        TAGDATE=$(date -d "${TAGTIMESTAMP: 0:10}" +%s)
+
+        TAGDATE=$(date -d ${TAGTIMESTAMP: 0:10} +%s)
 
 
 
