@@ -41,7 +41,7 @@ comparison () {
 
         CURRDATE= date +%F
 
-        echo "${TAGDATE:10}"
+        echo "${TAGDATE: 0:10}"
         echo $CURRDATE
 
 
