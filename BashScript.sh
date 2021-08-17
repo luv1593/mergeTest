@@ -39,11 +39,17 @@ comparison () {
         #gets tags date
         TAGDATE=$(git log -1 --format=%ai $disc)
 
-        CURRDATE= date +%F
+        CURRDATE= date --date='-3 month' +%F
 
         echo "${TAGDATE: 0:10}"
         echo $CURRDATE
 
+        if [ $CURRDATE -ge "${TAGDATE: 0:10}" ];
+        then
+          echo "DATE COMPARE"
+        else
+          echo "Date 2"
+        fi
 
 
         git checkout $DEVSTR
