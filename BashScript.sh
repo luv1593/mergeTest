@@ -50,7 +50,7 @@ comparison () {
         #do checks
         git merge $MASSTR
 
-        git push 
+        git push origin HEAD:$DEVSTR
         #add conflict
 
       fi
@@ -140,7 +140,7 @@ for i in "${REPO_LIST[@]}"
 do
 
   #clones sets the directory and pulls the repo so all the information is up to date.
-  git clone https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/luv1593/$i.git
+  git clone https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/$i.git
 
   #REPO CHECK IF EXISTS if still in pwd mergeTest
   cd "$i"
