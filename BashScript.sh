@@ -41,7 +41,9 @@ comparison () {
 
         CURRDATE= date --date='-3 month' +%F
 
+        echo "tag date:"
         echo "${TAGDATE: 0:10}"
+        echo "curr date"
         echo $CURRDATE
 
         if [ $CURRDATE -ge "${TAGDATE: 0:10}" ];
