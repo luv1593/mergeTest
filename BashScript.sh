@@ -39,7 +39,7 @@ comparison () {
         #gets tags date
         TAGDATE=$(git log -1 --format=%ai $disc)
 
-        CURRDATE= date --date='-3 month' +%F
+        CURRDATE=$(date --date='-3 month' +%F)
 
         echo "tag date:"
         echo "${TAGDATE: 0:10}"
