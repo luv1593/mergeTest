@@ -40,7 +40,7 @@ comparison () {
         #do checks
         git merge $MASSTR
 
-        git push
+        git push origin HEAD:$DEVSTR
         #add conflict
 
       fi
