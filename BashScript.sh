@@ -34,6 +34,7 @@ comparison () {
       echo "WORKS?"
       if [ "$1" = "$DEVSTR" ];
       then
+        git config --global push.default simple
 
         git checkout $DEVSTR
         #do checks
