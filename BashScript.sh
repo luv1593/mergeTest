@@ -46,11 +46,12 @@ comparison () {
         echo "curr date"
         echo $CURRDATE
 
-        TAGDATE=$(date -d ${TAGTIMESTAMP: 0:10} +%s)
+        TAGDATE="${TAGTIMESTAMP: 0:10}"
+        #$(date -d ${TAGTIMESTAMP: 0:10} +%s)
+        TAGDATE2=$(date -d $TAGDATE +%s)
 
 
-
-        if [ $CURRDATE -gt $TAGDATE ];
+        if [ $CURRDATE -gt $TAGDATE2 ];
         then
           echo "DATE COMPARE"
         else
