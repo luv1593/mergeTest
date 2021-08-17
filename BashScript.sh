@@ -41,7 +41,7 @@ comparison () {
 
         CURRDATE= date +%F
 
-        
+
         echo $CURRDATE
 
 
@@ -140,7 +140,7 @@ for i in "${REPO_LIST[@]}"
 do
 
   #clones sets the directory and pulls the repo so all the information is up to date.
-  git clone https://github.com/luv1593/$i.git
+  git clone https://$GITHUB_USERNAME:$GITHUB_PASSWORD@github.com/luv1593/$i.git
 
   #REPO CHECK IF EXISTS if still in pwd mergeTest
   cd "$i"
