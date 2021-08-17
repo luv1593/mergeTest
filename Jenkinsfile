@@ -49,7 +49,7 @@ pipeline {
         steps {
           //Gets credentials for git clone
           withCredentials([
-            usernamePassword(credentialsId: 'luv1593', passwordVariable: 'GITHUB_PASSWORD', usernameVariable: 'GITHUB_USERNAME'),
+            usernamePassword(credentialsId: 'luvToken', passwordVariable: 'GITHUB_PASSWORD', usernameVariable: 'GITHUB_USERNAME'),
             ]) {
               script {
                 //config global credentials
